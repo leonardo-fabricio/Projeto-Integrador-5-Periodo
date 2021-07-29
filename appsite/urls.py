@@ -7,5 +7,6 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('', index, name='index'),
+    path('login', login, name='login')
     # path('teste', teste, name='teste')
 ]
