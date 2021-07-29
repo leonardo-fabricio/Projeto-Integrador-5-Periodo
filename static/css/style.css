@@ -1,3 +1,22 @@
 h1{
     color: blue;
 }
+
+/* Barra de navegação */
+nav{
+    /* background-color: rgb(41, 55, 255); */
+    border-bottom: 1px solid black;
+    text-align: center !important;
+    justify-content: center !important;
+}
+nav a{
+    color: black !important;
+}
+.nav-link{
+}
+
+/*Cards*/
+.card{
+    width: 50% !important;
+    margin-left: 25%;
+}
