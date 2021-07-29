@@ -16,6 +16,7 @@ from typing import Tuple
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -25,6 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-oe6o3m(v3%gh)d69w=)ir(!i2@)*62)8760y1me*wqk@avnf#)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
+# DEBUG com valor True = modo de desenvonvimento
+# DEVUG com valor False = mode de produção
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
@@ -122,7 +126,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/' # usado durante o desenvolvimento
-# STATIC_ROOT = os.path(BASE_DIR, 'staticfiles') # usando durante a produção
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # usando durante a produção
+# join = juntado um diretorio com outro
 
 STATICFILES_DIRS = [
     'static',
