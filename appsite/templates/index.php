@@ -1,6 +1,6 @@
-<!DOCTYPE html>
 {% load static %}
 {% load bootstrap4%}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
