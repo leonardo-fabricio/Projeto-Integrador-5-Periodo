@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-oe6o3m(v3%gh)d69w=)ir(!i2@)*62)8760y1me*wqk@avnf#)
 # DEVUG com valor False = mode de produção
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'appsite',
     'bootstrap4',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +55,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware'
 ]
 
 ROOT_URLCONF = 'Integrador5periodo.urls'
@@ -70,6 +71,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -77,6 +80,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Integrador5periodo.wsgi.application'
 
+
+AUTHENTICATION_BACKENDS = (
+    'suap_backend.backends.SuapOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -87,8 +95,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -138,5 +144,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
+SESSION_COOKIE_NAME = 'cliente_suap_django'
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
+
+LOGIN_REDIRECT_URL = '/accounts/profile/' #Apos login redireciona pra ca
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
