@@ -181,6 +181,6 @@ except ImportError:
     pass
 
 
-LOGIN_REDIRECT_URL = '/accounts/profile/' #Apos login redireciona pra ca
+LOGIN_REDIRECT_URL = '/profile' #Apos login redireciona pra ca
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
