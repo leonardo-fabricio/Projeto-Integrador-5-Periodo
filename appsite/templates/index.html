@@ -1,31 +1,180 @@
 {% load socialaccount %}
+{% load static%}
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cliente SUAP Django</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Gerenciar Reservas</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css'%}" >
+    <!-- Icon -->
+    <link rel="stylesheet" href="{% static 'assets/fontsline-icons.css/.css'%}">
+    <!-- Owl carousel -->
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.theme.css'%}">
+    <!-- Animate -->
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css'%}">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="{% static 'assets/css/main.css'%}">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" href="{% static 'assets/css/Responsive.css'%}">
   </head>
 <body>
-  <section class="hero is-link is-bold">
-    <div class="hero-body">
+  <!-- Header Area wrapper Starts -->
+  <header id="header-wrap">
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
       <div class="container">
-        <h1 class="title">Cliente SUAP Django</h1>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <a href="{% url 'index'%}" class="navbar-brand"><img src="{% static 'img/reservas.png'%}" alt=""></a>       
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="lni-menu"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+            <li class="nav-item active">
+              <a class="nav-link" href="#hero-area">
+                Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#services">
+                Services
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#team">
+                Team
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#pricing">
+                Pricing
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="button is-dark" href="{% provider_login_url 'google' %}">
+                Sig-in Google
+            </a>
+            </li>
+            <li class="nav-item">
+              <a class="button is-dark" href="{% url 'social:begin' 'suap' %}">
+                Sig-in SUAP
+            </a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </section>
-  <section class="section">
-    <div class="container">
-      <div class="content">
-        <a class="button is-dark is-large" href="{% url 'social:begin' 'suap' %}">
-            Logar com o SUAP
-        </a>
-        <a class="button is-dark is-large" href="{% provider_login_url 'google' %}">
-            Logar com o Google
-        </a>
+    </nav>
+    <br>
+    <br>
+    <!-- Navbar End -->
+    <!-- Services Section Start -->
+    <section id="services" class="section-padding">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">SERVIÇOS</h2>
+          <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+        </div>
+        <div class="row">
+          <!-- Services item -->
+          <div class="col-md-6 col-lg-4 col-xs-12">
+            <div class="services-item wow fadeInRight" data-wow-delay="0.3s">
+              <div class="icon">
+                <i class="lni-cog"></i>
+              </div>
+              <div class="services-content">
+                <h3><a href="#">Easy To Used</a></h3>
+                <p>Ut maximus enim dolor. Aenean auctor risus eget tincidunt lobortis. Donec tincidunt bibendum gravida. </p>
+              </div>
+            </div>
+          </div>
+          <!-- Services item -->
+          <div class="col-md-6 col-lg-4 col-xs-12">
+            <div class="services-item wow fadeInRight" data-wow-delay="0.6s">
+              <div class="icon">
+                <i class="lni-stats-up"></i>
+              </div>
+              <div class="services-content">
+                <h3><a href="#">Awesome Design</a></h3>
+                <p>Ut maximus enim dolor. Aenean auctor risus eget tincidunt lobortis. Donec tincidunt bibendum gravida. </p>
+              </div>
+            </div>
+          </div>
+          <!-- Services item -->
+          <div class="col-md-6 col-lg-4 col-xs-12">
+            <div class="services-item wow fadeInRight" data-wow-delay="0.9s">
+              <div class="icon">
+                <i class="lni-users"></i>
+              </div>
+              <div class="services-content">
+                <h3><a href="#">Easy To Customize</a></h3>
+                <p>Ut maximus enim dolor. Aenean auctor risus eget tincidunt lobortis. Donec tincidunt bibendum gravida. </p>
+              </div>
+            </div>
+          </div>
+        
+        </div>
+      </div>
+    </section>
+    <!-- Services Section End -->
 
+    <!-- Team Section Start -->
+    <section id="team" class="section-padding bg-gray">
+      <div class="container">
+        <div class="section-header text-center">          
+          <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">EQUIPE</h2>
+          <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-12 col-xs-12">
+            <!-- Team Item Starts -->
+            <div class="team-item wow fadeInRight" data-wow-delay="0.6s">
+              <div class="team-img">
+                <img class="img-fluid" src="{% static 'img/luis.jpg'%}" alt="">
+              </div>
+              <div class="contetn">
+                <div class="info-text">
+                  <h3><a href="#">LUIS LUCILANDIO</a></h3>
+                  <p>Full stack developer</p>
+                </div>
+                <p>Graduando em Análise e Desenvolvimento de Sistemas pelo Instituto Federal de Ciências e Tecnologias do Rio Grande do Norte (IFRN).</p>
+                <ul class="social-icons">
+                  <li><a href="#"><i class="lni-facebook-filled" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="lni-twitter-filled" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="lni-instagram-filled" aria-hidden="true"></i></a></li>
+                </ul>
+              </div>
+            </div>
+            <!-- Team Item Ends -->
+          </div>
+          <div class="col-lg-6 col-md-12 col-xs-12">
+            <!-- Team Item Starts -->
+            <div class="team-item wow fadeInRight" data-wow-delay="0.8s">
+              <div class="team-img">
+                <img class="img-fluid" src="{% static 'img/sasuke.jpg'%}" alt="">
+              </div>
+              <div class="contetn">
+                <div class="info-text">
+                  <h3><a href="#">LEONARDO FABRICIO</a></h3>
+                  <p>Full stack developer</p>
+                </div>
+                <p>Graduando em Análise e Desenvolvimento de Sistemas pelo Instituto Federal de Ciências e Tecnologias do Rio Grande do Norte (IFRN).</p>
+                <ul class="social-icons">
+                  <li><a href="#"><i class="lni-facebook-filled" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="lni-twitter-filled" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="lni-instagram-filled" aria-hidden="true"></i></a></li>
+                </ul>
+              </div>
+            </div>
+            <!-- Team Item Ends -->
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+    <!-- Team Section End -->
 </body>
 </html>
