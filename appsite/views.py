@@ -18,3 +18,6 @@ def profile(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/')
     return render(request, 'profile.html', {})
+
+def teste(request):
+    return render(request,'teste.html',{})

@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-oe6o3m(v3%gh)d69w=)ir(!i2@)*62)8760y1me*wqk@avnf#)
 # DEVUG com valor False = mode de produção
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

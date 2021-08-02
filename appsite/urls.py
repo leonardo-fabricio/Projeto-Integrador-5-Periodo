@@ -17,5 +17,5 @@ urlpatterns = [
     
     path('logout', LogoutView.as_view()),
 
-    # path('teste', teste, name='teste')
+    path('teste', teste, name='teste')
 ]
