@@ -17,23 +17,26 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-					<img src="{% static 'assets/img/img-01.png' %}" alt="IMG">
+					<img style="width: 100% !important; height: 100% !important; margin-top: -60px !important; border-radius: 25px;" src="https://images.unsplash.com/photo-1523753917948-e1cb9cbc5913?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="IMG">
+					
 				</div>
 
 				<form class="login100-form validate-form">
 					<span class="login100-form-title">
-						Sig-in 
+						Entrar
 					</span>
-
+					<br>
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<a class="btn btn-secondary" href="{% provider_login_url 'google' %}">
-							Sig-in Google
+						<a class="btn botoes-login" href="{% provider_login_url 'google' %}">
+							<img class="img-login" src="{% static 'assets/img/google.png'%}" alt="">
+							
 						</a>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<a class="btn btn-secondary" href="{% url 'social:begin' 'suap' %}">
-							Sig-in SUAP
+						<a style ="color: #4a69bd; outline: 0 none;" class="btn botoes-login" href="{% url 'social:begin' 'suap' %}">
+							<img class="img-login" src="{% static 'assets/img/.png'%}" alt=""> 
+							<!-- SUAP -->
 						</a>
 					</div>
 				</form>

@@ -1593,7 +1593,7 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background: #9053c7;
+  background: #7C83FD !important; 
   background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
   background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
   background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
@@ -1631,14 +1631,37 @@ iframe {
 [  ]*/
 .login100-form {
   width: 290px;
+ 
+}
+/* Botoes suap google */
+.limiter form{
+  margin-left: 4% !important;
+  text-align: center !important;
+}
+.botoes-login{
+  background-color: #ffff !important;
+  border: 1px solid #7C83FD;
 }
 
+.img-login{
+  width: 10% !important;
+}
+
+.botoes-login:hover{
+  background-color: #7C83FD !important;
+  /* transition-delay: 200ms; */
+}
+.wrap-input100 a{
+  width: 100% !important;
+}
 .login100-form-title {
   font-family: Poppins-Bold;
   font-size: 24px;
   color: #333333;
   line-height: 1.2;
   text-align: center;
+  border-bottom: 1px solid black;
+  height: 2% !important;
 
   width: 100%;
   display: block;
