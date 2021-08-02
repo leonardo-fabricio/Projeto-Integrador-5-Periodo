@@ -508,7 +508,12 @@ hr {
 #cta {
   padding: 30px 0;
 }
-
+.nav-item .btn {
+  color: red !important;
+}
+.nav-item .btn:hover {
+  color: white !important;
+}
 .navbar-brand {
   position: relative;
   padding: 0px;
