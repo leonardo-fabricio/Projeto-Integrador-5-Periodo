@@ -55,7 +55,6 @@ SOCIALACCOUNT_PROVIDERS = {
 
 SITE_ID = 3 # mudar em caso de erros
 
-LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 INSTALLED_APPS = [
@@ -119,8 +118,12 @@ AUTHENTICATION_BACKENDS = (
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'GerenciarReservas',
+        'USER': 'leonn',
+        'PASSWORD': '1970',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 # Password validation
