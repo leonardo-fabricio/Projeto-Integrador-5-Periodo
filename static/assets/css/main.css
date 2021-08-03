@@ -1662,10 +1662,10 @@ iframe {
 }
 
 .imgLoginInit{
-  /* width: 100% !important; 
+  width: 100% !important; 
   height: 100% !important; 
   margin-top: -60px !important; 
-  border-radius: 15px; */
+  border-radius: 15px;
 }
 
 .wrap-input100 a{
