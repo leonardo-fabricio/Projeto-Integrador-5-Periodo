@@ -4893,7 +4893,13 @@ iframe {
 	right: 0px;
 	bottom: 0px;
 }
-/*====================*/
+/*==================== cadastro estabelecimento*/
+.cadastro-centro{
+  justify-content: center !important;
+  text-align: center !important;
+  margin-left: 30%;
+  margin-top: 0% !important;
+}
 
 
 

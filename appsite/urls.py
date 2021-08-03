@@ -17,5 +17,5 @@ urlpatterns = [
     
     path('logout', LogoutView.as_view()),
 
-    path('teste', teste, name='teste')
+    path('cadastroEstabelecimento/<str:email>', cadastroEstabelecimento, name='cadastroEstabelecimento')
 ]

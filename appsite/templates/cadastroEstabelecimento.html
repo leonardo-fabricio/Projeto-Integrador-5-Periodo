@@ -1,0 +1,46 @@
+{% load static %}
+{% load bootstrap4 %}
+{% load socialaccount %}
+<html lang="pt-br">
+<head>
+  <!DOCTYPE html>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="{% static 'js/main.js' %}"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/main.css' %}">
+
+  <!--
+    Seu Google client ID
+    Esse client ID foi criado no passo anterior
+  -->
+
+  <title>Atualizar dados</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css">
+</head>
+<body>
+  <div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+        
+        <div class="cadastro-centro">
+          <h1 style="text-align: center !important; margin-top: 1%;">Atualizar dados</h1>
+          <br>
+          <br>
+          <form class="login100-form validate-form" action="{% url 'cadastroEstabelecimento' email%} " method="post" autocomplete="off">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+              <button type="submit" class="btn btn-dark">Cadastrar</button>
+            {% endbuttons %}
+          </form> 
+        </div>
+      </div>
+    </div>
+  </div>
+      {% bootstrap_javascript jquery='full' %}
+</body>
+</html>
