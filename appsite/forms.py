@@ -15,3 +15,7 @@ class EstabelecimentoModel(forms.ModelForm):
     class Meta:
         model = Estabelecimentos
         fields = ['nome','tipo','rua','cep','cidade']
+        
+    def __init__(self,*args, **kwars):
+        super().__init__(*args, **kwars)
+        self.fields['cep'].widget.attrs.update({'class' : 'mask-cep'})

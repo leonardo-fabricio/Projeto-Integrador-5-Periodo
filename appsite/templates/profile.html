@@ -34,14 +34,9 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
-              <li class="nav-item active">
-                <a class="nav-link" href="#hero-area">
-                  Home
-                </a>
-              </li>
               <li class="nav-item">
                 <a class="nav-link" href="#services">
-                  Services
+                  Meus Agendamentos
                 </a>
               </li>
               <li class="nav-item">
@@ -57,6 +52,7 @@
   	<section class="section">
 		  <div class="container">
 	  		<div class="content">
+          <br><br> <br> <br>
                 <h2>Olá, {{ user.get_full_name }}!</h2>
                 <strong>matricula:</strong> {{ user.username }}<br/>
                 <strong>first name:</strong> {{ user.first_name }}<br/>
@@ -68,7 +64,7 @@
                     {% endfor %}
                 {% endwith %}
                 <hr/>
-                <a class="button is-danger is-large" href="{% url 'logout' %}?next=/">Encerrar Sessão</a>
+                <a class="button is-danger is-large" href="{% url 'logout' %}">Encerrar Sessão</a>
 		  	
 	  </section>
 	</body>
