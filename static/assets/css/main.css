@@ -1640,17 +1640,23 @@ iframe {
 }
 .botoes-login{
   background-color: #ffff !important;
-  border: 1px solid #7C83FD;
+  border: 2px solid #7C83FD;
+}
+
+.botoes-login:hover{
+  border: 2px solid #575cbb;
+  transition-delay: 130ms;
+}
+
+.img-login2{
+  width: 15% !important;
+  margin-left: 4% !important;
 }
 
 .img-login{
   width: 10% !important;
 }
 
-.botoes-login:hover{
-  background-color: #7C83FD !important;
-  /* transition-delay: 200ms; */
-}
 .wrap-input100 a{
   width: 100% !important;
 }
