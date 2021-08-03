@@ -31,8 +31,11 @@ def cadastroEstabelecimento(request, email):
             rua = form.cleaned_data['rua']
             cep = form.cleaned_data['cep']
             cidade = form.cleaned_data['cidade']
-            
-            Estabelecimentos.objects.filter(email = email).update(nome = nome,tipo = tipo, rua = rua, cep = cep, cidade = cidade)
+            if(Estabelecimentos.objects.filter(email = email)):
+                Estabelecimentos.objects.filter(email = email).update(nome = nome,tipo = tipo, rua = rua, cep = cep, cidade = cidade)
+            else:
+                new = Estabelecimentos(nome = nome,tipo = tipo, rua = rua, cep = cep, cidade = cidade, email = email)
+                new.save()
             
             form = EstabelecimentoForm()
             return redirect('/profile')

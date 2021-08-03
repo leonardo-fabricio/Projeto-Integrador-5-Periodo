@@ -1640,11 +1640,12 @@ iframe {
 }
 .botoes-login{
   background-color: #ffff !important;
-  border: 2px solid #7C83FD;
+  border: 2px solid #7C83FD !important;
+  color: black !important;
 }
 
 .botoes-login:hover{
-  border: 2px solid #575cbb;
+  border: 2px solid #575cbb !important;
   transition-delay: 130ms;
 }
 

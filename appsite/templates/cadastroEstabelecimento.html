@@ -27,14 +27,16 @@
 			<div class="wrap-login100">
         
         <div class="cadastro-centro">
-          <h1 style="text-align: center !important; margin-top: 1%;">Atualizar dados</h1>
+          <span class="login100-form-title">
+						Atualizar Cadastro
+					</span>
           <br>
           <br>
           <form class="login100-form validate-form" action="{% url 'cadastroEstabelecimento' email%} " method="post" autocomplete="off">
             {% csrf_token %}
             {% bootstrap_form form %}
             {% buttons %}
-              <button type="submit" class="btn btn-dark">Cadastrar</button>
+              <button type="submit" class="botoes-login btn">Cadastrar</button>
             {% endbuttons %}
           </form> 
         </div>
@@ -42,5 +44,8 @@
     </div>
   </div>
       {% bootstrap_javascript jquery='full' %}
+      <script src="{% static 'jquery-3.6.0.min.js' %}"></script>
+      <script src="{% static 'jquery.mask.min.js' %}"></script>
+      <script src="{% static 'mask.js' %}"></script>
 </body>
 </html>
