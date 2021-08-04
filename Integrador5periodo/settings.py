@@ -187,3 +187,5 @@ except ImportError:
 LOGIN_REDIRECT_URL = '/profile' #Apos login redireciona pra ca
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGOUT_REDIRECT_URL = 'index'
