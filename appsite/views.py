@@ -22,6 +22,11 @@ def profile(request):
         return HttpResponseRedirect('/')
     return render(request, 'profile.html', {})
 
+def dashboard(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/')
+    return render(request, 'dashboard.html', {})
+
 def cadastroEstabelecimento(request, email):
     form = EstabelecimentoModel(request.POST or None)
     if str(request.method) == 'POST' :
