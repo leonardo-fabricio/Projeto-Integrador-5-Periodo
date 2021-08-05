@@ -4920,8 +4920,16 @@ iframe {
   margin-left: 30%;
   margin-top: 0% !important;
 }
-
-
+.main-cadastro{
+  width: 50% !important;
+  text-align: center !important;
+  margin-left: 20%;
+  margin-top: 5%;
+}
+.main-cadastro form{
+  justify-content: center !important;
+  margin-left: 35% ;
+}
 
 
 

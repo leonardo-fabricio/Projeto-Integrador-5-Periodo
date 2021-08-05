@@ -22,30 +22,48 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css">
 </head>
 <body>
-  <div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-        
-        <div class="cadastro-centro">
-          <span class="login100-form-title">
-						Atualizar Cadastro
-					</span>
-          <br>
-          <br>
-          <form class="login100-form validate-form" action="{% url 'cadastroEstabelecimento' email%} " method="post" autocomplete="off">
-            {% csrf_token %}
-            {% bootstrap_form form %}
-            {% buttons %}
-              <button type="submit" class="botoes-login btn">Cadastrar</button>
-            {% endbuttons %}
-          </form> 
-        </div>
+  <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <a href="{% url 'index'%}" class="navbar-brand"><img src="{% static 'img/reservas.png'%}" alt=""></a>       
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="lni-menu"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+          <li class="nav-item">
+            <a class="nav-link" href="#services">
+              Meus Agendamentos
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'cadastroEstabelecimento' user.email %}">
+              Atualizar cadastro
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
-  </div>
-      {% bootstrap_javascript jquery='full' %}
-      <script src="{% static 'jquery-3.6.0.min.js' %}"></script>
-      <script src="{% static 'jquery.mask.min.js' %}"></script>
-      <script src="{% static 'mask.js' %}"></script>
+  </nav>
+    <main class="main-cadastro">
+      <span class="login100-form-title">
+        Atualizar Cadastro
+      </span>
+      <br>
+      <br>
+      <form class="login100-form validate-form" action="{% url 'cadastroEstabelecimento' email%} " method="post" autocomplete="off">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+          <button type="submit" class="botoes-login btn">Cadastrar</button>
+        {% endbuttons %}
+      </form> 
+    </main>
+          
+
+    {% bootstrap_javascript jquery='full' %}
+    <script src="{% static 'jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'jquery.mask.min.js' %}"></script>
+    <script src="{% static 'mask.js' %}"></script>
 </body>
 </html>
