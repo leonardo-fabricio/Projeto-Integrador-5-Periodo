@@ -1,3 +1,5 @@
 shell.sh
 pull.sh 
 push.sh
+db.sqlite3
+executar.txt
