@@ -4923,12 +4923,11 @@ iframe {
 .main-cadastro{
   width: 50% !important;
   text-align: center !important;
-  margin-left: 20%;
   margin-top: 5%;
+  margin-left: 35%;
 }
 .main-cadastro form{
   justify-content: center !important;
-  margin-left: 35% ;
 }
 
 

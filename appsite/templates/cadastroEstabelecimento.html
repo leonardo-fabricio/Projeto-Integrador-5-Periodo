@@ -10,6 +10,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/main.css' %}">
+  <link rel="stylesheet" href="formoid_files/formoid1/formoid-solid-purple.css" type="text/css" />
 
   <!--
     Seu Google client ID
@@ -22,6 +23,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css">
 </head>
 <body>
+  <!-- INICIO NAVA BAR -->
   <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -45,17 +47,18 @@
       </div>
     </div>
   </nav>
+
+<!-- INICIO MAIN -->
     <main class="main-cadastro">
-      <span class="login100-form-title">
-        Atualizar Cadastro
-      </span>
       <br>
       <br>
-      <form class="login100-form validate-form" action="{% url 'cadastroEstabelecimento' email%} " method="post" autocomplete="off">
+      <form class="formoid-solid-purple" style="font-size:14px;font-family:'Roboto',Arial,Helvetica,sans-serif;color:#34495E;max-width:480px;min-width:150px" action="{% url 'cadastroEstabelecimento' email%} " method="post" autocomplete="off">
+        <div class="title" style="background-color: #7C83FD; color: #ffff; padding: 1%;"><h2>Atualizar Cadastro</h2></div>
+        <br>
         {% csrf_token %}
         {% bootstrap_form form %}
         {% buttons %}
-          <button type="submit" class="botoes-login btn">Cadastrar</button>
+          <button type="submit" class="botoes-login btn ">Cadastrar</button>
         {% endbuttons %}
       </form> 
     </main>
