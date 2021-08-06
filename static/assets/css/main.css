@@ -5082,6 +5082,12 @@ a {
   display: none;
 }
 
+.card.card0.border-0{
+  border-radius: 20px !important;
+  height: 570px !important;
+  margin-top: -2px !important;
+}
+
 @media screen and (max-width: 991px) {
   .logo {
       margin-left: 0px
