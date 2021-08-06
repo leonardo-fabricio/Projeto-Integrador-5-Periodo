@@ -5078,7 +5078,8 @@ a {
 
 .bg-blue {
   color: #fff;
-  background-color: #1A237E
+  background-color: #1A237E;
+  display: none;
 }
 
 @media screen and (max-width: 991px) {
