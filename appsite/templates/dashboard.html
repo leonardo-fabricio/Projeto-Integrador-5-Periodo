@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Gerenciamento de Reservas</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -21,10 +21,14 @@
 
     <!-- Custom styles for this template-->
     <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'img/icon2.png' %}" type="image/x-icon">
 
 </head>
 
 <body id="page-top">
+    <!-- 
+        mexer em que
+    -->
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -33,7 +37,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'index' %}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -142,7 +146,11 @@
             <hr class="sidebar-divider d-none d-md-block">
 
             <div class="sidebar-heading">
-                <a class="btn btn-danger btn-sm    " href="{% url 'logout' %}">Sign-out</a>
+                Sair
+            </div>
+            <br>
+            <div class="nav-link collapsed sidebar-heading">
+                <a class="btn btn-danger btn-sm" href="{% url 'logout' %}">Sign-out</a>
             </div>
         </ul>
         <!-- End of Sidebar -->
@@ -323,9 +331,13 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="" id="userDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="{% url 'index' %}" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Olá, {{ user.get_full_name }}!</span>
+                                {% if user.get_full_name != '' %}  
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Olá, {{ user.get_full_name }}!</span>
+                                {% else %}
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Olá, {{ user.username }}!</span>
+                                {% endif%}
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

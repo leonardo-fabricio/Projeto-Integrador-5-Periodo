@@ -1,6 +1,7 @@
 
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LogoutView
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from .forms import EstabelecimentoModel,EstabelecimentoForm
@@ -17,6 +18,9 @@ def login(request):
     return render(request, 'login.html')
 # def teste (request):
 #     return render(request, 'teste.php')
+def logout(request):
+    return LogoutView.as_view()
+
 def profile(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/')
