@@ -25,9 +25,11 @@
 				<div class="col-lg-6">
 					<div class="card2 card border-0 px-4 py-5">
 						<form class="login100-form validate-form">
-							<span class="login100-form-title">
-								Entrar
-							</span><br>
+							<div>
+								<span class="login100-form-title mb-4 ml-1">
+									Entrar
+								</span>
+							</div>
 							<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz" data-toggle="tooltip" data-placement="top" title="Entre com seu login Google">
 								<a class="btn botoes-login" href="{% provider_login_url 'google' %}">
 									<img class="img-login" src="{% static 'assets/img/google.png'%}" alt="">
