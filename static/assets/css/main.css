@@ -5109,6 +5109,9 @@ a {
 }
 /* FIM NOVO LOGIN */
 
-
+form.login100-form.validate-form{
+  margin-left: 20% !important;
+  margin-top: 20% !important;
+}
 
 
