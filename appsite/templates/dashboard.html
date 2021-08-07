@@ -333,10 +333,10 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="{% url 'index' %}" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {% if user.get_full_name != '' %}  
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Olá, {{ user.get_full_name }}!</span>
+                                {% if user.get_full_name != '' %}
+                                    <span id="helloUser" class="mr-2 d-none d-lg-inline text-gray-600 small">Olá, {{ user.get_full_name }}!</span>
                                 {% else %}
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Olá, {{ user.username }}!</span>
+                                    <span id="helloUser" class="mr-2 d-none d-lg-inline text-gray-600 small">Olá, {{ user.username }}!</span>
                                 {% endif%}
                             </a>
                             <!-- Dropdown - User Information -->
@@ -372,9 +372,12 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        
+                        {% if user.get_full_name != '' %}  
+                            <h1 class="h3 mb-0 text-gray-800">Seja Bem-vindo ao Sistema de Gerenciamento de Reservas, {{ user.get_full_name.capitalize }}!</h1>
+                        {% else %}
+                            <h1 class="h3 mb-0 text-gray-800">Seja Bem-vindo ao Sistema de Gerenciamento de Reservas, {{ user.username }}!</h1>
+                        {% endif%}
                     </div>
 
                     <!-- Content Row -->
