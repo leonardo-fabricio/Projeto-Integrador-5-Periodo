@@ -13,7 +13,7 @@ urlpatterns = [
     path('', index, name='index'),
     path('login', login, name='login'),
     path('profile', profile),
-    path('dashboard',dashboard),
+    path('dashboard', dashboard),
     
     path('accounts/', include('allauth.urls')),
     path('logout', LogoutView.as_view()),
