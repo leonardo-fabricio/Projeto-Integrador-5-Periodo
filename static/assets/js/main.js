@@ -1,3 +1,15 @@
+// (function updateImg(){
+//   try{
+//     let imgUrl = googleUser.getBasicProfile().getName();
+//     console.log('IMG:' + imgUrl)
+
+//     const image = document.querySelector('.avatar-url')
+//     image.src = 'https://avatars.githubusercontent.com/u/48826657?v=4';
+//   }catch(err){
+//     console.log('Erro: Erro:  Erro:  Erro:  Erro:  Erro:  Erro:  Erro:  Erro:  Erro:  Erro:  Erro: ' + err)
+//   }
+// })();
+
 (function($) {
   
   "use strict";  
