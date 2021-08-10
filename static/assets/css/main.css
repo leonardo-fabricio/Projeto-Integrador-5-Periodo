@@ -5119,3 +5119,83 @@ form.login100-form.validate-form{
   margin-top: 20% !important;
 }
 
+/* Inicio Ajustando tela de login */
+@media only screen and (max-width: 1980px){ /* TELA BOA DE LEO */
+  .card.card0.border-0{
+    height: 850px !important;
+    margin-top: 12px !important;
+  }
+
+  img.image{
+    width: 600px !important;
+    height: 500px !important;
+    margin-top: 5% !important;
+  }
+
+  .card2.card.border-0.px-4.py-5{
+    margin-top: 5% !important;
+  }
+
+  span.login100-form-title.mb-4.ml-1{
+    width: 370px !important;
+    /* height: 0px !important; */
+    /* marin */
+  }
+  .btn.botoes-login{
+    width: 370px !important;
+    height: 64px !important;
+  }
+
+  img.img-login{
+    margin-top: 6px !important;
+  }
+  img.img-login2{
+    margin-top: 5px !important;
+  }
+  
+}
+@media only screen and (max-width: 1680px){ /* TELAS DO TAMNHO DE LUIS*/
+  .card.card0.border-0{
+    height: 560px !important;
+    margin-top: 12px !important;
+  }
+  img.image{
+    width: 360px !important;
+    height: 280px !important;
+    /* margin-top: 10% !important; */
+  }
+}
+
+/* fazer um ngç aq */
+
+@media only screen and (max-width: 993px){
+  .card.card0.border-0{
+    height: 560px !important;
+    margin-top: 12px !important;
+  }
+  form.login100-form.validate-form{
+      /* margin-left: 0% !important; */
+      margin-top: -10% !important;
+      
+  }
+  img.image{
+    display: none !important;
+  }
+  .card2{
+    border-top: none !important;
+    margin-left: 10% !important;
+  }
+
+  img.logo{
+    margin-left: 40% !important;
+  }
+}
+
+/* @media only screen and (max-width: 1300px){
+  .card.card0.border-0{
+    height: 350px !important;
+    margin-top: 12px !important;
+  }
+}  */
+/* Fim Ajustando tela de login */
+
