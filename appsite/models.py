@@ -9,6 +9,3 @@ class Estabelecimentos(models.Model):
     cep = models.CharField('cep', max_length=100)
     cidade = models.CharField('cidade', max_length=100)
     email = models.EmailField('email', max_length=100, null=True)
-
-
-    

@@ -52,9 +52,9 @@
             <div class="img-description">
                 <img src="https://i1.wp.com/terracoeconomico.com.br/wp-content/uploads/2019/01/default-user-image.png?ssl=1" class="avatar-url" alt="">
                 {% if user.get_full_name != '' %}
-                    <span id="helloUser-des" class="mr-2 d-none d-lg-inline text-gray-600 small">{{ user.get_full_name }}!</span>
+                    <span id="helloUser-des" class="mr-2 d-none d-lg-inline text-gray-600 small">{{ user.first_name | title }}!</span> 
                 {% else %}
-                    <span id="helloUser-des" class="mr-2 d-none d-lg-inline text-gray-600 small">{{ user.username }}!</span>
+                    <span id="helloUser-des" class="mr-2 d-none d-lg-inline text-gray-600 small">{{ user.first_name | title}}</span>!</span>
                 {% endif%}
             </div>
 
@@ -345,7 +345,7 @@
                             <a class="nav-link dropdown-toggle" href="{% url 'index' %}" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {% if user.get_full_name != '' %}
-                                    <span id="helloUser" class="mr-2 d-none d-lg-inline text-gray-600 small">Olá, {{ user.get_full_name }}!</span>
+                                    <span id="helloUser" class="mr-2 d-none d-lg-inline text-gray-600 small">Olá, {{ user.get_full_name | title }}!</span>
                                 {% else %}
                                     <span id="helloUser" class="mr-2 d-none d-lg-inline text-gray-600 small">Olá, {{ user.username }}!</span>
                                 {% endif%}
@@ -385,9 +385,9 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         
                         {% if user.get_full_name != '' %}  
-                            <h1 class="h3 mb-0 text-gray-800">Seja Bem-vindo ao Sistema de Gerenciamento de Reservas, {{ user.get_full_name.capitalize }}!</h1>
+                            <h1 class="h3 mb-0 text-gray-800">Seja Bem-vindo ao Sistema de Gerenciamento de Reservas, {{ user.get_full_name | title }}!</h1>
                         {% else %}
-                            <h1 class="h3 mb-0 text-gray-800">Seja Bem-vindo ao Sistema de Gerenciamento de Reservas, {{ user.username }}!</h1>
+                            <h1 class="h3 mb-0 text-gray-800">Seja Bem-vindo ao Sistema de Gerenciamento de Reservas, {{ user.username | title }}!</h1>
                         {% endif%}
                     </div>
 
