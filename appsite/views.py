@@ -62,7 +62,8 @@ def cadastroPublico(request, email):
             nome = form.cleaned_data['nome']
             cidade = form.cleaned_data['cidade']
             telefone = form.cleaned_data['telefone']
-            if PublicoGeral.objects.filter(email = email)
+            if PublicoGeral.objects.filter(email = email):
+                PublicoGeral.objects.filter(email = email).update(telefone = telefone, cidade = cidade)
             else:
                 new = PublicoGeral(nome = nome, cidade = cidade, telefone = telefone, email = email)
                 new.save()
