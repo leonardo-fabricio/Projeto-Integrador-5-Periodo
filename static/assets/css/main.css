@@ -5136,18 +5136,18 @@ form.login100-form.validate-form{
     margin-top: 5% !important;
   }
 
-  span.login100-form-title.mb-4.ml-1{
+  span.login100-form-title.mb-4.ml-1{ /* Altera tamanho do ENTRAR*/
     width: 370px !important;
     /* height: 0px !important; */
     /* marin */
   }
-  .btn.botoes-login{
+  .btn.botoes-login{ /* Altera tamanho dos botoes do google e suap*/
     width: 370px !important;
     height: 64px !important;
   }
 
   img.img-login{
-    margin-top: 6px !important;
+    margin-top: 6px !important; 
   }
   img.img-login2{
     margin-top: 5px !important;
@@ -5164,9 +5164,28 @@ form.login100-form.validate-form{
     height: 280px !important;
     /* margin-top: 10% !important; */
   }
+  span.login100-form-title.mb-4.ml-1{ /* Altera tamanho do ENTRAR*/
+    width: 250px !important;
+    /* height: 0px !important; */
+    /* marin */
+  }
+  .btn.botoes-login{ /* Altera tamanho dos botoes do google e suap*/
+    width: 250px !important;
+    height: 50px !important;
+  }
+  img.img-login{  /* img google*/
+    margin-top: 1px !important;
+    width: 25px !important;
+    height: 25px !important;
+  }
+  img.img-login2{ /* img suap*/
+    margin-top: 1px !important;
+    width: 40px !important;
+    height: 24px !important;
+  }
 }
 
-/* fazer um ngç aq */
+/* showwww */
 
 @media only screen and (max-width: 993px){
   .card.card0.border-0{
@@ -5181,7 +5200,7 @@ form.login100-form.validate-form{
   img.image{
     display: none !important;
   }
-  .card2{
+  .card2{ /* DIV QUE CONTEM O ENTRAR E OS BOTOES DO GOOGLE E SUAP*/
     border-top: none !important;
     margin-left: 10% !important;
   }
@@ -5191,11 +5210,56 @@ form.login100-form.validate-form{
   }
 }
 
-/* @media only screen and (max-width: 1300px){
+@media only screen and (max-width: 801px){
   .card.card0.border-0{
-    height: 350px !important;
-    margin-top: 12px !important;
+    height: 610px !important; 
+    margin-top: -19px !important;
   }
-}  */
-/* Fim Ajustando tela de login */
 
+  img.logo{
+    width: 260px !important; 
+    height: 180px !important;
+    margin-left: 270px !important;
+  }
+
+  .card2.card.border-0.px-4.py-5{ /* DIV QUE CONTEM O ENTRAR E OS BOTOES DO GOOGLE E SUAP*/
+    margin-top: -30px !important;
+    margin-left: 120px !important;
+  }
+
+} 
+
+@media only screen and (max-width: 590px){
+  img.logo{
+    width: 260px !important; 
+    height: 180px !important;
+    margin-left: 190px !important;
+  }
+
+  .card2.card.border-0.px-4.py-5{ /* DIV QUE CONTEM O ENTRAR E OS BOTOES DO GOOGLE E SUAP*/
+    margin-top: -30px !important;
+    margin-left: 60px !important;
+  }
+
+}
+
+@media only screen and (max-width: 470px){
+  img.logo{
+    width: 260px !important; 
+    height: 180px !important;
+    margin-left: 60px !important;
+  }
+
+  .card2.card.border-0.px-4.py-5{ /* DIV QUE CONTEM O ENTRAR E OS BOTOES DO GOOGLE E SUAP*/
+    margin-top: -20px !important;
+    margin-left: -48px !important;
+  }
+
+  .card.card0.border-0{
+    margin-top: 10px !important;
+    height: 750px !important;
+    /* margin-top: 12px !important; */
+  }
+
+}
+/* Fim Ajustando tela de login */
