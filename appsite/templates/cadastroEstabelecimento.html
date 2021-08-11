@@ -23,31 +23,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css">
 </head>
 <body>
-  <!-- INICIO NAVA BAR -->
-  <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
-    <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <a href="{% url 'index'%}" class="navbar-brand"><img src="{% static 'img/reservas.png'%}" alt=""></a>       
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="lni-menu"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
-          <li class="nav-item">
-            <a class="nav-link" href="#services">
-              Meus Agendamentos
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'cadastroEstabelecimento' user.email %}">
-              Atualizar cadastro
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
 <!-- INICIO MAIN -->
     <main class="main-cadastro">
       <br>

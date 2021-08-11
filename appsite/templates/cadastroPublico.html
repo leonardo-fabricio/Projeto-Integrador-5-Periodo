@@ -1,0 +1,32 @@
+{% load static %}
+{% load bootstrap4%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main class="main-cadastro">
+        <br>
+        <br>
+        <form class="formoid-solid-purple" style="font-size:14px;font-family:'Roboto',Arial,Helvetica,sans-serif;color:#34495E;max-width:480px;min-width:150px" action="{% url 'cadastroPublico' email%} " method="post" autocomplete="off">
+          <div class="title" style="background-color: #7C83FD; color: #ffff; padding: 1%;"><h2>Atualizar Cadastro</h2></div>
+          <br>
+          {% csrf_token %}
+          {% bootstrap_form form %}
+          {% buttons %}
+            <button type="submit" class="botoes-login btn ">Cadastrar</button>
+          {% endbuttons %}
+        </form> 
+      </main>
+            
+  
+      {% bootstrap_javascript jquery='full' %}
+      <script src="{% static 'jquery-3.6.0.min.js' %}"></script>
+      <script src="{% static 'jquery.mask.min.js' %}"></script>
+      <script src="{% static 'mask.js' %}"></script>
+</body>
+</html>

@@ -148,9 +148,9 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{% url 'cadastroPublico' user.email %}">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
+                    <span>Atualizar Cadastro</span></a>
             </li>
 
             <!-- Divider -->
@@ -161,7 +161,7 @@
             </div>
             <br>
             <div class="nav-link collapsed sidebar-heading">
-                <a class="btn btn-danger btn-sm" href="{% url 'logout' %}">Sign-out</a>
+                <a class="btn btn-danger btn-sm" href="{% url 'sair' %}">Sign-out</a>
             </div>
         </ul>
         <!-- End of Sidebar -->

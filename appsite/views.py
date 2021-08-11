@@ -4,9 +4,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LogoutView
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
-from .forms import EstabelecimentoModel,EstabelecimentoForm
+from .forms import *
 from django.contrib import messages
-from .models import Estabelecimentos
+from .models import *
 
 # Create your views here.
 def index (request):
@@ -47,10 +47,30 @@ def cadastroEstabelecimento(request, email):
                 new.save()
             
             form = EstabelecimentoForm()
-            return redirect('/profile')
+            return redirect('/dashboard')
   
     context = {
         'form' : form,
         'email': email
     }
     return render(request,'cadastroEstabelecimento.html',context)
+   
+def cadastroPublico(request, email):
+    form = PublicoModel(request.POST or None)
+    if str(request.method) == 'POST' :
+        if form.is_valid():
+            nome = form.cleaned_data['nome']
+            cidade = form.cleaned_data['cidade']
+            telefone = form.cleaned_data['telefone']
+            
+            new = PublicoGeral(nome = nome, cidade = cidade, telefone = telefone, email = email)
+            new.save()
+            
+            form = EstabelecimentoForm()
+            return redirect('/dashboard')
+  
+    context = {
+        'form' : form,
+        'email' : email
+    }
+    return render(request, 'cadastroPublico.html',context)

@@ -16,6 +16,7 @@ urlpatterns = [
     path('dashboard', dashboard),
     
     path('accounts/', include('allauth.urls')),
-    path('logout', LogoutView.as_view()),
-    path('cadastroEstabelecimento/<str:email>', cadastroEstabelecimento, name='cadastroEstabelecimento')
+    path('sair/', LogoutView.as_view() , name='sair'),
+    path('cadastroEstabelecimento/<str:email>', cadastroEstabelecimento, name='cadastroEstabelecimento'),
+    path('cadastroPublico/<str:email>', cadastroPublico, name='cadastroPublico'),
 ]
