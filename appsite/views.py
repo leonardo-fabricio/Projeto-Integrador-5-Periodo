@@ -62,9 +62,10 @@ def cadastroPublico(request, email):
             nome = form.cleaned_data['nome']
             cidade = form.cleaned_data['cidade']
             telefone = form.cleaned_data['telefone']
-            
-            new = PublicoGeral(nome = nome, cidade = cidade, telefone = telefone, email = email)
-            new.save()
+            if PublicoGeral.objects.filter(email = email)
+            else:
+                new = PublicoGeral(nome = nome, cidade = cidade, telefone = telefone, email = email)
+                new.save()
             
             form = EstabelecimentoForm()
             return redirect('/dashboard')
