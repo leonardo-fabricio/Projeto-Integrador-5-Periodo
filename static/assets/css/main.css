@@ -5321,7 +5321,21 @@ form.login100-form.validate-form{
     margin-left: 250px !important;
   }
   #containerInteiro{
-  height: 600px !important;
+    height: 600px !important;
+  }
+}
+
+@media only screen and (max-width: 801px){
+  #img-logo2{
+    margin-left: -80px !important;
+  }
+
+  #register{
+    margin-top: -120px !important;
+    margin-left: 160px !important;
+  }
+  #containerInteiro{
+    height: 700px !important;
   }
 }
 /* 
