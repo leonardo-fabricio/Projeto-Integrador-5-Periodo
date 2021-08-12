@@ -5351,5 +5351,15 @@ form.login100-form.validate-form{
     height: 700px !important;
   }
 }
+
+@media only screen and (max-width: 470px){
+  #img-logo2{
+    margin-left: 6% !important;
+  }
+
+  #btn-cadastro-publico.botoes-login.btn.register{
+    margin-left: 80px !important;
+  }
+}
 /* 
 */
