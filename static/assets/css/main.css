@@ -5306,10 +5306,6 @@ form.login100-form.validate-form{
     height: 300px !important;
   }
 
-  /* .login100-form-title{ 
-    width: 330px !important;
-  } */
-
   .form-register{
     margin-top: -23px !important;
   }
@@ -5318,6 +5314,12 @@ form.login100-form.validate-form{
   }
 
 }
+
+@media only screen and (max-width: 991px){
+  #register{
+    margin-top: -120px !important;
+    margin-left: 270px !important;
+  }
+}
 /* 
- o celular so vale 500 reais kkk
 */
