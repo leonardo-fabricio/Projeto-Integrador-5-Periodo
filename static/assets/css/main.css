@@ -5361,5 +5361,16 @@ form.login100-form.validate-form{
     margin-left: 80px !important;
   }
 }
+
+@media only screen and (max-width: 375px){
+  #img-logo2{
+    margin-left: -2% !important;
+  }
+
+  #register{
+    margin-left: -1% !important;
+  }
+
+}
 /* 
 */
