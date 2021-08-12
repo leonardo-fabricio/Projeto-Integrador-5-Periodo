@@ -1685,7 +1685,7 @@ iframe {
 
   width: 100%;
   display: block;
-  padding-bottom: 54px;
+  padding-bottom: 10px;
 }
 
 
@@ -5137,7 +5137,7 @@ form.login100-form.validate-form{
   }
 
   span.login100-form-title.mb-4.ml-1{ /* Altera tamanho do ENTRAR*/
-    width: 370px !important;
+    width: 370px;
     /* height: 0px !important; */
     /* marin */
   }
@@ -5165,7 +5165,7 @@ form.login100-form.validate-form{
     /* margin-top: 10% !important; */
   }
   span.login100-form-title.mb-4.ml-1{ /* Altera tamanho do ENTRAR*/
-    width: 250px !important;
+    width: 250px;
     /* height: 0px !important; */
     /* marin */
   }
@@ -5185,7 +5185,7 @@ form.login100-form.validate-form{
   }
 }
 
-/* showwww */
+/* Responsividade */
 
 @media only screen and (max-width: 993px){
   .card.card0.border-0{
@@ -5263,3 +5263,61 @@ form.login100-form.validate-form{
 
 }
 /* Fim Ajustando tela de login */
+
+
+/* Tela cadastro de publico*/
+@media only screen and (max-width: 1980px){ /* TELA BOA DE LEO */
+  .form-control{
+    background-color: #e8efff !important;
+    border: 1.7px solid #7C83FD !important;
+    border-radius: 20px; 
+    width: 370px !important;
+  }
+
+  #btn-cadastro-publico{ 
+    width: 200px !important;
+    height: 45px !important;
+    margin-left: 32% !important;
+  }
+
+  #register{
+    margin-left: 210px !important;
+    margin-top: 150px !important;
+  }
+}
+@media only screen and (max-width: 1680px){ /* TELAS DO TAMANHO DE LUIS*/
+  .form-control{
+    background-color: #e8efff !important;
+    border: 1.7px solid #7C83FD !important;
+    border-radius: 20px; 
+    width: 330px !important;
+    height: 40px !important;
+  }
+
+  #btn-cadastro-publico{ 
+    width: 150px !important;
+    height: 40px !important;
+    margin-left: 32% !important;
+  }
+
+  #register{ 
+    margin-left: 120px !important;
+    margin-top: 20px !important; 
+    height: 300px !important;
+  }
+
+  /* .login100-form-title{ 
+    width: 330px !important;
+  } */
+
+  .form-register{
+    margin-top: -23px !important;
+  }
+  .login100-form-title.mb-4.ml-1{
+    width: 330px !important;
+  }
+
+}
+/* 
+ o celular so vale 500 reais kkk
+*/
