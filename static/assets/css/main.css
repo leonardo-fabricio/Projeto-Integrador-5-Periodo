@@ -711,7 +711,7 @@ hr {
   border-bottom: 1px solid #f1f1f1;
   text-decoration: none;
   display: inline-block;
-  float: left;
+  /* float: left; */
   clear: both;
   position: relative;
   outline: 0;
@@ -784,10 +784,6 @@ hr {
   background: #34363a;
 }
 
-/* Team Item */
-.img-fluid{
-  /* border-radius: 50% !important; */
-}
 .team-item:hover {
   box-shadow: 0 10px 22px 10px rgba(27, 38, 49, 0.1);
 }
@@ -1342,7 +1338,7 @@ textarea {
   height: 36px;
   text-align: center;
   display: inline-block;
-  float: left;
+  /* float: left; */
   margin-right: 5px;
   line-height: 32px;
 }
