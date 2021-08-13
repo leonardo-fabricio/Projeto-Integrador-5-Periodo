@@ -5084,6 +5084,10 @@ a {
   margin-top: -2px !important;
 }
 
+.container-fluid.px-1.px-md-5.px-lg-1.px-xl-5.py-5.mx-auto{
+  margin-top: -5px !important;
+}
+
 @media screen and (max-width: 991px) {
   .logo {
       margin-left: 0px
