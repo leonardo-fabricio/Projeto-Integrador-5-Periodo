@@ -5396,6 +5396,12 @@ form.login100-form.validate-form{
   }
 }
 
-@media only screen and (max-width: 400px){ /* ajustando tela de login */
-
+@media only screen and (max-width: 376px){ /* ajustando tela de login */
+  .card2.card.border-0.px-4.py-5{
+    margin-left: -26% !important;
+  }
+  .btn.botoes-login{ /* Altera tamanho dos botoes do google e suap*/
+    width: 250px !important;
+    margin-left: 12% !important;
+  }
 }
