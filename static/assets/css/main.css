@@ -5166,7 +5166,7 @@ form.login100-form.validate-form{
     /* marin */
   }
   .btn.botoes-login{ /* Altera tamanho dos botoes do google e suap*/
-    width: 250px !important;
+    width: 330px !important;
     height: 50px !important;
   }
   img.img-login{  /* img google*/
@@ -5368,5 +5368,34 @@ form.login100-form.validate-form{
   }
 
 }
-/* 
-*/
+
+@media only screen and (max-width: 535px){ /* ajustando tela de login */
+
+  img.logo{
+    margin-left: 16% !important;
+  }
+
+  .card2.card.border-0.px-4.py-5{
+    margin-left: -17% !important;
+  }
+
+  .btn.botoes-login{ /* Altera tamanho dos botoes do google e suap*/
+    width: 300px !important;
+    height: 50px !important;
+  }
+}
+
+@media only screen and (max-width: 400px){ /* ajustando tela de login */
+
+  .card2.card.border-0.px-4.py-5{
+    margin-left: -21% !important;
+  }
+
+  .btn.botoes-login{ /* Altera tamanho dos botoes do google e suap*/
+    width: 280px !important;
+  }
+}
+
+@media only screen and (max-width: 400px){ /* ajustando tela de login */
+
+}
