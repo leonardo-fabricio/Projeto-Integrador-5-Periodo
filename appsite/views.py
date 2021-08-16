@@ -21,8 +21,6 @@ def login(request):
 def logout(request):
     return LogoutView.as_view()
     
-def criarEvento(request):
-    return render(request, 'criarEvento.html')
 
 def profile(request):
     if not request.user.is_authenticated:
@@ -57,6 +55,10 @@ def cadastroEstabelecimento(request, email):
         'email': email
     }
     return render(request,'cadastroEstabelecimento.html',context)
+
+def criarEvento(request):
+    # form = 
+    return render(request, 'criarEvento.html')
    
 def cadastroPublico(request, email):
     form = PublicoModel(request.POST or None)

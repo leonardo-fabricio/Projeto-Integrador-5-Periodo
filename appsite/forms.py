@@ -1,7 +1,7 @@
 from functools import cached_property
 from django import forms
 from django.db.models import fields
-from .models import Estabelecimentos, PublicoGeral
+from .models import Estabelecimentos, PublicoGeral, Eventos
 
 class EstabelecimentoForm(forms.Form):
     nome = forms.CharField(label='Nome')
@@ -33,4 +33,12 @@ class PublicoModel(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['telefone'].widget.attrs.update({'class' : ''})
+
+# Criando parte de Criação de Eventos Form
+class CriarEventoForm(forms.Form):
+    # provavelmente inserir nome (ou outros atributos) da empresa que anunciou o evento, sla
+    # vou inserir somente esses por enquanto
+    qtdPessoas = forms.CharField(label = 'Quantidade de pessoas no evento')
+    horaInicial = forms.DateTimeField(label = 'Inicio do Evento')
+    horaFinal = forms.DateTimeField(label = 'Hora Final do Evento')
 
