@@ -20,6 +20,9 @@ def login(request):
 #     return render(request, 'teste.php')
 def logout(request):
     return LogoutView.as_view()
+    
+def teste(request):
+    return render(request, 'teste.html')
 
 def profile(request):
     if not request.user.is_authenticated:
