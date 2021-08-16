@@ -80,9 +80,6 @@
                 </a>
             </li>
 
-            {% block content %}
-            {% endblock %}
-
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link">
@@ -240,6 +237,8 @@
                                 </div>
                             </div>
                         </div>
+                        {% block content %}
+                        {% endblock %}
                     </div>
                 </div>
                 <!-- /.container-fluid -->
