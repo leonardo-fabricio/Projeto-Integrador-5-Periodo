@@ -8,8 +8,7 @@ class EstabelecimentoForm(forms.Form):
     tipo = forms.CharField(label='Tipo')
     rua = forms.CharField(label='Rua')
     cep = forms.CharField(label='Cep')
-    cidade = forms.CharField(label='Cidade')
-        
+    cidade = forms.CharField(label='Cidade') 
         
 class EstabelecimentoModel(forms.ModelForm):
     class Meta:
@@ -41,4 +40,13 @@ class CriarEventoForm(forms.Form):
     qtdPessoas = forms.CharField(label = 'Quantidade de pessoas no evento')
     horaInicial = forms.DateTimeField(label = 'Inicio do Evento')
     horaFinal = forms.DateTimeField(label = 'Hora Final do Evento')
+
+class CriarEventoModel(forms.ModelForm):
+    class Meta:
+        model = Eventos
+        fields = ['qtdPessoas', 'horaInicial', 'horaFinal']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
 

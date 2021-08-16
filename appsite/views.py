@@ -56,8 +56,19 @@ def cadastroEstabelecimento(request, email):
     }
     return render(request,'cadastroEstabelecimento.html',context)
 
-def criarEvento(request):
-    # form = 
+def criarEvento(request, email):
+    form = CriarEventoModel(request.POST or none)
+
+    if str(request.method) == 'POST':
+        if form.is_valid():
+            qtdPessoas  = form.cleaned_data['qtdPessoas']
+            horaInicial = form.cleaned_data['horaInicial']
+            horaFinal   = form.cleaned_data['horaFinal']
+
+            # Faltando finalizar o resto...
+
+            # fields = ['qtdPessoas', 'horaInicial', 'horaFinal']
+
     return render(request, 'criarEvento.html')
    
 def cadastroPublico(request, email):
