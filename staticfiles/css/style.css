@@ -1,22 +1,13 @@
-h1{
-    color: blue;
+.avatar-url{
+    margin-top: 5% !important;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50% !important;
+    margin-left: 8% !important;
 }
 
-/* Barra de navegação */
-nav{
-    /* background-color: rgb(41, 55, 255); */
-    border-bottom: 1px solid black;
-    text-align: center !important;
-    justify-content: center !important;
-}
-nav a{
-    color: black !important;
-}
-/* .nav-link{
-} */
-
-/*Cards*/
-.card{
-    width: 50% !important;
-    margin-left: 25%;
+#helloUser-des{
+    margin-left: 6% !important;
+    font-size: 90% !important;
+    color: #fff !important;
 }

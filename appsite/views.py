@@ -18,10 +18,7 @@ def login(request):
     return render(request, 'login.html')
 # def teste (request):
 #     return render(request, 'teste.php')
-def logout(request):
-    return LogoutView.as_view()
-    
-
+   
 def profile(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/')
@@ -56,27 +53,33 @@ def cadastroEstabelecimento(request, email):
     }
     return render(request,'cadastroEstabelecimento.html',context)
 
-def criarEvento(request, email):
-    form = CriarEventoModel(request.POST or none)
+def criarEvento(request):
+    form = CriarEventoModel(request.POST or None)
 
     if str(request.method) == 'POST':
         if form.is_valid():
             qtdPessoas  = form.cleaned_data['qtdPessoas']
             horaInicial = form.cleaned_data['horaInicial']
             horaFinal   = form.cleaned_data['horaFinal']
+            new = Eventos(qtdPessoas = qtdPessoas, horaInicial = horaInicial, horaFinal = horaFinal)
+            new.save()
+            form = CriarEventoForm()
 
+    context ={
+        'form': form
+    }
             # Faltando finalizar o resto...
 
             # fields = ['qtdPessoas', 'horaInicial', 'horaFinal']
 
-    return render(request, 'criarEvento.html')
+    return render(request, 'criarEvento.html', context)
    
 def cadastroPublico(request, email):
     form = PublicoModel(request.POST or None)
     if str(request.method) == 'POST' :
         if form.is_valid():
-            nome = form.cleaned_data['nome']
-            cidade = form.cleaned_data['cidade']
+            nome     = form.cleaned_data['nome']
+            cidade   = form.cleaned_data['cidade']
             telefone = form.cleaned_data['telefone']
             if PublicoGeral.objects.filter(email = email):
                 PublicoGeral.objects.filter(email = email).update(telefone = telefone, cidade = cidade)

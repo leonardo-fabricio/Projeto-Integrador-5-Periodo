@@ -11,3 +11,22 @@
     font-size: 90% !important;
     color: #fff !important;
 }
+
+.form-control{
+    background-color: #e8efff !important;
+    border: 1.7px solid #7C83FD !important;
+    border-radius: 20px; 
+    width: 370px !important;
+}
+.form-criar-evento{
+    margin-left: 15% !important;
+}
+
+.botoes-login{
+    background-color: #ffff !important;
+    border: 2px solid #7C83FD !important;
+    color: black !important;
+    border-radius: 60px !important;
+    width: 150px !important;
+    height: 40px !important;
+}

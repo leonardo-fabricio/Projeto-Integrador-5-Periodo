@@ -1,3 +1,4 @@
+from typing import Tuple
 from django.db import models
 from django.db.models.base import Model
 
@@ -17,10 +18,12 @@ class PublicoGeral(models.Model):
     email = models.CharField('email', max_length = 100, null=True)
     
 class Eventos(models.Model):
-    qtdPessoas = models.IntegerField('qtdPessoas')
-    horaInicial = models.DateTimeField('horaInicial')
-    horaFinal = models.DateTimeField('horaFinal')
-    id_estabelecimento = models.ForeignKey('appsite.Estabelecimentos', on_delete = models.PROTECT)
+    qtdPessoas  = models.IntegerField('qtdPessoas')
+    dataEvento  = models.CharField('dataEvento', null= True, max_length=100)
+    horaInicial = models.CharField('horaInicial',max_length=100)
+    horaFinal   = models.CharField('horaFinal',max_length=100)
+    local       = models.CharField('local', max_length=100, null=True)
+    id_estabelecimento = models.ForeignKey('appsite.PublicoGeral', on_delete = models.PROTECT)
     
 class Publico_Eventos(models.Model):
     id_pessoa = models.ForeignKey('appsite.PublicoGeral', on_delete=models.PROTECT)
