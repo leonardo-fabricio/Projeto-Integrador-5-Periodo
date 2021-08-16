@@ -19,5 +19,5 @@ urlpatterns = [
     path('sair/', LogoutView.as_view() , name='sair'),
     path('cadastroEstabelecimento/<str:email>', cadastroEstabelecimento, name='cadastroEstabelecimento'),
     path('cadastroPublico/<str:email>', cadastroPublico, name='cadastroPublico'),
-    path('teste', teste, name='teste')
+    path('criarEvento', teste, name='criarEvento')
 ]
