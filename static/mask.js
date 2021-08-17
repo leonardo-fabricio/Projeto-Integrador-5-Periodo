@@ -11,10 +11,10 @@ $(function(){
     pattern = {
         'translation': {
             'H': {
-                pattern: /[0-23]/
+                pattern: /[00-23]/
             },
             'M': {
-                pattern: /[0-59]/
+                pattern: /[00-59]/
             }
         }
     };
