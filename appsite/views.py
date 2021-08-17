@@ -7,6 +7,7 @@ from django.shortcuts import redirect, render
 from .forms import *
 from django.contrib import messages
 from .models import *
+from django.contrib import messages
 
 # Create your views here.
 def index (request):
@@ -62,16 +63,15 @@ def criarEvento(request):
             horaInicial = form.cleaned_data['horaInicial']
             horaFinal   = form.cleaned_data['horaFinal']
             new = Eventos(qtdPessoas = qtdPessoas, horaInicial = horaInicial, horaFinal = horaFinal)
+
+            messages.success(request, 'Evento cadastrado com sucesso!')
             new.save()
             form = CriarEventoForm()
-
+        else:
+            messages.error(request, 'Erro ao cadastrar evento!')
     context ={
         'form': form
     }
-            # Faltando finalizar o resto...
-
-            # fields = ['qtdPessoas', 'horaInicial', 'horaFinal']
-
     return render(request, 'criarEvento.html', context)
    
 def cadastroPublico(request, email):
