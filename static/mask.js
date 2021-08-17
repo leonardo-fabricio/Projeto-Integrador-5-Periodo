@@ -1,10 +1,13 @@
 window.onload = function(){
-    const labels = document.querySelectorAll('div.form-group > label')
-    labels[0].innerText = 'Quantidade de pessoas'
-    labels[1].innerText = 'Hora inicial do evento'
-    labels[2].innerText = 'Hora final do evento'
-    labels[3].innerText = 'Data do evento'
-    // alert('oii')
+    try{
+        const labels = document.querySelectorAll('div.form-group > label')
+        labels[0].innerText = 'Quantidade de pessoas'
+        labels[1].innerText = 'Hora inicial do evento'
+        labels[2].innerText = 'Hora final do evento'
+        labels[3].innerText = 'Data do evento'
+    }catch(err){
+        console.log('Erro ao modificar labels: ' + err)
+    }
 }
 
 $(function(){
