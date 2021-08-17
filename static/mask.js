@@ -1,3 +1,12 @@
+window.onload = function(){
+    const labels = document.querySelectorAll('div.form-group > label')
+    labels[0].innerText = 'Quantidade de pessoas'
+    labels[1].innerText = 'Hora inicial do evento'
+    labels[2].innerText = 'Hora final do evento'
+    labels[3].innerText = 'Data do evento'
+    // alert('oii')
+}
+
 $(function(){
     $('.mask-cep').mask('00000-000', {reverse : true})
 });
