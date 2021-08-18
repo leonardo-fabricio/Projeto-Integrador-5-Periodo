@@ -1,10 +1,12 @@
 window.onload = function(){
     try{
         const labels = document.querySelectorAll('div.form-group > label')
+        const inputs = document.querySelectorAll('input')
         labels[0].innerText = 'Quantidade de pessoas'
         labels[1].innerText = 'Hora inicial do evento'
         labels[2].innerText = 'Hora final do evento'
         labels[3].innerText = 'Data do evento'
+        inputs[1].type = 'number'
     }catch(err){
         console.log('Erro ao modificar labels: ' + err)
     }
