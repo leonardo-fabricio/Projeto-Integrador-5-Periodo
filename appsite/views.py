@@ -17,8 +17,6 @@ def index (request):
 
 def login(request):
     return render(request, 'login.html')
-# def teste (request):
-#     return render(request, 'teste.php')
    
 def profile(request):
     if not request.user.is_authenticated:

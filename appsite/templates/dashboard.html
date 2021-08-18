@@ -81,10 +81,19 @@
                 </a>
             </li> -->
 
-            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
+                <a class="nav-link" href="{% url 'eventosDisponiveis' %}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <img src="{% static 'img/pagina-inicial.png' %}" alt="Início">
+                    <span style="margin-left: 5px">Início</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item" style="margin-left: 5px;">
                 <a class="nav-link">
-                    <span>Realizar Check-In</span>
+                    <img src="{% static 'img/check.png' %}" alt="Realizar Check-In">
+                    <span style="margin-left: 4px;">Realizar Check-In</span>
                 </a>
             </li>
 
@@ -92,7 +101,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Suas Reservas</span>
+                    <img src="{% static 'img/reservado.png' %}" alt="Suas Reservas">
+                    <span style="margin-left: 5px;">Suas Reservas</span>
                 </a>
             </li>
 
@@ -100,12 +110,16 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'cadastroPublico' user.email %}">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Atualizar Cadastro</span>
+                    <img src="{% static 'img/update.png' %}" alt="Atualizar Cadastro">
+                    <span style="margin-left: 5px;">Atualizar Cadastro</span>
                 </a>
             </li>
 
+            <hr class="sidebar-divider my-0">
+
             <br>
             <div class="nav-link collapsed sidebar-heading">
+                <img style="margin-left: 7px; margin-right: 5px;" src="{% static 'img/sair.png' %}" alt="Botão Sair">
                 <a style="border-radius: 20px !important;" class="btn btn-danger btn-sm" href="{% url 'sair' %}">Sair</a>
             </div>
         </ul>
@@ -246,13 +260,9 @@
             </div>
             <!-- End of Main Content -->
 
-
-            
-            <!-- novo block -->
-
+            <!-- novo block  de eventos -->
             {% block event %}
             {% endblock %}
-            
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
