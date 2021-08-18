@@ -1,6 +1,6 @@
 window.onload = function(){
     try{
-        const labels = document.querySelectorAll('div.form-group > label')
+        const labels = document.querySelectorAll('div.form-criar-evento > form > div > label')
         const inputs = document.querySelectorAll('input')
         labels[0].innerText = 'Quantidade de pessoas'
         labels[1].innerText = 'Hora inicial do evento'
