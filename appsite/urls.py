@@ -13,7 +13,7 @@ urlpatterns = [
     path('', index, name='index'),
     path('login', login, name='login'),
     path('profile', profile),
-    path('dashboard', dashboard),
+    path('dashboard/eventosDisponiveis', dashboard),
     
     path('accounts/', include('allauth.urls')),
     path('sair/', LogoutView.as_view() , name='sair'),
