@@ -58,11 +58,13 @@
     background-color: #0c9c67 !important;
     border-radius: 15px !important;
     color: #fff !important;
+
+    transition-property: background-color;
+    transition: 900ms;
 }
 
 .rest-vagas:hover{
-    background-color: #19b97f !important;
-    transition-duration: 900ms;
+    background-color: #0bbe7d !important;
 }   
 
 .col-md-4 > img{
