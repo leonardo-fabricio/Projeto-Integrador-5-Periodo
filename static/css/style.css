@@ -53,3 +53,41 @@
     text-decoration: underline;
     cursor: pointer !important;
 }
+
+.rest-vagas{
+    background-color: #0c9c67 !important;
+    border-radius: 15px !important;
+    color: #fff !important;
+}
+
+.rest-vagas:hover{
+    background-color: #19b97f !important;
+    transition-duration: 900ms;
+}   
+
+.col-md-4 > img{
+    margin-top: -7px !important;
+    border-radius: 4px !important;
+    width: 290px !important;
+    height: 234px !important;
+}
+
+.img-fluid.rounded-start{
+    margin-bottom: -9px !important; /* melhor 9 */
+    margin-left: 1px !important;
+}
+
+.event-card{
+    max-height: 300px !important; 
+    max-width: 650px !important;
+    /* overflow: auto !important; */
+}
+
+.event-card:hover{
+    box-shadow: 1em 1em 1em gray;
+    transition-duration: 700ms !important;
+}
+
+.card-text.description{
+    text-align: justify;
+}
