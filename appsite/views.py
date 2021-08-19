@@ -62,13 +62,18 @@ def criarEvento(request,email):
             horaFinal   = form.cleaned_data['horaFinal']
             local       = form.cleaned_data['local']
             dataEvento  = form.cleaned_data['dataEvento']
-            
+            # imagem      = form.cleaned_data['Imagem']
+
             id_user = get_object_or_404(PublicoGeral,email = email)
             new = Eventos(qtdPessoas = qtdPessoas, horaInicial = horaInicial, horaFinal = horaFinal,local = local,dataEvento = dataEvento,id_estabelecimento=id_user)
 
             messages.success(request, 'Evento cadastrado com sucesso!')
             new.save()
             form = CriarEventoForm()
+
+            # print(f'QTD PESSOA: {qtdpessoas}')
+            # print(f'Image: {imagem}')
+
         else:
             messages.error(request, 'Erro ao cadastrar evento!')
     context ={
