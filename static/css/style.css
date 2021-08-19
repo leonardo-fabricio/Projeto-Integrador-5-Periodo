@@ -64,7 +64,12 @@
 }
 
 .rest-vagas:hover{
+    margin-right: 20px !important;
+}
+
+.rest-vagas:hover{
     background-color: #0bbe7d !important;
+
 }   
 
 .col-md-4 > img{
