@@ -89,5 +89,13 @@
 }
 
 .card-text.description{
-    text-align: justify;
+    /* text-align: justify; */
+    margin-top: -10px !important;
+    max-width: 396px !important;
+    max-height: 60px !important;
+    overflow: auto !important;
+}
+
+.buttonEventCheck{
+    margin-left: 90px !important;
 }
