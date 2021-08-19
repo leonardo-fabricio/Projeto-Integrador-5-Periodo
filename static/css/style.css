@@ -113,6 +113,11 @@
 /* caso queira mudar a cor da dashboard */
 .bg-gradient-primary{
     /* background-color: #2A3F54 !important; */
-    background-color: #466c92 !important;
+    background-color: #3d72a7 !important;
     background-size: cover !important;
+}
+
+.nav-item:hover{
+    background-color: #235e96 !important;
+    transition: 500ms;
 }
