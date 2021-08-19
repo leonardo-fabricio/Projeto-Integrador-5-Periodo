@@ -81,11 +81,14 @@
     max-height: 300px !important; 
     max-width: 650px !important;
     /* overflow: auto !important; */
+
+    transition: 800ms !important;
+    transition-property: box-shadow;
 }
 
 .event-card:hover{
-    box-shadow: 1em 1em 1em gray;
-    transition-duration: 700ms !important;
+    /* box-shadow: 0 0 3em rgb(199, 196, 196); */
+    box-shadow: 0 0 2em gray;
 }
 
 .card-text.description{
