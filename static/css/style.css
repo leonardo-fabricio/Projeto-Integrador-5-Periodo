@@ -31,6 +31,17 @@
     border-radius: 60px !important;
     width: 150px !important;
     height: 40px !important;
+
+    transition: 450ms !important;
+    transition-property: box-shadow;
+}
+
+.botoes-login:hover{
+  box-shadow: 0 0 2em #7C83FD;
+  width: 152px !important;
+  height: 42px !important;
+  margin-top: -5px !important;
+  margin-bottom: 5px !important;
 }
 
 @media only screen and (max-width: 1680px){ /* TELAS DO TAMANHO DE LUIS*/
