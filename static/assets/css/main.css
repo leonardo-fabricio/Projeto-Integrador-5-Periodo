@@ -5088,6 +5088,27 @@ a {
   margin-top: -5px !important;
 }
 
+#createEvent.btn-criar-evento{ /* botao criarEvento */
+  margin-left: 100px !important;
+  background-color: #ffff !important;
+  border: 2px solid #7C83FD !important;
+  color: black !important;
+  border-radius: 60px !important;
+  width: 150px !important;
+  height: 40px !important;
+
+  transition: 800ms !important;
+  transition-property: box-shadow;
+
+}
+
+#createEvent.btn-criar-evento:hover{
+  box-shadow: 0 0 2em #7C83FD;
+  width: 152px !important;
+  height: 42px !important;
+  margin-top: -5px !important;
+}
+
 @media screen and (max-width: 991px) {
   .logo {
       margin-left: 0px
