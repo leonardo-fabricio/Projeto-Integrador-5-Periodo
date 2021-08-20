@@ -103,3 +103,6 @@ def cadastroPublico(request, email):
         'email' : email
     }
     return render(request, 'cadastroPublico.html',context)
+
+def suasReservas(request): 
+    return render(request, 'suasReservas.html')
