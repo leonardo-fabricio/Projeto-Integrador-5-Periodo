@@ -30,3 +30,10 @@ class Eventos(models.Model):
 class Publico_Eventos(models.Model):
     id_pessoa = models.ForeignKey('appsite.PublicoGeral', on_delete=models.PROTECT)
     id_evento = models.ForeignKey('appsite.Eventos', on_delete=models.PROTECT)
+    
+class Gatilhos_users(models.Model):
+    changed_column = models.CharField('changed_column', max_length=100)
+    data_changed = models.DateTimeField('data_changed')
+    old_value = models.CharField('old_value', max_length=100)
+    new_value = models.CharField('new_value', max_length=100)
+    operation = models.CharField('operation', max_length=100)

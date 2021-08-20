@@ -96,7 +96,7 @@ def cadastroPublico(request, email):
                 new.save()
             
             form = EstabelecimentoForm()
-            return redirect('/dashboard')
+            return redirect('/dashboard/eventosDisponiveis')
   
     context = {
         'form' : form,
