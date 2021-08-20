@@ -132,3 +132,7 @@
     background-color: #235e96 !important;
     transition: 500ms;
 }
+
+.img-update:hover{
+    transform: rotate(-300deg) !important;
+}
