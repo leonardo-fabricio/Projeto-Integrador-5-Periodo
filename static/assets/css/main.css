@@ -5104,6 +5104,17 @@ a {
   margin-top: -5px !important;
 }
 
+.btn.botoes-login{
+  transition: 750ms !important;
+  transition-property: box-shadow !important;
+  border: 2px solid #7C83FD !important;
+}
+
+.btn.botoes-login:hover{
+  box-shadow: 0 0 1.5em #7C83FD !important;
+}
+
+
 @media screen and (max-width: 991px) {
   .logo {
       margin-left: 0px
@@ -5133,6 +5144,10 @@ a {
 form.login100-form.validate-form{
   margin-left: 20% !important;
   margin-top: 20% !important;
+}
+
+.login100-form.validate-form.form-index{
+  margin-top: 20px !important;
 }
 
 /* Inicio Ajustando tela de login */
@@ -5431,5 +5446,12 @@ form.login100-form.validate-form{
   .btn.botoes-login{ /* Altera tamanho dos botoes do google e suap*/
     width: 250px !important;
     margin-left: 12% !important;
+  }
+}
+
+@media only screen and (max-width: 1680px){ /* TELAS DO TAMANHO DE LUIS*/
+  .card2.card.border-0.px-4.py-5 h4{
+    margin-top: -20px !important;
+    margin-bottom: 20px !important;
   }
 }
