@@ -10,10 +10,19 @@ from .models import *
 from django.contrib import messages
 
 # Create your views here.
-def index (request):
-    if request.user.is_authenticated:
-        return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
-    return render(request, 'index.html', {})
+def index(request):
+    return render(request,'index.html')
+
+def loginPublico(request):
+    # if request.user.is_authenticated:
+    #     return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
+    return render(request, 'loginPublico.html')
+
+def loginEstabelecimento(request):
+    if str(request.method) == 'POST':
+        if(Estabelecimentos.objects.filter(email = request.POST['email'], senha = request.POST['senha'], tipoUsuario = 'Estabelecimento')):
+            return redirect('dashboard/eventosDisponiveis')
+    return render(request, 'loginEstabelecimento.html')
 
 def login(request):
     return render(request, 'login.html')
@@ -28,27 +37,26 @@ def dashboard(request):
         return HttpResponseRedirect('/')
     return render(request, 'eventosDisponiveis.html', {})
 
-def cadastroEstabelecimento(request, email):
+def cadastroEstabelecimento(request):
     form = EstabelecimentoModel(request.POST or None)
     if str(request.method) == 'POST' :
         if form.is_valid():
-            nome = form.cleaned_data['nome']
-            tipo = form.cleaned_data['tipo']
-            rua = form.cleaned_data['rua']
-            cep = form.cleaned_data['cep']
+            nome   = form.cleaned_data['nome']
+            tipo   = form.cleaned_data['tipo']
+            rua    = form.cleaned_data['rua']
+            cep    = form.cleaned_data['cep']
             cidade = form.cleaned_data['cidade']
-            if(Estabelecimentos.objects.filter(email = email)):
-                Estabelecimentos.objects.filter(email = email).update(nome = nome,tipo = tipo, rua = rua, cep = cep, cidade = cidade)
-            else:
-                new = Estabelecimentos(nome = nome,tipo = tipo, rua = rua, cep = cep, cidade = cidade, email = email)
-                new.save()
+            senha  = form.cleaned_data['senha']
+            email  = form.cleaned_data['email']
+        
+            new = Estabelecimentos(nome = nome,tipo = tipo, rua = rua, cep = cep, cidade = cidade, email = email, senha = senha, tipoUsuario = 'Estabelecimento')
+            new.save()
             
             form = EstabelecimentoForm()
-            return redirect('/dashboard')
+            return redirect('/dashboard/eventosDisponiveis')
   
     context = {
         'form' : form,
-        'email': email
     }
     return render(request,'cadastroEstabelecimento.html',context)
 

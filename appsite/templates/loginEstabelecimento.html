@@ -11,7 +11,6 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/main.css' %}">
-  <link rel="stylesheet" href="{% static 'css/style.css'%}">
 </head>
 <body>
     
@@ -25,25 +24,24 @@
 					</div>
 				</div>
 				<div class="col-lg-6">
-					<div id="register2" class="card2 card border-0 px-4 py-5">
+					<div id="register"class="card2 card border-0 px-4 py-5">
 						<div class="login100-form validate-form">
 							<div>
 								<span class="login100-form-title mb-4 ml-1">
-									Realize seu cadastro
+									Entre Ou cadastre-se
 								</span>
 							</div>
-							<div class="wrap-input100 validate-input" data-validate = "Password is required" data-toggle="tooltip" data-placement="top" title="cadastrar">
-								<form class="form-register"  action="{% url 'cadastroEstabelecimento' %} " method="post" autocomplete="off">
-									<br>
+							<div class="wrap-input100 validate-input">
+								<form class="form-register"  action="{% url 'loginEstabelecimento' %} " method="post" autocomplete="off">
 									{% csrf_token %}
-									{% bootstrap_form form %}
-									<br>
-									{% buttons %}
-										<button id="createEvent" class="btn-criar-evento" type="submit">CADASTRAR</button>
-									{% endbuttons %}
-                 
+                                    <span>Email</span>
+									<input type="email" name="email" id="">
+                                    <span>senha</span>
+                                    <input type="password" name="senha" id="">
+                                    
+                                    <input class="btn btn-primary" type="submit" value="Entrar">
 								</form>
-
+                                <a href="{% url 'cadastroEstabelecimento' %}"><p> cadastre-se</p></a>
 							</div>
 						</div>
 					</div>

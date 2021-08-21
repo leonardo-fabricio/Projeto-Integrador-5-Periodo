@@ -10,11 +10,13 @@ class EstabelecimentoForm(forms.Form):
     rua = forms.CharField(label='Rua')
     cep = forms.CharField(label='Cep')
     cidade = forms.CharField(label='Cidade') 
+    email = forms.EmailField(label='Email')
+    senha = forms.CharField(label='Senha')
         
 class EstabelecimentoModel(forms.ModelForm):
     class Meta:
         model = Estabelecimentos
-        fields = ['nome','tipo','rua','cep','cidade']
+        fields = ['nome','tipo','rua','cep','cidade','email','senha']
         
     def __init__(self,*args, **kwars):
         super().__init__(*args, **kwars)

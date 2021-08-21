@@ -4939,11 +4939,6 @@ body {
   box-shadow: 0px 4px 8px 0px #757575;
   border-radius: 0px
 }
-
-.card2 {
-  margin: 0px 40px
-}
-
 .logo {
   width: 200px;
   height: 100px;
@@ -5154,7 +5149,7 @@ form.login100-form.validate-form{
   }
 
   .card2.card.border-0.px-4.py-5{
-    margin-top: 5% !important;
+    margin-top: 5%;
   }
 
   span.login100-form-title.mb-4.ml-1{ /* Altera tamanho do ENTRAR*/
@@ -5231,7 +5226,7 @@ form.login100-form.validate-form{
   }
   .card2{ /* DIV QUE CONTEM O ENTRAR E OS BOTOES DO GOOGLE E SUAP*/
     border-top: none !important;
-    margin-left: 10% !important;
+    margin-left: 10% ;
   }
 
   img.logo{
@@ -5253,7 +5248,7 @@ form.login100-form.validate-form{
 
   .card2.card.border-0.px-4.py-5{ /* DIV QUE CONTEM O ENTRAR E OS BOTOES DO GOOGLE E SUAP*/
     margin-top: -30px !important;
-    margin-left: 120px !important;
+    margin-left: 120px ;
   }
 
 } 

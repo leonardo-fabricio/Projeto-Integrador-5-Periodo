@@ -17,8 +17,10 @@ urlpatterns = [
     
     path('accounts/', include('allauth.urls')),
     path('sair/', LogoutView.as_view() , name='sair'),
-    path('cadastroEstabelecimento/<str:email>', cadastroEstabelecimento, name='cadastroEstabelecimento'),
+    path('cadastroEstabelecimento', cadastroEstabelecimento, name='cadastroEstabelecimento'),
     path('cadastroPublico/<str:email>', cadastroPublico, name='cadastroPublico'),
     path('criarEvento/<str:email>', criarEvento, name='criarEvento'),
-    path('dashboard/suasReservas', suasReservas, name='suasReservas')
+    path('dashboard/suasReservas', suasReservas, name='suasReservas'),
+    path('loginPublico', loginPublico, name='loginPublico'),
+    path('loginEstabelecimento', loginEstabelecimento, name='loginEstabelecimento')
 ]

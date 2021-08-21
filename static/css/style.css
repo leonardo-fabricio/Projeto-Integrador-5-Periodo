@@ -136,3 +136,17 @@
 .img-update:hover{
     transform: rotate(-300deg) !important;
 }
+
+@media only screen and (max-width: 1980px){ /*Tela de leo - TELA SUAS RESERVAS*/
+    .card.mb-3.event-card{
+        margin-top: 50px !important;
+    }
+    .h4.mb-0.text-gray-800{
+        font-size: 30px;
+    }
+    /*Tela de cadastro de estabelecimentos abaixo*/
+    .card2.card.border-0.px-4.py-5{
+        margin-left: 200px !important;
+        height: 500px;
+    }
+}

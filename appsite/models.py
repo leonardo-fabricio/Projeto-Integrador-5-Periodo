@@ -11,6 +11,8 @@ class Estabelecimentos(models.Model):
     cep = models.CharField('cep', max_length=100)
     cidade = models.CharField('cidade', max_length=100)
     email = models.EmailField('email', max_length=100, null=True)
+    tipoUsuario = models.CharField('tipoUsuario', max_length=100, null=True)
+    senha = models.CharField('senha',max_length=100,null=True)
     
 class PublicoGeral(models.Model):
     nome = models.CharField('nome', max_length=100)
