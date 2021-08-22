@@ -21,17 +21,28 @@
 				<div class="col-lg-6">
 					<div class="card1 pb-5">
 						<div class="row"> <img style="width: 140px; height: 80px;" src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/461/5790883461_b66f315a-7114-490c-a441-781ad19e9cb8.png?cb=1628363674" class="logo"> </div>
-						<div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="https://image.freepik.com/vecteurs-libre/illustration-vectorielle-travail-pression-concept-abstrait-gestion-du-stress-surcharge-travail-anxiete-chronique-sante-physique-tension-emotionnelle-pression-delais-metaphore-abstraite-du-bien-etre-employes_335657-1915.jpg" class="image"> </div>
+						<div class="row px-3 justify-content-center mt-4 mb-5 border-line">
+							<img src="https://image.freepik.com/vecteurs-libre/illustration-vectorielle-travail-pression-concept-abstrait-gestion-du-stress-surcharge-travail-anxiete-chronique-sante-physique-tension-emotionnelle-pression-delais-metaphore-abstraite-du-bien-etre-employes_335657-1915.jpg" class="image">
+						</div>
 					</div>
 				</div>
 				<div class="col-lg-6">
 					<div class="card2 card border-0 px-4 py-5">
                         <div>
-                            <h4>
-                                Bem vindo ao gerenciamento de reservas, aqui você pode criar seus eventos e monitorar o controle de pessoas
+                            <h4 style="text-align: center;">
+                                Bem-vindo ao sistema de Gerenciamento de Reservas
                             </h4>
+
+							<h5 style="text-align: center;">
+								<b>Aqui você pode criar seus eventos e monitorar o controle de pessoas</b>
+							</h5>
+
+							<p style="margin-top: 15px; text-align: justify;">
+								<b> - Entre como estabelecimento para criar eventos/reservas, ou participe de eventos entrando como público</b>
+							</p>
+
                         </div>
-						<form class="login100-form validate-form">
+						<form class="login100-form validate-form form-index">
 
 							<div>
 								<span class="login100-form-title mb-4 ml-1">
@@ -40,15 +51,15 @@
 							</div>
 
 
-							<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz" data-toggle="tooltip" data-placement="top" title="Entre com seu login Google">
+							<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz" data-toggle="tooltip" data-placement="top" title="Crie e gerencie eventos entrando como estabelecimento">
 								<a class="btn botoes-login" href="{% url 'loginEstabelecimento' %}">
-									<span>Entrar como Estabelecimento</span>
+									<span><b>Entrar como Estabelecimento</b></span>
 								</a>
 							</div>
 
-							<div class="wrap-input100 validate-input" data-validate = "Password is required" data-toggle="tooltip" data-placement="top" >
+							<div class="wrap-input100 validate-input" data-validate = "Password is required" data-toggle="tooltip" data-placement="top" title="Participe de eventos criados entrando como público">
 								<a style="color: #4a69bd; outline: 0 none;" class="btn botoes-login" href="{% url 'loginPublico'  %}">
-									<span>Entrar como publico</span>
+									<span><b>Entrar como Público</b></span>
 								</a>
 							</div>
 
