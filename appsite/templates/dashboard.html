@@ -65,7 +65,7 @@
                     <span style="margin-left: 5px"><b>Início</b></span>
                 </a>
             </li>
-
+            {%if tipoUsuario == 'normal' %}
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item" style="margin-left: 5px;">
                 <a class="nav-link">
@@ -82,10 +82,10 @@
                     <span style="margin-left: 5px;"><b>Suas Reservas</b></span>
                 </a>
             </li>
-
+            {% endif %}
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'cadastroPublico' user.email %}">
+                <a class="nav-link" href="{% url 'cadastroPublico' %}">
                     <i class="fas fa-fw fa-table"></i>
                     <img class="img-update" src="{% static 'img/update.png' %}" alt="Atualizar Cadastro">
                     <span style="margin-left: 5px;"><b>Atualizar Cadastro</b></span>
@@ -146,7 +146,7 @@
 
                     <!-- Content Row -->
                     <div class="row">
-
+                        {%if tipoUsuario == 'normal' %}
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
@@ -201,14 +201,15 @@
                                 </div>
                             </div>
                         </div>
-
+                        {% endif%}
+                        {% if tipoUsuario == 'estabelecimento' %}
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <a style="text-decoration: none;" href="{% url 'criarEvento' user.email %}">
+                                            <a style="text-decoration: none;" href="{% url 'criarEvento' %}">
                                                 <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Criar Agendamento
                                                 </div>
                                             </a>
@@ -229,7 +230,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        {% endif %}
                         <hr style="width: 1070px !important; height: 10px !important;"/>
 
                         {% block content %}

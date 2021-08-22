@@ -11,16 +11,15 @@ from django.contrib.auth.views import LogoutView, logout_then_login
 
 urlpatterns = [
     path('', index, name='index'),
-    path('login', login, name='login'),
     path('profile', profile),
     path('dashboard/eventosDisponiveis', dashboard, name='eventosDisponiveis'),
     
     path('accounts/', include('allauth.urls')),
     path('sair/', LogoutView.as_view() , name='sair'),
     path('cadastroEstabelecimento', cadastroEstabelecimento, name='cadastroEstabelecimento'),
-    path('cadastroPublico/<str:email>', cadastroPublico, name='cadastroPublico'),
-    path('criarEvento/<str:email>', criarEvento, name='criarEvento'),
+    path('cadastroPublico', cadastroPublico, name='cadastroPublico'),
+    path('criarEvento', criarEvento, name='criarEvento'),
     path('dashboard/suasReservas', suasReservas, name='suasReservas'),
-    path('loginPublico', loginPublico, name='loginPublico'),
-    path('loginEstabelecimento', loginEstabelecimento, name='loginEstabelecimento')
+    path('escolha', escolha, name='escolha'),
+    path('accounts/social/signup/', escolha),
 ]

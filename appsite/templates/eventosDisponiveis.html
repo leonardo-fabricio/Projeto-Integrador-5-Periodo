@@ -6,7 +6,7 @@
     <head>
         <link rel="stylesheet" href="{% static 'css/style.css'%}">
     </head>
-
+    {% if tipoUsuario == 'normal' %}
     <br><h4 class="h4 mb-0 text-gray-800" style="margin: auto !important;">EVENTOS DISPONÍVEIS NA SUA REGIÃO</h4>
 
     <div class="card mb-3 event-card" style="margin: auto !important; margin-top: 40px !important;">
@@ -95,6 +95,6 @@
             </div>
         </div>
     </div>
-
+{% endif %}
 
 {% endblock %}
