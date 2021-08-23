@@ -19,6 +19,7 @@ def profile(request):
     return render(request, 'profile.html', {})
 
 def dashboard(request): 
+    seus_eventos = ''
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/')
     elif not (PublicoGeral.objects.filter(email = request.user.email) or (Estabelecimentos.objects.filter(email=request.user.email))): 
@@ -36,11 +37,15 @@ def dashboard(request):
             for x in usuario:
                 tipoUsuario = x.tipoUsuario
                 # print(tipoUsuario)
-    eventos = Eventos.objects.all()
+            id_user = get_object_or_404(Estabelecimentos,email = request.user.email)
+            seus_eventos = Eventos.objects.filter(id_estabelecimento = id_user)
             
+    eventos = Eventos.objects.all()
+                 
     content = {
         'tipoUsuario' : tipoUsuario,
         'eventos' : eventos,
+        'seus_eventos' : seus_eventos,
     }
     
     return render(request, 'eventosDisponiveis.html', content) 
