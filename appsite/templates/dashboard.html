@@ -119,14 +119,12 @@
                     <!-- Topbar Search -->
                     <div
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <a class="nav-link" href="{% url 'eventosDisponiveis' %}">
-                                {% if user.get_full_name != '' %}
-                                    <span id="helloUser" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>Olá, {{ user.get_full_name | title }}!</b></span>
-                                {% else %}
-                                    <span id="helloUser" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>Olá, {{ user.username }}!</b></span>
-                                {% endif%}
-                            </a>
+                        <div class="input-group nav-link">
+                            {% if user.get_full_name != '' %}
+                                <span id="helloUser" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>Olá, {{ user.get_full_name | title }}!</b></span>
+                            {% else %}
+                                <span id="helloUser" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>Olá, {{ user.username }}!</b></span>
+                            {% endif%}
                         </div>
                     </div>
                 </nav>
@@ -305,13 +303,13 @@
             {% block event %}
             {% endblock %}
 
-            <hr style="width: 1070px !important; margin-bottom: 2px !important;"/>
+            <hr style="width: 1070px !important; margin-top: 5% !important; margin-bottom: 2px !important;"/>
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Todos direitos reservados aos desenvolvedores Luís e Leonardo</span>
+                        <b><span>Todos direitos reservados aos desenvolvedores Luís e Leonardo</span></b>
                     </div>
                 </div>
             </footer>
