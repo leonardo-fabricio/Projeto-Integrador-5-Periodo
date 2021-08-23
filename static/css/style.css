@@ -163,3 +163,11 @@
     margin-top: -17% !important;
     margin-bottom: -12% !important;
 }
+
+.img-fluid.rounded-start{
+    border-radius: 50% !important;
+    margin-top: 25px !important;
+    margin-left: 19px !important;
+    height: 70% !important;
+    width: 100% !important;
+}
