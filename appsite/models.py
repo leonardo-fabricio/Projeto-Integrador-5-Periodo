@@ -24,6 +24,8 @@ class PublicoGeral(models.Model):
     tipoUsuario = models.CharField('tipoUsuario', max_length=100, null=True)
     
 class Eventos(models.Model):
+    titulo      = models.CharField('titulo', null= True, max_length=100)
+    descricao   = models.CharField('descricao', null= True, max_length=100)
     qtdPessoas  = models.IntegerField('qtdPessoas')
     dataEvento  = models.CharField('dataEvento', null= True, max_length=100)
     horaInicial = models.CharField('horaInicial',max_length=100)
@@ -31,8 +33,6 @@ class Eventos(models.Model):
     local       = models.CharField('local', max_length=100, null=True)
     id_estabelecimento = models.ForeignKey('appsite.Estabelecimentos', on_delete = models.PROTECT)
     foto      = models.FileField(upload_to="img/%Y/%m/%d", null=True)
-    descricao   = models.CharField('descricao', null= True, max_length=100)
-    titulo      = models.CharField('titulo', null= True, max_length=100)
     # imagem             = models.StdImageField('Imagem', upload_to='imageEvents', variations={'thumb': (124,124)})
     
 class Publico_Eventos(models.Model):
