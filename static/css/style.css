@@ -149,3 +149,17 @@
         height: 500px;
     }
 } */
+
+.buttonEventCheck.your-events{
+    display: inline !important;
+}
+
+.btn.btn-danger.btn-icon-split:first-child{ /* cancelar evento */
+    margin-left: 31% !important;
+    margin-bottom: -8% !important;
+}
+
+.buttonEventCheck.your-events > a:nth-child(2){ /* editar evento */
+    margin-top: -17% !important;
+    margin-bottom: -12% !important;
+}
