@@ -19,7 +19,9 @@ def profile(request):
     return render(request, 'profile.html', {})
 
 def dashboard(request): 
-    if not (PublicoGeral.objects.filter(email = request.user.email) or (Estabelecimentos.objects.filter(email=request.user.email))): 
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/')
+    elif not (PublicoGeral.objects.filter(email = request.user.email) or (Estabelecimentos.objects.filter(email=request.user.email))): 
         return redirect('/escolha')
     else:
         if PublicoGeral.objects.filter(email = request.user.email):
