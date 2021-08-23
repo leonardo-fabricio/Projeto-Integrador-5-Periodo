@@ -30,7 +30,9 @@ class Eventos(models.Model):
     horaFinal   = models.CharField('horaFinal',max_length=100)
     local       = models.CharField('local', max_length=100, null=True)
     id_estabelecimento = models.ForeignKey('appsite.Estabelecimentos', on_delete = models.PROTECT)
-    imagem      = models.FileField('imagem', null=True)
+    foto      = models.FileField(upload_to="img/%Y/%m/%d", null=True)
+    descricao   = models.CharField('descricao', null= True, max_length=100)
+    titulo      = models.CharField('titulo', null= True, max_length=100)
     # imagem             = models.StdImageField('Imagem', upload_to='imageEvents', variations={'thumb': (124,124)})
     
 class Publico_Eventos(models.Model):

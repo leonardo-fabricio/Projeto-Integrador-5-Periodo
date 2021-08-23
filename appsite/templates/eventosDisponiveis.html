@@ -7,20 +7,21 @@
         <link rel="stylesheet" href="{% static 'css/style.css'%}">
     </head>
     {% if tipoUsuario == 'normal' %}
-    <br><h4 class="h4 mb-0 text-gray-800" style="margin: auto !important;">EVENTOS DISPONÍVEIS NA SUA REGIÃO</h4>
+    <br><h4 class="h4 mb-0 text-gray-800" style="margin: auto !important;">EVENTOS DISPONÍVEIS</h4>
 
+    {% for e in eventos %}
     <div class="card mb-3 event-card" style="margin: auto !important; margin-top: 40px !important;">
         <div class="card border-left-warning shadow h-100 py-2">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80" class="img-fluid rounded-start" alt="...">
+                    <img src="/media/{{e.foto}}" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title text-warning text-uppercase"><b>Evento</b></h5>
-                        <p class="card-text description">Evento em Pau do Ferros - Finecap 2022</p>
-                        <p style="margin-top: -14px !important;" class="card-text">Total de vagas disponíveis: <b>10</b> <br><div class="rest-vagas"><b style="margin-left: 110px !important;">Ainda restam 5 vagas</b></div></p>
-                        <p class="card-text"><small class="text-muted">Inicio do evento em 09/09/2022</small></p>
+                        <h5 class="card-title text-warning text-uppercase"><b>{{ e.titulo}}</b></h5>
+                        <p class="card-text description">{{ e.descricao}}</p>
+                        <p style="margin-top: -14px !important;" class="card-text">Total de vagas disponíveis: <b>{{ e.qtdPessoas}}</b> <br><div class="rest-vagas"><b style="margin-left: 110px !important;">Ainda restam {{ e.qtdPessoas}} vagas</b></div></p>
+                        <p class="card-text"><small class="text-muted">Inicio do evento em {{ e.dataEvento}}</small></p>
 
                         <hr>
 
@@ -37,64 +38,8 @@
             </div>
         </div>
     </div>
+    {% endfor %}
 
-    <div class="card mb-3 event-card" style="margin: auto !important; margin-top: 40px !important;">
-        <div class="card border-left-warning shadow h-100 py-2">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title text-warning text-uppercase"><b>Evento</b></h5>
-                        <p class="card-text description">Evento em Pau do Ferros - Finecap 2022</p>
-                        <p style="margin-top: -14px !important;" class="card-text">Total de vagas disponíveis: <b>10</b> <br><div class="rest-vagas"><b style="margin-left: 110px !important;">Ainda restam 5 vagas</b></div></p>
-                        <p class="card-text"><small class="text-muted">Inicio do evento em 09/09/2022</small></p>
-
-                        <hr>
-
-                        <div class="buttonEventCheck">
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-check"></i>
-                                </span>
-                                <span style="color: #fff !important;" class="text"><b>Participar do Evento</b></span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="card mb-3 event-card" style="margin: auto !important; margin-top: 40px !important;">
-        <div class="card border-left-warning shadow h-100 py-2">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title text-warning text-uppercase"><b>Evento</b></h5>
-                        <p class="card-text description">Evento em Pau do Ferros - Finecap 2022</p>
-                        <p style="margin-top: -14px !important;" class="card-text">Total de vagas disponíveis: <b>10</b> <br><div class="rest-vagas"><b style="margin-left: 110px !important;">Ainda restam 5 vagas</b></div></p>
-                        <p class="card-text"><small class="text-muted">Inicio do evento em 09/09/2022</small></p>
-
-                        <hr>
-
-                        <div class="buttonEventCheck">
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-check"></i>
-                                </span>
-                                <span style="color: #fff !important;" class="text"><b>Participar do Evento</b></span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 {% endif %}
 
 {% endblock %}

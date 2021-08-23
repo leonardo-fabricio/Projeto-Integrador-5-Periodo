@@ -43,13 +43,15 @@ class CriarEventoForm(forms.Form):
     local = forms.CharField(label='Local')
     horaInicial = forms.CharField(label = 'Inicio do Evento')
     horaFinal = forms.CharField(label = 'Hora Final do Evento')
-    imagem = forms.ImageField(label='Imagem', widget = ClearableFileInput)
+    foto = forms.ImageField(label='Imagem', widget = ClearableFileInput)
+    descricao = forms.CharField(label='descricao')
+    titulo = forms.CharField(label='titulo')
     
 
 class CriarEventoModel(forms.ModelForm):
     class Meta:
         model = Eventos
-        fields = ['qtdPessoas', 'horaInicial', 'horaFinal', 'dataEvento', 'local','imagem']
+        fields = ['qtdPessoas', 'horaInicial', 'horaFinal', 'dataEvento', 'local','foto','descricao','titulo']
         widgets = {
             'qtdPessoas': forms.TextInput(attrs={'placeholder': 'Quantidade de Pessoas'}),
             'horaInicial': forms.TextInput(attrs={'placeholder': '00:00'}),
