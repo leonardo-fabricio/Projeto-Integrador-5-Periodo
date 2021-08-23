@@ -1,7 +1,7 @@
 from functools import cached_property
 from django import forms
 from django.db.models import fields
-from django.forms import widgets
+from django.forms.widgets import ClearableFileInput
 from .models import Estabelecimentos, PublicoGeral, Eventos
 
 class EstabelecimentoForm(forms.Form):
@@ -43,12 +43,13 @@ class CriarEventoForm(forms.Form):
     local = forms.CharField(label='Local')
     horaInicial = forms.CharField(label = 'Inicio do Evento')
     horaFinal = forms.CharField(label = 'Hora Final do Evento')
+    imagem = forms.ImageField(label='Imagem', widget = ClearableFileInput)
     
 
 class CriarEventoModel(forms.ModelForm):
     class Meta:
         model = Eventos
-        fields = ['qtdPessoas', 'horaInicial', 'horaFinal', 'dataEvento', 'local']
+        fields = ['qtdPessoas', 'horaInicial', 'horaFinal', 'dataEvento', 'local','imagem']
         widgets = {
             'qtdPessoas': forms.TextInput(attrs={'placeholder': 'Quantidade de Pessoas'}),
             'horaInicial': forms.TextInput(attrs={'placeholder': '00:00'}),
@@ -58,5 +59,4 @@ class CriarEventoModel(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
 

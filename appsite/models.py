@@ -1,7 +1,9 @@
 from typing import Tuple
 from django.db import models
 from django.db.models.base import Model
+from django.forms.widgets import ClearableFileInput
 from stdimage.models import StdImageField # serve para uso de campos com imagem
+
 
 # Create your models here.
 class Estabelecimentos(models.Model):
@@ -28,6 +30,7 @@ class Eventos(models.Model):
     horaFinal   = models.CharField('horaFinal',max_length=100)
     local       = models.CharField('local', max_length=100, null=True)
     id_estabelecimento = models.ForeignKey('appsite.Estabelecimentos', on_delete = models.PROTECT)
+    imagem      = models.FileField('imagem', null=True)
     # imagem             = models.StdImageField('Imagem', upload_to='imageEvents', variations={'thumb': (124,124)})
     
 class Publico_Eventos(models.Model):
