@@ -164,10 +164,15 @@
     margin-bottom: -12% !important;
 }
 
-.img-fluid.rounded-start{
+.img-fluid.rounded-start{ /* imgs evento */
     border-radius: 50% !important;
-    margin-top: 25px !important;
+    margin-top: 30px !important;
     margin-left: 19px !important;
     height: 70% !important;
     width: 100% !important;
 }
+
+.linha-vertical {
+    height: 50px;/*Altura da linha*/
+    border-left: 2px solid;/* Adiciona borda esquerda na div como ser fosse uma linha.*/
+  }
