@@ -19,6 +19,7 @@ def profile(request):
     return render(request, 'profile.html', {})
 
 def dashboard(request): 
+    seus_eventos = ''
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/')
     elif not (PublicoGeral.objects.filter(email = request.user.email) or (Estabelecimentos.objects.filter(email=request.user.email))): 
@@ -36,9 +37,15 @@ def dashboard(request):
             for x in usuario:
                 tipoUsuario = x.tipoUsuario
                 # print(tipoUsuario)
+            id_user = get_object_or_404(Estabelecimentos,email = request.user.email)
+            seus_eventos = Eventos.objects.filter(id_estabelecimento = id_user)
             
+    eventos = Eventos.objects.all()
+                 
     content = {
-        'tipoUsuario' : tipoUsuario
+        'tipoUsuario' : tipoUsuario,
+        'eventos' : eventos,
+        'seus_eventos' : seus_eventos,
     }
     
     return render(request, 'eventosDisponiveis.html', content) 
@@ -76,10 +83,12 @@ def criarEvento(request):
             horaFinal   = form.cleaned_data['horaFinal']
             local       = form.cleaned_data['local']
             dataEvento  = form.cleaned_data['dataEvento']
-            imagem      = form.cleaned_data['imagem']
+            foto     = form.cleaned_data['foto']
+            descricao = form.cleaned_data['descricao']
+            titulo = form.cleaned_data['titulo']
             
             id_user = get_object_or_404(Estabelecimentos,email = request.user.email)
-            new = Eventos(qtdPessoas = qtdPessoas, horaInicial = horaInicial, horaFinal = horaFinal,local = local,dataEvento = dataEvento,id_estabelecimento=id_user, imagem = imagem)
+            new = Eventos(qtdPessoas = qtdPessoas, horaInicial = horaInicial, horaFinal = horaFinal,local = local,dataEvento = dataEvento,id_estabelecimento=id_user, foto = foto,descricao = descricao, titulo = titulo)
 
             messages.success(request, 'Evento cadastrado com sucesso!')
             new.save()
