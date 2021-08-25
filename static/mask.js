@@ -2,13 +2,15 @@ window.onload = function(){
     try{
         const labels = document.querySelectorAll('div.form-criar-evento > form > div > label')
         const inputs = document.querySelectorAll('input')
-        labels[0].innerText = 'Quantidade de pessoas'
-        labels[1].innerText = 'Hora inicial do evento'
-        labels[2].innerText = 'Hora final do evento'
-        labels[3].innerText = 'Data do evento'
-        labels[6].innerText = 'Descrição do Evento'
-        labels[7].innerText = 'Título do Evento'
-        inputs[1].type = 'number'
+        labels[0].innerText = 'Título do Evento'
+        labels[1].innerText = 'Descrição do Evento'
+        labels[2].innerText = 'Quantidade de pessoas'
+        labels[3].innerText = 'Hora inicial do evento'
+        labels[4].innerText = 'Hora final do evento'
+        labels[5].innerText = 'Data do evento'
+        labels[7].innerText = 'Imagem do Evento'
+        inputs[3].type = 'number'
+        inputs[6].type = 'date'
     }catch(err){
         console.log('Erro ao modificar labels: ' + err)
     }
@@ -33,10 +35,6 @@ $(function(){
 
     $('#id_horaInicial').mask(mask, pattern)
     $('#id_horaFinal').mask(mask,pattern)
-});
-
-$(function(){
-    $('#id_dataEvento').mask('00/00/0000', {reverse:true})
 });
 
 

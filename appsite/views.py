@@ -74,34 +74,42 @@ def cadastroEstabelecimento(request):
     return render(request,'cadastroEstabelecimento.html',context)
 
 def criarEvento(request):
-    form = CriarEventoModel(request.POST, request.FILES)
-    
-    if str(request.method) == 'POST':
-        if form.is_valid():
-            qtdPessoas  = form.cleaned_data['qtdPessoas']
-            horaInicial = form.cleaned_data['horaInicial']
-            horaFinal   = form.cleaned_data['horaFinal']
-            local       = form.cleaned_data['local']
-            dataEvento  = form.cleaned_data['dataEvento']
-            foto     = form.cleaned_data['foto']
-            descricao = form.cleaned_data['descricao']
-            titulo = form.cleaned_data['titulo']
-            
-            id_user = get_object_or_404(Estabelecimentos,email = request.user.email)
-            new = Eventos(qtdPessoas = qtdPessoas, horaInicial = horaInicial, horaFinal = horaFinal,local = local,dataEvento = dataEvento,id_estabelecimento=id_user, foto = foto,descricao = descricao, titulo = titulo)
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/')
+    else:
+        usuario = Estabelecimentos.objects.filter(email = request.user.email)
+        for x in usuario:
+            tipoUsuario = x.tipoUsuario
+        
+        form = CriarEventoModel(request.POST, request.FILES)
+        
+        if str(request.method) == 'POST':
+            if form.is_valid():
+                qtdPessoas  = form.cleaned_data['qtdPessoas']
+                horaInicial = form.cleaned_data['horaInicial']
+                horaFinal   = form.cleaned_data['horaFinal']
+                local       = form.cleaned_data['local']
+                dataEvento  = form.cleaned_data['dataEvento']
+                foto     = form.cleaned_data['foto']
+                descricao = form.cleaned_data['descricao']
+                titulo = form.cleaned_data['titulo']
+                
+                id_user = get_object_or_404(Estabelecimentos,email = request.user.email)
+                new = Eventos(qtdPessoas = qtdPessoas, horaInicial = horaInicial, horaFinal = horaFinal,local = local,dataEvento = dataEvento,id_estabelecimento=id_user, foto = foto,descricao = descricao, titulo = titulo)
 
-            messages.success(request, 'Evento cadastrado com sucesso!')
-            new.save()
-            form = CriarEventoForm()
-            return redirect('/dashboard/eventosDisponiveis')
+                messages.success(request, 'Evento cadastrado com sucesso!')
+                new.save()
+                form = CriarEventoForm()
+                return redirect('/dashboard/eventosDisponiveis')
 
-            # print(f'QTD PESSOA: {qtdpessoas}')
-            # print(f'Image: {imagem}')
+                # print(f'QTD PESSOA: {qtdpessoas}')
+                # print(f'Image: {imagem}')
 
-        else:
-            messages.error(request, 'Erro ao cadastrar evento!')
+            else:
+                messages.error(request, 'Erro ao cadastrar evento!')
     context ={
         'form': form,
+        'tipoUsuario' : tipoUsuario,
     }
     return render(request, 'criarEvento.html', context)
    
@@ -130,7 +138,22 @@ def cadastroPublico(request):
     return render(request, 'cadastroPublico.html',context)
 
 def suasReservas(request): 
-    return render(request, 'suasReservas.html')
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/')
+    else:
+        if PublicoGeral.objects.filter(email = request.user.email):
+            usuario = PublicoGeral.objects.filter(email = request.user.email)
+            for x in usuario:
+                tipoUsuario = x.tipoUsuario
+        else:
+            usuario = Estabelecimentos.objects.filter(email = request.user.email)
+            for x in usuario:
+                tipoUsuario = x.tipoUsuario
+            
+    content = {
+        'tipoUsuario' : tipoUsuario
+    }
+    return render(request, 'suasReservas.html',content)
 
 def escolha(request): 
     return render(request, 'escolha.html')
