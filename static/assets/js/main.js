@@ -1,9 +1,7 @@
-window.onload = function(){
-  var urlAtual = window.location.href;
-  if(urlAtual == "http://127.0.0.1:8000/criarEvento"){;
-    let text = document.querySelector("h4.mb-0.text-gray-800.alg");
-    text.style.display = 'none';
-  }
+var urlAtual = window.location.href;
+if(urlAtual == "http://127.0.0.1:8000/criarEvento"){;
+  let text = document.querySelector("h4.mb-0.text-gray-800.alg");
+  text.style.display = 'none';
 }
 
 (function($) {
