@@ -1,7 +1,9 @@
 var urlAtual = window.location.href;
 if(urlAtual == "http://127.0.0.1:8000/criarEvento"){;
   let text = document.querySelector("h4.mb-0.text-gray-800.alg");
+  let text2 = document.querySelector("h4.mb-3.text-gray-800.create")
   text.style.display = 'none';
+  text2.style.marginTop = '7px';
 }
 
 (function($) {
