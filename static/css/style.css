@@ -187,4 +187,15 @@
         margin-left: 485px !important;
         margin-top: 30px ;
     }
+    /*dashboard*/
+    .hr-esta{
+        margin-left: 200px;
+    }
+    .h4.mb-0.text-gray-800.alg{
+        margin-left: 500px;
+    }
+    .card.mb-3.event-card.aaaa{
+        margin-top: 70px !important;
+        margin-left: -550px !important;
+    }
 }

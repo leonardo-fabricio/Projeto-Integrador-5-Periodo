@@ -31,13 +31,13 @@
 									Entrar
 								</span>
 							</div>
-							<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz" data-toggle="tooltip" data-placement="top" title="Entre com seu login Google">
+							<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz" data-toggle="tooltip" data-placement="top" title="Entre com seu login Google" data-onsuccess="onSuccess">
 								<a class="btn botoes-login" href="{% provider_login_url 'google' %}">
 									<img class="img-login" src="{% static 'assets/img/google.png'%}" alt="">
 								</a>
 							</div>
 
-							<div class="wrap-input100 validate-input" data-validate = "Password is required" data-toggle="tooltip" data-placement="top" title="Entre com seu login SUAP">
+							<div class="wrap-input100 validate-input" data-validate = "Password is required" data-toggle="tooltip" data-placement="top" title="Entre com seu login SUAP" data-onsuccess="onSuccess">
 								<a style="color: #4a69bd; outline: 0 none;" class="btn botoes-login" href="{% url 'social:begin' 'suap' %}">
 									<img class="img-login2" src="{% static 'assets/img/Suap.png'%}" alt=""> 
 								</a>
@@ -59,6 +59,7 @@
 		})
 	</script>
 	<script src="js/main.js"></script>
+	<script src="../../static/js/main.js"></script>
 
 </body>
 </html>

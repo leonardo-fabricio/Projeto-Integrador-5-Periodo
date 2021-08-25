@@ -157,3 +157,4 @@ def suasReservas(request):
 
 def escolha(request): 
     return render(request, 'escolha.html')
+
