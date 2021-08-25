@@ -47,8 +47,8 @@
 @media only screen and (max-width: 1680px){ /* TELAS DO TAMANHO DE LUIS*/
     h4{
         text-align: center !important;
-        margin-left: 30% !important;
-        margin-top: 3% !important;
+        margin-left: 30% ;
+        margin-top: 3%;
     }
     
     .form-criar-evento{
@@ -170,4 +170,19 @@
     margin-left: 19px !important;
     height: 70% !important;
     width: 100% !important;
+}
+
+@media only screen and (min-width: 1681px){
+    .card.mb-3.event-card{
+        margin-left: 400px !important;
+    }
+    h4.h4.mb-3.text-gray-800{
+        margin-top: 0% !important;
+        margin-left: 590px !important;
+    }
+
+    .form-register{
+        margin-left: 485px !important;
+        margin-top: 30px ;
+    }
 }
