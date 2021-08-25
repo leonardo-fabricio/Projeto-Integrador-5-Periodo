@@ -10,11 +10,11 @@
     <hr style="width: 1070px !important; height: 10px !important;"/>
 
     {% if tipoUsuario == 'normal' %}
-    <br><h4 class="h4 mb-0 text-gray-800" style="margin: auto !important;">EVENTOS DISPONÍVEIS</h4>
+    <br><h4 class="h4 mb-0 text-gray-800" style="margin: auto !important; margin-top: -20px !important;">EVENTOS DISPONÍVEIS</h4>
 
     {% for e in eventos %}
-    <div class="card mb-3 event-card" style="margin: auto !important; margin-top: 40px !important;">
-        <div class="card border-left-warning shadow h-100 py-2">
+    <div class="card mb-3 event-card" style="margin: auto !important; margin-top: 30px !important;">
+        <div class="card border shadow h-100 py-2">
             <div class="row g-0">
                 <div class="col-md-4">
                     <img src="/media/{{e.foto}}" class="img-fluid rounded-start" alt="{{e.titulo}}">
