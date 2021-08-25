@@ -173,9 +173,11 @@
 }
 
 @media only screen and (min-width: 1681px){
+    /*Tela de suas reservas*/
     .card.mb-3.event-card{
-        margin-left: 400px !important;
+        margin-left: 520px !important;
     }
+    /*tela criar evento*/
     h4.h4.mb-3.text-gray-800{
         margin-top: 0% !important;
         margin-left: 590px !important;
