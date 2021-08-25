@@ -199,3 +199,10 @@
         margin-left: -550px !important;
     }
 }
+
+.btn.btn-danger.btn-icon-split.your-reserves{
+    width: 220px !important;
+    height: 43px !important;
+    margin-left: -12px !important;
+    margin-bottom: -7px !important;
+}
