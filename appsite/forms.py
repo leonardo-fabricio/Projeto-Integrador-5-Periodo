@@ -9,26 +9,27 @@ class EstabelecimentoForm(forms.Form):
     tipo = forms.CharField(label='Tipo')
     rua = forms.CharField(label='Rua')
     cep = forms.CharField(label='Cep')
-    cidade = forms.CharField(label='Cidade') 
+    cidade = forms.CharField(label='Cidade')
+    foto = forms.ImageField(label='Imagem', widget = ClearableFileInput) 
 
         
 class EstabelecimentoModel(forms.ModelForm):
     class Meta:
         model = Estabelecimentos
-        fields = ['nome','tipo','rua','cep','cidade']
-        
-    def __init__(self,*args, **kwars):
-        super().__init__(*args, **kwars)
-        self.fields['cep'].widget.attrs.update({'class' : 'mask-cep'})
+        fields = ['nome','tipo','rua','cep','cidade','foto']
+        widgets = {
+             'cep': forms.TextInput(attrs={'placeholder':'00000-000'}),
+        }
         
 class PublicoForm(forms.Form):
     telefone = forms.CharField(label = 'Telefone')
     cidade = forms.CharField(label = 'Cidade')
+    foto = forms.ImageField(label='Imagem', widget = ClearableFileInput)
 
 class PublicoModel(forms.ModelForm):
     class Meta:
         model = PublicoGeral
-        fields = ['telefone', 'cidade']
+        fields = ['telefone', 'cidade', 'foto']
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

@@ -33,7 +33,7 @@
 								</span>
 							</div>
 							<div class="wrap-input100 validate-input" data-validate = "Password is required" data-toggle="tooltip" data-placement="top" title="cadastrar">
-								<form class="form-register"  action="{% url 'cadastroEstabelecimento' %} " method="post" autocomplete="off">
+								<form class="form-register"  action="{% url 'cadastroEstabelecimento' %} " method="post" autocomplete="off" enctype="multipart/form-data">
 									<br>
 									{% csrf_token %}
 									{% bootstrap_form form %}

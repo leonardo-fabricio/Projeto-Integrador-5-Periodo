@@ -29,12 +29,14 @@ def dashboard(request):
             usuario = PublicoGeral.objects.filter(email = request.user.email)
             print('\n\n\n\n\n')
             for x in usuario:
+                foto = x.foto
                 tipoUsuario = x.tipoUsuario
                 # print(tipoUsuario)
         else:
             usuario = Estabelecimentos.objects.filter(email=request.user.email)
             print('\n\n\n\n\n')
             for x in usuario:
+                foto = x.foto
                 tipoUsuario = x.tipoUsuario
                 # print(tipoUsuario)
             id_user = get_object_or_404(Estabelecimentos,email = request.user.email)
@@ -46,23 +48,26 @@ def dashboard(request):
         'tipoUsuario' : tipoUsuario,
         'eventos' : eventos,
         'seus_eventos' : seus_eventos,
+        'foto' : foto,
     }
     
     return render(request, 'eventosDisponiveis.html', content) 
 
 def cadastroEstabelecimento(request):
-    form = EstabelecimentoModel(request.POST or None)
+    form = EstabelecimentoModel(request.POST, request.FILES)
+    
     if form.is_valid():
         nome   = form.cleaned_data['nome']
         tipo   = form.cleaned_data['tipo']
         rua    = form.cleaned_data['rua']
         cep    = form.cleaned_data['cep']
         cidade = form.cleaned_data['cidade']
+        foto     = form.cleaned_data['foto']
     
         if Estabelecimentos.objects.filter(email = request.user.email):
-            Estabelecimentos.objects.filter(email = request.user.email).update(nome = nome, tipo= tipo, rua = rua, cep = cep, cidade = cidade)
+            Estabelecimentos.objects.filter(email = request.user.email).update(nome = nome, tipo= tipo, rua = rua, cep = cep, foto = foto,cidade = cidade)
         else:
-            new = Estabelecimentos(nome = nome,tipo = tipo, rua = rua, cep = cep, cidade = cidade, email = request.user.email, tipoUsuario = 'estabelecimento')
+            new = Estabelecimentos(nome = nome,tipo = tipo, rua = rua, cep = cep, cidade = cidade, email = request.user.email, foto= foto, tipoUsuario = 'estabelecimento')
             new.save()
         
         form = EstabelecimentoForm()
@@ -114,19 +119,20 @@ def criarEvento(request):
     return render(request, 'criarEvento.html', context)
    
 def cadastroPublico(request):
-    form = PublicoModel(request.POST or None)
+    form = PublicoModel(request.POST, request.FILES)
     if str(request.method) == 'POST' : 
         if form.is_valid():
             cidade   = form.cleaned_data['cidade']
             telefone = form.cleaned_data['telefone'] # eu sei 
+            foto     = form.cleaned_data['foto']
             if PublicoGeral.objects.filter(email = request.user.email):
-                PublicoGeral.objects.filter(email = request.user.email).update(telefone = telefone, cidade = cidade)
+                PublicoGeral.objects.filter(email = request.user.email).update(telefone = telefone, cidade = cidade, foto = foto)
             else:
                 if request.user.get_full_name != '':
-                    new = PublicoGeral(nome = request.user.first_name, cidade = cidade, telefone = telefone, email = request.user.email, tipoUsuario = 'normal')
+                    new = PublicoGeral(nome = request.user.first_name, cidade = cidade, telefone = telefone, email = request.user.email, foto = foto, tipoUsuario = 'normal')
                     # new.save() isso so precisa inserir uma vez po 
                 else:
-                    new = PublicoGeral(nome = request.username, cidade = cidade, telefone = telefone, email = request.user.email, tipoUsuario = 'normal')
+                    new = PublicoGeral(nome = request.username, cidade = cidade, telefone = telefone, email = request.user.email, foto = foto, tipoUsuario = 'normal')
                 new.save()
             
             form = PublicoForm()

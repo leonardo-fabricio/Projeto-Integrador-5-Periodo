@@ -14,6 +14,7 @@ class Estabelecimentos(models.Model):
     cidade = models.CharField('cidade', max_length=100)
     email = models.EmailField('email', max_length=100, null=True, unique=True)
     tipoUsuario = models.CharField('tipoUsuario', max_length=100, null=True)
+    foto      = models.FileField(upload_to="imgUser/%Y/%m/%d", null=True)
 
     
 class PublicoGeral(models.Model):
@@ -22,6 +23,7 @@ class PublicoGeral(models.Model):
     cidade = models.CharField('cidade', max_length=100)
     email = models.CharField('email', max_length = 100, null=True, unique=True)
     tipoUsuario = models.CharField('tipoUsuario', max_length=100, null=True)
+    foto      = models.FileField(upload_to="imgUser/%Y/%m/%d", null=True)
     
 class Eventos(models.Model):
     titulo      = models.CharField('titulo', null= True, max_length=100)
