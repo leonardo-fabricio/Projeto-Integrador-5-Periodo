@@ -5,6 +5,9 @@ if(urlAtual == "http://127.0.0.1:8000/criarEvento"){;
   text.style.display = 'none';
   text2.style.marginTop = '7px';
 }
+$(document).ready(function(){
+  $("#id_horaInicial").inputmask("h:s",{ "placeholder": "hh/mm" });
+});
 
 (function($) {
   
