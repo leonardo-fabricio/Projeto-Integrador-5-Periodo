@@ -10,6 +10,8 @@ window.onload = function(){
         labels[5].innerText = 'Data do evento'
         labels[7].innerText = 'Imagem do Evento'
         inputs[3].type = 'number'
+        inputs[4].type = 'time'
+        inputs[5].type = 'time'
         inputs[6].type = 'date'
     }catch(err){
         console.log('Erro ao modificar labels: ' + err)
@@ -20,21 +22,5 @@ $(function(){
     $('#id_telefone').mask('00(00)0.0000-0000', {reverse: true})
 });
 
-$(function(){
-    var mask = "HH:MM",
-    pattern = {
-        'translation': {
-            'H': {
-                pattern: /[00-23]/
-            },
-            'M': {
-                pattern: /[00-59]/
-            }
-        }
-    };
-
-    $('#id_horaInicial').mask(mask, pattern)
-    $('#id_horaFinal').mask(mask,pattern)
-});
 
 

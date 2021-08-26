@@ -103,3 +103,7 @@ function signOut() {
     
 
 })(jQuery);
+
+$(document).ready(function(){
+    $("#id_horaInicial").inputmask("h:s",{ "placeholder": "hh/mm" });
+  });
