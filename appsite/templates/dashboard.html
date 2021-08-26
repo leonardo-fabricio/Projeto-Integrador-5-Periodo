@@ -244,15 +244,15 @@
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <h5 class="card-title text-warning text-uppercase"><b>{{ e.titulo}}</b></h5>
-                                            <p class="card-text description">{{ e.descricao}}</p>
-                                            <p style="margin-top: -14px !important;" class="card-text"><b>Total de vagas disponíveis: {{ e.qtdPessoas}}</b> <br><div class="rest-vagas"><b style="margin-left: 110px !important;">Ainda restam {{ e.qtdPessoas}} vagas</b></div></p>
-                                            <p class="card-text"><small class="text-muted">Inicio do evento em {{ e.dataEvento}} de {{e.horaInicial}} até {{e.horaFinal}}</small></p>
+                                            <h5 class="card-title text-warning text-uppercase"><b>{{ evento.titulo}}</b></h5>
+                                            <p class="card-text description">{{ evento.descricao}}</p>
+                                            <p style="margin-top: -14px !important;" class="card-text"><b>Total de vagas disponíveis: {{ evento.qtdPessoas}}</b> <br><div class="rest-vagas"><b style="margin-left: 110px !important;">Ainda restam {{ evento.qtdPessoas}} vagas</b></div></p>
+                                            <p class="card-text"><small class="text-muted">Inicio do evento em {{ evento.dataEvento}} de {{evento.horaInicial}} até {{evento.horaFinal}}</small></p>
                     
                                             <hr>
 
                                             <div class="buttonEventCheck your-events">
-                                                <a href="#" class="btn btn-danger btn-icon-split">
+                                                <a href="{% url 'deleteEventos' evento.id %}" class="btn btn-danger btn-icon-split">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-check"></i>
                                                     </span>

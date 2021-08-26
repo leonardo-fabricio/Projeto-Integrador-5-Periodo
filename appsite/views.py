@@ -158,3 +158,8 @@ def suasReservas(request):
 def escolha(request): 
     return render(request, 'escolha.html')
 
+def deleteEventos(request, id):
+    eventodelete = get_object_or_404(Eventos, pk=id)
+    eventodelete.delete()
+    return redirect('/dashboard/eventosDisponiveis')
+    
