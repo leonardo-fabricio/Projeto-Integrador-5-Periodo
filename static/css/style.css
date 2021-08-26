@@ -175,16 +175,16 @@
 @media only screen and (min-width: 1681px){
     /*Tela de suas reservas*/
     .card.mb-3.event-card{
-        margin-left: 520px !important;
+        margin-left: 430px !important;
     }
     /*tela criar evento*/
     h4.h4.mb-3.text-gray-800{
         margin-top: 0% !important;
-        margin-left: 590px !important;
+        margin-left: 460px !important;
     }
 
     .form-register{
-        margin-left: 485px !important;
+        margin-left: 370px !important;
         margin-top: 30px ;
     }
     /*dashboard*/

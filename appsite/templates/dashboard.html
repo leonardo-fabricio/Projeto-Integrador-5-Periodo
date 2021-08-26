@@ -151,9 +151,10 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Eventos disponíveis</div>
-                                            
+                                            <a href="{% url 'eventosDisponiveis'%}">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                    Eventos disponíveis</div>
+                                            </a>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -235,20 +236,19 @@
                         <br><h4 class="h4 mb-0 text-gray-800 alg" style="margin-top: -5px;">ALGUNS EVENTOS CRIADOS POR VOCÊ</h4>
 
                         {% for evento in seus_eventos %}
-                        <br>
-                        <div class="card mb-3 event-card aaaa" style="margin: auto ; margin-top: 40px ;">
-                            <div class="card shadow h-100 py-2">
+                        <div class="card mb-3 event-card" style="margin: auto !important; margin-top: 30px !important;">
+                            <div class="card border shadow h-100 py-2">
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                        <img src="/media/{{evento.foto}}" class="img-fluid rounded-start" alt="...">
+                                        <img src="/media/{{evento.foto}}" class="img-fluid rounded-start" alt="{{e.titulo}}">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <h5 style="color: gray !important;" class="card-title text-warning text-uppercase"><b>{{evento.titulo}}</b></h5>
-                                            <p class="card-text description">{{evento.descricao}}</p>
-                                            <p style="margin-top: -14px !important;" class="card-text">Total de vagas disponíveis: <b>{{evento.qtdPessoas}}</b> <br><div class="rest-vagas"><b style="margin-left: 110px !important;">Você criou este evento</b></div></p>
-                                            <p class="card-text"><small class="text-muted">Inicio do evento em {{evento.dataEvento}}</small></p>
-
+                                            <h5 class="card-title text-warning text-uppercase"><b>{{ e.titulo}}</b></h5>
+                                            <p class="card-text description">{{ e.descricao}}</p>
+                                            <p style="margin-top: -14px !important;" class="card-text"><b>Total de vagas disponíveis: {{ e.qtdPessoas}}</b> <br><div class="rest-vagas"><b style="margin-left: 110px !important;">Ainda restam {{ e.qtdPessoas}} vagas</b></div></p>
+                                            <p class="card-text"><small class="text-muted">Inicio do evento em {{ e.dataEvento}} de {{e.horaInicial}} até {{e.horaFinal}}</small></p>
+                    
                                             <hr>
 
                                             <div class="buttonEventCheck your-events">
