@@ -54,7 +54,7 @@ def dashboard(request):
     return render(request, 'eventosDisponiveis.html', content) 
 
 def cadastroEstabelecimento(request):
-    form = EstabelecimentoModel(request.POST, request.FILES)
+    form = EstabelecimentoModel(request.POST or None, request.FILES or None)
     
     if form.is_valid():
         nome   = form.cleaned_data['nome']
@@ -85,8 +85,9 @@ def criarEvento(request):
         usuario = Estabelecimentos.objects.filter(email = request.user.email)
         for x in usuario:
             tipoUsuario = x.tipoUsuario
+            foto = x.foto
         
-        form = CriarEventoModel(request.POST, request.FILES)
+        form = CriarEventoModel(request.POST or None, request.FILES or None)
         
         if str(request.method) == 'POST':
             if form.is_valid():
@@ -115,11 +116,12 @@ def criarEvento(request):
     context ={
         'form': form,
         'tipoUsuario' : tipoUsuario,
+        'foto' : foto,
     }
     return render(request, 'criarEvento.html', context)
    
 def cadastroPublico(request):
-    form = PublicoModel(request.POST, request.FILES)
+    form = PublicoModel(request.POST or None, request.FILES or None)
     if str(request.method) == 'POST' : 
         if form.is_valid():
             cidade   = form.cleaned_data['cidade']
