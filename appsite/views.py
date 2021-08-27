@@ -65,7 +65,14 @@ def cadastroEstabelecimento(request):
         foto     = form.cleaned_data['foto']
     
         if Estabelecimentos.objects.filter(email = request.user.email):
-            Estabelecimentos.objects.filter(email = request.user.email).update(nome = nome, tipo= tipo, rua = rua, cep = cep, foto = foto,cidade = cidade)
+            new_p = Estabelecimentos.objects.get(email = request.user.email)
+            new_p.nome = nome
+            new_p.cidade = cidade
+            new_p.foto = foto
+            new_p.tipo = tipo
+            new_p.rua = rua
+            new_p.cep = cep
+            new_p.save()
         else:
             new = Estabelecimentos(nome = nome,tipo = tipo, rua = rua, cep = cep, cidade = cidade, email = request.user.email, foto= foto, tipoUsuario = 'estabelecimento')
             new.save()
@@ -128,7 +135,11 @@ def cadastroPublico(request):
             telefone = form.cleaned_data['telefone'] # eu sei 
             foto     = form.cleaned_data['foto']
             if PublicoGeral.objects.filter(email = request.user.email):
-                PublicoGeral.objects.filter(email = request.user.email).update(telefone = telefone, cidade = cidade, foto = foto)
+                new_p = PublicoGeral.objects.get(email = request.user.email)
+                new_p.telefone = telefone
+                new_p.cidade = cidade
+                new_p.foto = foto
+                new_p.save()
             else:
                 if request.user.get_full_name != '':
                     new = PublicoGeral(nome = request.user.first_name, cidade = cidade, telefone = telefone, email = request.user.email, foto = foto, tipoUsuario = 'normal')
@@ -153,13 +164,15 @@ def suasReservas(request):
             usuario = PublicoGeral.objects.filter(email = request.user.email)
             for x in usuario:
                 tipoUsuario = x.tipoUsuario
+                foto = x.foto
         else:
             usuario = Estabelecimentos.objects.filter(email = request.user.email)
             for x in usuario:
                 tipoUsuario = x.tipoUsuario
             
     content = {
-        'tipoUsuario' : tipoUsuario
+        'tipoUsuario' : tipoUsuario,
+        'foto' : foto,
     }
     return render(request, 'suasReservas.html',content)
 

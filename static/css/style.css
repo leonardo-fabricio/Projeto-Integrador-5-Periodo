@@ -198,6 +198,19 @@
         margin-top: 70px !important;
         margin-left: -550px !important;
     }
+    /*tela cadastro de estabelecimento*/
+    .login100-form-title.mb-4.ml-1.aaa{
+       margin-left: 55% !important;
+    }
+    .form-register.aaa{
+        margin-left: 160px !important;
+    }
+    .form-control{
+        height: 30px;
+    }
+    #id_foto{
+        width: 300px !important;
+    }
 }
 
 .btn.btn-danger.btn-icon-split.your-reserves{
