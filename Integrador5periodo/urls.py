@@ -25,7 +25,10 @@ from rest_framework import routers
 from appsite.views import *
 
 router = routers.DefaultRouter()
-router.register(r'publico', PublicoViewSet)
+router.register(r'api-publico', PublicoViewSet)
+router.register(r'api-evento', EventoViewSet)
+router.register(r'api-estabelecimento', EstabelecimentoViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),

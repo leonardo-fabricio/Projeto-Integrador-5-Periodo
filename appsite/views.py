@@ -190,3 +190,11 @@ def deleteEventos(request, id):
 class PublicoViewSet(viewsets.ModelViewSet):
     queryset = PublicoGeral.objects.all()
     serializer_class = PublicoSerializer
+
+class EventoViewSet(viewsets.ModelViewSet):
+    queryset = Eventos.objects.all()
+    serializer_class = EventoSerializer
+    
+class EstabelecimentoViewSet(viewsets.ModelViewSet):
+    queryset = Estabelecimentos.objects.all()
+    serializer_class = EstabelecimentoSerializer
