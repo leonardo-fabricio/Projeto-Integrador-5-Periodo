@@ -21,11 +21,18 @@ from django.urls.conf import include
 from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework import routers
+from appsite.views import *
+
+router = routers.DefaultRouter()
+router.register(r'publico', PublicoViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('appsite.urls')),# 
     path(r'accounts/', include('django.contrib.auth.urls')),
-    # path(r'accounts/', include('allauth.urls')),
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls')),
+
     path('', include('social_django.urls'), name='social'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

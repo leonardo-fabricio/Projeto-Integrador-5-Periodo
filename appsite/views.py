@@ -8,6 +8,9 @@ from .forms import *
 from django.contrib import messages
 from .models import *
 from django.contrib import messages
+from appsite.models import PublicoGeral
+from rest_framework import viewsets
+from appsite.serializer import *
 
 # Create your views here.
 def index(request):
@@ -184,3 +187,6 @@ def deleteEventos(request, id):
     eventodelete.delete()
     return redirect('/dashboard/eventosDisponiveis')
     
+class PublicoViewSet(viewsets.ModelViewSet):
+    queryset = PublicoGeral.objects.all()
+    serializer_class = PublicoSerializer
