@@ -172,10 +172,10 @@
     width: 100% !important;
 }
 
-@media only screen and (min-width: 1681px){
+@media only screen and (min-width: 1681px){ /*TELA LEO*/
     /*Tela de suas reservas*/
     .card.mb-3.event-card{
-        margin-left: 430px !important;
+        margin-left: 400px !important;
     }
     /*tela criar evento*/
     h4.h4.mb-3.text-gray-800{
