@@ -1,19 +1,19 @@
 .avatar-url{
     margin-top: 5% !important;
-    width: 54px !important;
-    height: 54px !important;
+    width: 55px !important;
+    height: 55px !important;
     border-radius: 50% !important;
     margin-left: 6% !important;
     border: 2px solid #fff;
 
-    transition: 220ms !important;
+    transition: 600ms !important;
     transition-property: border, width, height;
 }
 
 .avatar-url:hover{
     border: 2px solid rgb(129, 255, 4);
-    width: 58px !important;
-    height: 58px !important;
+    /* width: 58px !important;
+    height: 58px !important; */
 }
 
 #helloUser-des{
