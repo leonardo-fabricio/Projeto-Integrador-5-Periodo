@@ -1,3 +1,18 @@
+try{
+    let eventExists = document.querySelector('.card.mb-3.event-card.bbbb')
+    if(!eventExists){
+        let us = document.querySelector('.h4.mb-0.text-gray-800.alg')
+        us.innerHTML = '<h3>Olá, comece criando seus eventos clicando em <b>Criar Agendamento</b> <br>ou <a href="http://127.0.0.1:8000/criarEvento"><b>Clicando Aqui</b></a></h3>'
+        
+        us.style.marginTop = '75px'
+        us.style.marginLeft = '145px'
+    }else{
+      us.innerHTML = '<br><h4 id="h4Stile" class="h4 mb-0 text-gray-800 alg" style="margin-top: -5px;">ALGUNS EVENTOS CRIADOS POR VOCÊ</h4>'
+    }
+}catch(err){
+    console.log('ERRO: ' + err)
+}
+
 var urlAtual = window.location.href;
 if(urlAtual == "http://127.0.0.1:8000/criarEvento"){;
   let text = document.querySelector("h4.mb-0.text-gray-800.alg");
