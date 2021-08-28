@@ -28,8 +28,13 @@
     background-color: #e8efff !important;
     border: 1.7px solid #7C83FD !important;
     border-radius: 20px; 
-    width: 370px !important;
+    width: 500px !important;
 }
+
+#id_descricao:nth-child(2) {
+    height: 80px !important;
+}
+
 .form-criar-evento{
     margin-left: 10% !important;
 }
@@ -62,7 +67,7 @@
     }
     
     .form-criar-evento{
-        margin-left: 35% !important;
+        margin-left: 30% !important;
     }
 
     #btn-cadastro-publico{
