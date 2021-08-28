@@ -239,3 +239,9 @@
 .icon.text-white-50.cancel{
     margin-left: -10px !important;
 }
+
+.card.mb-3.event-card.bbbb,
+.card.border.shadow.h-100.py-2{
+    border-radius: 15px;
+}
+
