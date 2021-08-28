@@ -1,9 +1,19 @@
 .avatar-url{
     margin-top: 5% !important;
-    width: 50px !important;
-    height: 50px !important;
+    width: 54px !important;
+    height: 54px !important;
     border-radius: 50% !important;
-    margin-left: 8% !important;
+    margin-left: 6% !important;
+    border: 2px solid #fff;
+
+    transition: 220ms !important;
+    transition-property: border, width, height;
+}
+
+.avatar-url:hover{
+    border: 2px solid rgb(129, 255, 4);
+    width: 58px !important;
+    height: 58px !important;
 }
 
 #helloUser-des{
@@ -134,7 +144,8 @@
 }
 
 .img-update:hover{
-    transform: rotate(-900deg) !important;
+    transition-duration: 850ms;
+    transform: rotate(900deg) !important;
 }
 /* @media only screen and (max-width: 1980px){ /*Tela de leo - TELA SUAS RESERVAS
     .card.mb-3.event-card{
