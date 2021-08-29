@@ -2,6 +2,26 @@
   Renderiza o botão de login na tela
 */
 
+let divWarning = document.querySelector('div.alert.alert-danger')
+if(divWarning){
+    divWarning.addEventListener("click", function() {
+        divWarning.style.display = 'none'
+    });
+}
+
+// card-suas-reservas
+try{
+    let eventsDisponible = document.querySelector('#card-suas-reservas.card.mb-3.event-card')
+
+    if(!eventsDisponible){
+        let message = document.querySelector('.h4.mb-0.text-gray-800.even')
+        message.innerHTML = '<h3>Olá, você ainda não está participando de nenhum evento' /* <b>Criar Agendamento</b> <br>ou <a href="http://127.0.0.1:8000/criarEvento"><b>Clicando Aqui</b></a></h3>' */
+        // alert('oi')
+    }
+}catch(err){
+    console.log("ERRO 2: " + err)
+}
+
 function renderButton() {
     gapi.signin2.render('meu-botao', {
         'scope': 'email profile https://www.googleapis.com/auth/plus.login', // solicitando acesso ao profile e ao e-mail do usuário

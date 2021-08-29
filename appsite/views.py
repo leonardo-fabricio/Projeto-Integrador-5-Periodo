@@ -14,6 +14,8 @@ from appsite.serializer import *
 
 # Create your views here.
 def index(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect('/dashboard/eventosDisponiveis')
     return render(request,'index.html')
 
 def profile(request):
@@ -35,6 +37,7 @@ def dashboard(request):
                 iduser = x.id
                 foto = x.foto
                 tipoUsuario = x.tipoUsuario
+                nome = ''
                 # print(tipoUsuario)
         else:
             usuario = Estabelecimentos.objects.filter(email=request.user.email)
@@ -43,6 +46,7 @@ def dashboard(request):
                 iduser = x.id
                 foto = x.foto
                 tipoUsuario = x.tipoUsuario
+                nome = x.nome
                 # print(tipoUsuario)
             id_user = get_object_or_404(Estabelecimentos,email = request.user.email)
             seus_eventos = Eventos.objects.filter(id_estabelecimento = id_user)
@@ -55,6 +59,7 @@ def dashboard(request):
         'seus_eventos' : seus_eventos,
         'foto' : foto,
         'iduser': iduser,
+        'nomeEsta' : nome,
     }
     
     return render(request, 'eventosDisponiveis.html', content) 
@@ -93,6 +98,7 @@ def criarEvento(request):
         for x in usuario:
             tipoUsuario = x.tipoUsuario
             foto = x.foto
+            nome = x.nome
         
         form = CriarEventoModel(request.POST or None, request.FILES or None)
         
@@ -110,7 +116,7 @@ def criarEvento(request):
                 id_user = get_object_or_404(Estabelecimentos,email = request.user.email)
                 new = Eventos(qtdPessoas = qtdPessoas, horaInicial = horaInicial, horaFinal = horaFinal,local = local,dataEvento = dataEvento,id_estabelecimento=id_user, foto = foto,descricao = descricao, titulo = titulo)
 
-                messages.success(request, 'Evento cadastrado com sucesso!')
+                # messages.success(request, 'Evento cadastrado com sucesso!')
                 new.save()
                 form = CriarEventoForm()
                 return redirect('/dashboard/eventosDisponiveis')
@@ -124,6 +130,7 @@ def criarEvento(request):
         'form': form,
         'tipoUsuario' : tipoUsuario,
         'foto' : foto,
+        'nomeEsta': nome,
     }
     return render(request, 'criarEvento.html', context)
    
@@ -181,6 +188,7 @@ def suasReservas(request):
         'tipoUsuario' : tipoUsuario,
         'foto' : foto,
         'event' : peventos,
+        'iduser' : iduser,
     }
     return render(request, 'suasReservas.html', content)
 
@@ -196,14 +204,24 @@ def Publico_eventos(request,idevento, idpublico):
     try:
         idpublico1 = get_object_or_404(PublicoGeral, pk = idpublico)
         idevento1 = get_object_or_404(Eventos, pk = idevento)
-
-        new = Publico_Eventos(idPessoa = idpublico1, idEvento = idevento1)
-        new.save()
-        return redirect('/dashboard/suasReservas')
+        if Publico_Eventos.objects.filter(idPessoa = idpublico1, idEvento = idevento1):
+            # para usar o messages: from django.contrib import messages
+            messages.error(request, 'Você já fez uma reserva para esse evento')
+            return redirect('/dashboard/suasReservas')
+        else:
+            new = Publico_Eventos(idPessoa = idpublico1, idEvento = idevento1)
+            new.save()
+            return redirect('/dashboard/suasReservas')
     except Exception as e:
         print(e)
     
-
+def deletePublicoEventos(request, idevento, idpublico):
+    idpublico1 = get_object_or_404(PublicoGeral, pk = idpublico)
+    idevento1 = get_object_or_404(Eventos, pk = idevento)
+    
+    pe = get_object_or_404(Publico_Eventos,idPessoa = idpublico1, idEvento = idevento1)
+    pe.delete()
+    return redirect('/dashboard/suasReservas')
 
 # SERIALIZAR DADOOS PARA API    
 class PublicoViewSet(viewsets.ModelViewSet):

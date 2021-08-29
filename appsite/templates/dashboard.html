@@ -45,7 +45,7 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-
+            {% if tipoUsuario == 'normal' %} 
             <div class="img-description">
                 <!-- <img src="https://lh3.google.com/u/0/ogw/ADea4I7nfLXTXUqCg_OBWr0A0Hf08HWLDsHLklgXTm9Y=s64-c-mo" alt=""> -->
                 <img src="/media/{{foto}}" class="avatar-url" alt="">
@@ -55,6 +55,19 @@
                     <span id="helloUser-des" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>{{ user.username | title}}</b></span>!</span>
                 {% endif%}
             </div>
+            {% else%}
+            <div class="img-description">
+                <!-- <img src="https://lh3.google.com/u/0/ogw/ADea4I7nfLXTXUqCg_OBWr0A0Hf08HWLDsHLklgXTm9Y=s64-c-mo" alt=""> -->
+                <img src="/media/{{foto}}" class="avatar-url" alt="">
+                
+                <!-- Se for um norme grande ele corta e pega apenas o primeiro nome -->
+                {% for name in nomeEsta.split|slice:":1" %}
+                    <span id="helloUser-des" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>{{ name }}</b></span>
+                {% endfor %}
+
+                 
+            </div>
+            {% endif %}
 
             <hr style="margin-top: 5% !important;" class="sidebar-divider my-0">
 
@@ -76,13 +89,13 @@
 
                 <!-- Nav Item - Charts -->
                 <li class="nav-item">
-                    <a class="nav-link" href="charts.html">
+                    <a class="nav-link" href="{% url 'suasReservas' %}">
                         <i class="fas fa-fw fa-chart-area"></i>
                         <img style="width: 30px; height: 25px;" src="{% static 'img/reservas.png' %}" alt="Suas Reservas">
                         <span style="margin-left: 5px;"><b>Suas Reservas</b></span>
                     </a>
                 </li>
-            {% endif %}
+            
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'cadastroPublico' %}">
@@ -91,7 +104,16 @@
                     <span style="margin-left: 5px;"><b>Atualizar Cadastro</b></span>
                 </a>
             </li>
-
+            {% endif %}
+            {% if tipoUsuario == 'estabelecimento' %} 
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'cadastroEstabelecimento' %}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <img style="width: 33px; height: 29px;" class="img-update" src="{% static 'img/update.png' %}" alt="Atualizar Cadastro">
+                    <span style="margin-left: 5px;"><b>Atualizar Cadastro</b></span>
+                </a>
+            </li>
+            {% endif %}
             <hr class="sidebar-divider my-0">
 
             <br>
@@ -120,10 +142,14 @@
                     <div
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group nav-link">
-                            {% if user.get_full_name != '' %}
-                                <span id="helloUser" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>Olá, {{ user.get_full_name | title }}!</b></span>
-                            {% else %}
+                            {% if tipoUsuario == 'normal' %}  
+                                {% if user.get_full_name != '' %}
+                                    <span id="helloUser" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>Olá, {{ user.get_full_name | title }}!</b></span>
+                                {% else %}
                                 <span id="helloUser" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>Olá, {{ user.username }}!</b></span>
+                                {% endif%}
+                            {% else %}
+                                <span id="helloUser" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>Olá, {{ nomeEsta }}!</b></span>
                             {% endif%}
                         </div>
                     </div>
@@ -135,11 +161,16 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        {% if user.get_full_name != '' %}  
-                            <h1 class="h3 mb-0 text-gray-800">Bem-vindo ao Sistema de Gerenciamento de Reservas, <b>{{ user.first_name | title }}!</b></h1>
+                        {% if tipoUsuario == 'normal' %}
+                            {% if user.get_full_name != '' %}  
+                                <h1 class="h3 mb-0 text-gray-800">Bem-vindo ao Sistema de Gerenciamento de Reservas, <b>{{ user.first_name | title }}!</b></h1>
+                            {% else %}
+                                <h1 class="h3 mb-0 text-gray-800">Bem-vindo ao Sistema de Gerenciamento de Reservas, <b>{{ user.username | title }}!</b></h1>
+                            {% endif%}
                         {% else %}
-                            <h1 class="h3 mb-0 text-gray-800">Bem-vindo ao Sistema de Gerenciamento de Reservas, <b>{{ user.username | title }}!</b></h1>
+                            <h1 class="h3 mb-0 text-gray-800">Bem-vindo ao Sistema de Gerenciamento de Reservas, <b>{{ nomeEsta }}!</b></h1>
                         {% endif%}
+
                     </div>
 
                     <!-- Content Row -->
@@ -245,7 +276,7 @@
                                     <div class="col-md-8">
                                         <div class="card-body">
                                             <h5 class="card-title text-warning text-uppercase"><b>{{ evento.titulo}}</b></h5>
-                                            <p class="card-text description">{{ evento.descricao}}</p>
+                                            <p class="card-text description">{{ evento.descricao}}. Será realizado em: <b> {{evento.local}}</b></p>
                                             <p style="margin-top: -14px !important;" class="card-text"><b>Total de vagas disponíveis: {{ evento.qtdPessoas}}</b> <br><div class="rest-vagas"><b style="margin-left: 110px !important;">Ainda restam {{ evento.qtdPessoas}} vagas</b></div></p>
                                             <p class="card-text"><small class="text-muted">Inicio do evento em {{ evento.dataEvento}} de {{evento.horaInicial}} até {{evento.horaFinal}}</small></p>
                     

@@ -60,7 +60,8 @@ class CriarEventoModel(forms.ModelForm):
             'qtdPessoas': forms.TextInput(attrs={'placeholder': 'Quantidade de Pessoas'}),
             'horaInicial': forms.TextInput(attrs={'placeholder': '00:00'}),
             'horaFinal': forms.TextInput(attrs={'placeholder': '00:00'}),
-            'dataEvento': forms.TextInput(attrs={'placeholder': 'dd/mm/aaaa'}),
+            'dataEvento': forms.TextInput(attrs={'placeholder': 'DD/MM/AAAA'}),
+            'local': forms.TextInput(attrs={'placeholder': 'Ex: Av. Tab. Hermes de paiva, 195, Alexandria - RN'}),
         }
 
     def __init__(self, *args, **kwargs):

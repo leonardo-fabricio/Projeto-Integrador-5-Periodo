@@ -23,7 +23,7 @@
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title text-warning text-uppercase"><b>{{ e.titulo}}</b></h5>
-                        <p class="card-text description">{{ e.descricao}}</p>
+                        <p style="max-height: 31px !important; overflow: auto !important;" class="card-text description">{{ e.descricao}}. Será realizado em: <b> {{e.local}}</b></p>
                         <p style="margin-top: -14px !important;" class="card-text"><b>Total de vagas disponíveis: {{ e.qtdPessoas}}</b> <br><div class="rest-vagas"><b style="margin-left: 110px !important;">Ainda restam {{ e.qtdPessoas}} vagas</b></div></p>
                         <p class="card-text"><small class="text-muted">Inicio do evento em {{ e.dataEvento}} de {{e.horaInicial}} até {{e.horaFinal}}</small></p>
 

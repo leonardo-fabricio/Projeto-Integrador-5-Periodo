@@ -22,5 +22,6 @@ urlpatterns = [
     path('dashboard/suasReservas', suasReservas, name='suasReservas'),
     path('escolha', escolha, name='escolha'),
     path('deleteEventos/<int:id>', deleteEventos, name='deleteEventos'),
-    path('publicoEventos/<int:idevento>/<int:idpublico>', Publico_eventos, name='publicoEventos')
+    path('publicoEventos/<int:idevento>/<int:idpublico>', Publico_eventos, name='publicoEventos'),
+    path('deletePublicoEventos/<int:idevento>/<int:idpublico>', deletePublicoEventos,name='deletePublicoEventos'),
 ]
