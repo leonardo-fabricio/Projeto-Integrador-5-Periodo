@@ -32,6 +32,7 @@ def dashboard(request):
             usuario = PublicoGeral.objects.filter(email = request.user.email)
             print('\n\n\n\n\n')
             for x in usuario:
+                iduser = x.id
                 foto = x.foto
                 tipoUsuario = x.tipoUsuario
                 # print(tipoUsuario)
@@ -39,6 +40,7 @@ def dashboard(request):
             usuario = Estabelecimentos.objects.filter(email=request.user.email)
             print('\n\n\n\n\n')
             for x in usuario:
+                iduser = x.id
                 foto = x.foto
                 tipoUsuario = x.tipoUsuario
                 # print(tipoUsuario)
@@ -52,6 +54,7 @@ def dashboard(request):
         'eventos' : eventos,
         'seus_eventos' : seus_eventos,
         'foto' : foto,
+        'iduser': iduser,
     }
     
     return render(request, 'eventosDisponiveis.html', content) 
@@ -62,22 +65,16 @@ def cadastroEstabelecimento(request):
     if form.is_valid():
         nome   = form.cleaned_data['nome']
         tipo   = form.cleaned_data['tipo']
-        rua    = form.cleaned_data['rua']
-        cep    = form.cleaned_data['cep']
-        cidade = form.cleaned_data['cidade']
-        foto     = form.cleaned_data['foto']
+        foto   = form.cleaned_data['foto']
     
         if Estabelecimentos.objects.filter(email = request.user.email):
             new_p = Estabelecimentos.objects.get(email = request.user.email)
             new_p.nome = nome
-            new_p.cidade = cidade
             new_p.foto = foto
             new_p.tipo = tipo
-            new_p.rua = rua
-            new_p.cep = cep
             new_p.save()
         else:
-            new = Estabelecimentos(nome = nome,tipo = tipo, rua = rua, cep = cep, cidade = cidade, email = request.user.email, foto= foto, tipoUsuario = 'estabelecimento')
+            new = Estabelecimentos(nome = nome,tipo = tipo, email = request.user.email, foto= foto, tipoUsuario = 'estabelecimento')
             new.save()
         
         form = EstabelecimentoForm()
@@ -163,19 +160,18 @@ def suasReservas(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/')
     else:
-        if PublicoGeral.objects.filter(email = request.user.email):
-            usuario = PublicoGeral.objects.filter(email = request.user.email)
-            for x in usuario:
-                tipoUsuario = x.tipoUsuario
-                foto = x.foto
-        else:
-            usuario = Estabelecimentos.objects.filter(email = request.user.email)
-            for x in usuario:
-                tipoUsuario = x.tipoUsuario
-            
+        usuario = PublicoGeral.objects.filter(email = request.user.email)
+        for x in usuario:
+            tipoUsuario = x.tipoUsuario
+            foto = x.foto
+            iduser = x.id
+       
+    eventosReservados = Publico_Eventos.objects.select_related('idPessoa')
+ 
     content = {
         'tipoUsuario' : tipoUsuario,
         'foto' : foto,
+        'eventosReservados': eventosReservados,
     }
     return render(request, 'suasReservas.html',content)
 
@@ -186,7 +182,21 @@ def deleteEventos(request, id):
     eventodelete = get_object_or_404(Eventos, pk=id)
     eventodelete.delete()
     return redirect('/dashboard/eventosDisponiveis')
+
+def Publico_eventos(request,idevento, idpublico):
+    try:
+        idpublico1 = get_object_or_404(PublicoGeral, pk = idpublico)
+        idevento1 = get_object_or_404(Eventos, pk = idevento)
+
+        new = Publico_Eventos(idPessoa = idpublico1, idEvento = idevento1)
+        new.save()
+        return redirect('/dashboard/suasReservas')
+    except Exception as e:
+        print(e)
     
+
+
+# SERIALIZAR DADOOS PARA API    
 class PublicoViewSet(viewsets.ModelViewSet):
     queryset = PublicoGeral.objects.all()
     serializer_class = PublicoSerializer

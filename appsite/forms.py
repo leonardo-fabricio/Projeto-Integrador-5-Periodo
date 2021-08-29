@@ -16,9 +16,10 @@ class EstabelecimentoForm(forms.Form):
 class EstabelecimentoModel(forms.ModelForm):
     class Meta:
         model = Estabelecimentos
-        fields = ['nome','tipo','rua','cep','cidade','foto']
+        fields = ['nome','tipo','foto']
         widgets = {
-             'cep': forms.TextInput(attrs={'placeholder':'00000-000'}),
+            'nome': forms.TextInput(attrs={'placeholder': 'Nome do Estabelecimento'}),
+             'tipo': forms.TextInput(attrs={'placeholder':'Ex: Igreja, Academia, Restaurante'}),
         }
         
 class PublicoForm(forms.Form):

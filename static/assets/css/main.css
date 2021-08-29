@@ -5084,7 +5084,7 @@ a {
 }
 
 #createEvent.btn-criar-evento{ /* botao criarEvento */
-  margin-left: 100px !important;
+  margin-left: 100px;
   background-color: #ffff !important;
   border: 2px solid #7C83FD !important;
   color: black !important;

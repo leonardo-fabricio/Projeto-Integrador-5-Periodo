@@ -11,7 +11,7 @@
 }
 
 .avatar-url:hover{
-    border: 2px solid rgb(129, 255, 4);
+    border: 2px solid rgb(120, 231, 8);
     /* width: 58px !important;
     height: 58px !important; */
 }
@@ -72,6 +72,19 @@
 
     #btn-cadastro-publico{
         margin-left: 30% !important;
+    }
+
+    #register2{
+        margin-top: 23px !important;
+        margin-left: 25px !important;
+    }
+
+    .login100-form-title.mb-4.ml-1.aaa{
+        margin-left: 80px !important;
+    }
+
+    #createEvent{
+        margin-left: 60% !important;
     }
 }
 
@@ -216,23 +229,29 @@
     }
     /*tela cadastro de estabelecimento*/
     .login100-form-title.mb-4.ml-1.aaa{
-       margin-left: 55% !important;
+       margin-left: 72% !important;
     }
     .form-register.aaa{
-        margin-left: 160px !important;
+        margin-left: 155px !important;
     }
     .form-control{
-        height: 30px;
+        height: 40px;
     }
     #id_foto{
         width: 300px !important;
     }
+    #createEvent{
+        margin-left: 190px !important;
+    }
+    #register2{
+        margin-top: 150px !important;
+    }
 }
 
 .btn.btn-danger.btn-icon-split.your-reserves{
-    width: 220px !important;
+    width: 205px !important;
     height: 43px !important;
-    margin-left: -12px !important;
+    margin-left: -12px;
     margin-bottom: -7px !important;
 }
 
@@ -240,8 +259,20 @@
     margin-left: -10px !important;
 }
 
+.card.mb-3.event-card,
 .card.mb-3.event-card.bbbb,
 .card.border.shadow.h-100.py-2{
     border-radius: 15px;
 }
 
+.buttonEventCheck.your-reserves > a:first-child{
+    margin-left: -10px !important;
+}
+
+.buttonEventCheck.your-reserves > a:last-child{ /* realixar check in */
+    margin-left: -90px !important;
+    margin-top: -53px !important;
+
+    width: 180px !important;
+    height: 43px !important;
+}
