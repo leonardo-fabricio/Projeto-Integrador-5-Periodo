@@ -166,14 +166,23 @@ def suasReservas(request):
             foto = x.foto
             iduser = x.id
        
-    eventosReservados = Publico_Eventos.objects.select_related('idPessoa')
- 
+    peventos = Publico_Eventos.objects.select_related('idEvento').filter(idPessoa = iduser)
+    
+    # for x in peventos:
+    #     print (x.idEvento.titulo)
+    #     print('\n\n')
+    
+    
+    # print(eventosReservados.query)
+    # print('\n\n\n')
+    # print (eventos)
+    # print('\n\n')
     content = {
         'tipoUsuario' : tipoUsuario,
         'foto' : foto,
-        'eventosReservados': eventosReservados,
+        'event' : peventos,
     }
-    return render(request, 'suasReservas.html',content)
+    return render(request, 'suasReservas.html', content)
 
 def escolha(request): 
     return render(request, 'escolha.html')

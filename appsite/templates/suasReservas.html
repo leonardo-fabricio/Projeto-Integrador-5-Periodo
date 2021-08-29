@@ -12,19 +12,19 @@
 
     <br><h4 class="h4 mb-0 text-gray-800" style="margin: auto !important;">EVENTOS QUE FORAM CONFIRMADOS POR VOCÊ</h4>
 
-    {% for ev in eventosReservados %}
+    {{% for ev in event %}
     <div id="card-suas-reservas" class="card mb-3 event-card" style="margin: auto; margin-top: 40px;">
         <div class="card border shadow h-100 py-2">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img src="/media/{{ ev.foto }}" class="img-fluid rounded-start" alt="...">
+                    <img src="/media/{{ ev.idEvento.foto }}" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title text-warning text-uppercase"><b>{{ ev.titulo }}</b></h5>
-                        <p class="card-text description">{{ ev.descricao}}</p>
-                        <p style="margin-top: -14px !important;" class="card-text">Total de vagas disponíveis: <b>{{ ev.qtdPessoas}}</b> <br><div class="rest-vagas"><b style="margin-left: 45px !important;">Você confirmou presença nesse evento</b></div></p>
-                        <p class="card-text"><small class="text-muted">Inicio do evento em {{ ev.dataEvento}} de {{ev.horaInicial}} até {{ev.horaFinal}}</small></p>
+                        <h5 class="card-title text-warning text-uppercase"><b>{{ ev.idEvento.titulo }}</b></h5>
+                        <p class="card-text description">{{ ev.idEvento.descricao}}</p>
+                        <p style="margin-top: -14px !important;" class="card-text">Total de vagas disponíveis: <b>{{ ev.idEvento.qtdPessoas}}</b> <br><div class="rest-vagas"><b style="margin-left: 45px !important;">Você confirmou presença nesse evento</b></div></p>
+                        <p class="card-text"><small class="text-muted">Inicio do evento em {{ ev.idEvento.dataEvento}} de {{ev.idEvento.horaInicial}} até {{ev.idEvento.horaFinal}}</small></p>
 
                         <hr>
 
