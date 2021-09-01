@@ -15,8 +15,17 @@ try{
 
     if(!eventsDisponible){
         let message = document.querySelector('.h4.mb-0.text-gray-800.even')
-        message.innerHTML = '<h3>Olá, você ainda não está participando de nenhum evento' /* <b>Criar Agendamento</b> <br>ou <a href="http://127.0.0.1:8000/criarEvento"><b>Clicando Aqui</b></a></h3>' */
-        // alert('oi')
+        message.textContent = 'Olá, você ainda não está participando de nenhum evento. ' /* <b>Criar Agendamento</b> <br>ou <a href="http://127.0.0.1:8000/criarEvento"><b>Clicando Aqui</b></a></h3>' */
+        message.style.padding = '120px'
+        message.style.marginTop = '0px'
+
+        let x = document.createElement('img')
+        x.setAttribute("src", "https://i.pinimg.com/originals/26/1d/79/261d79eba10658c0dfb9da61c5b28755.png")
+        x.setAttribute("width", "40px")
+        x.style.marginTop = '0px'
+        
+        message.appendChild(x)
+
     }
 }catch(err){
     console.log("ERRO 2: " + err)
