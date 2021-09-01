@@ -214,23 +214,6 @@
                             </div>
                         </div>
 
-                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-danger shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                Realizar Check-In</div>
-                                            <!--<div class="h5 mb-0 font-weight-bold text-gray-800">INSERIR VALORES AQUI</div>-->
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         {% endif%}
                         
                         {% if tipoUsuario == 'estabelecimento' %}
@@ -262,12 +245,12 @@
                             </div>
                         </div>
                         
-                        <hr class="hr-esta" style="width: 1070px !important; height: 10px !important;"/>
+                        <hr class="hr-esta" style="width: 1070px; height: 10px"/>
 
                         <br><h4 id="h4Stile" class="h4 mb-0 text-gray-800 alg" style="margin-top: -5px;">ALGUNS EVENTOS CRIADOS POR VOCÊ</h4>
 
                         {% for evento in seus_eventos %}
-                        <div class="card mb-3 event-card bbbb" style="margin: auto; margin-top: 30px !important;">
+                        <div id="card-seus-eventos" class="card mb-3 event-card bbbb" style="margin: auto; margin-top: 30px ;">
                             <div class="card border shadow h-100 py-2">
                                 <div class="row g-0">
                                     <div class="col-md-4">
@@ -283,12 +266,16 @@
                                             <hr>
 
                                             <div class="buttonEventCheck your-events">
-                                                <a style="margin-top: -25px !important; margin-left: 30% !important;" href="{% url 'deleteEventos' evento.id %}" class="btn btn-danger btn-icon-split">
+                                                <a style="margin-top: -45px !important; margin-left: 40% !important;" href="{% url 'deleteEventos' evento.id %}" class="btn btn-danger btn-icon-split">
                                                     <span style="color: #fff !important;" class="text"><b>Cancelar Evento</b></span>
                                                 </a>
 
-                                                <a style="margin-top: -90px !important; margin-left: 9% !important;" href="#" class="btn btn-primary btn-icon-split">
+                                                <a style="margin-top: -108px !important; margin-left: 25% !important;" href="#" class="btn btn-primary btn-icon-split">
                                                     <span style="color: #fff !important;" class="text"><b>Editar Evento</b></span>
+                                                </a>
+
+                                                <a style="margin-top: -60px !important; margin-left: -220px !important;" href="#" class="btn btn-secondary btn-icon-split">
+                                                    <span style="color: #fff !important;" class="text"><b>Info</b></span>
                                                 </a>
                                             </div>
                                         </div>
