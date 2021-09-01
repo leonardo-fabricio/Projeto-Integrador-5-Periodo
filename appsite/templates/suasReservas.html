@@ -26,8 +26,9 @@
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title text-warning text-uppercase"><b>{{ ev.idEvento.titulo }}</b></h5>
-                        <p class="card-text description">{{ ev.idEvento.descricao}}. Será realizado em: <b> {{ev.idEvento.local}}</b></p>
-                        <p style="margin-top: -14px !important;" class="card-text">Total de vagas disponíveis: <b>{{ ev.idEvento.qtdPessoas}}</b> <br><div class="rest-vagas"><b style="margin-left: 45px !important;">Você confirmou presença nesse evento</b></div></p>
+                        <p style="max-height: 55px !important;" class="card-text description">{{ ev.idEvento.descricao}}. Será realizado em: <b> {{ev.idEvento.local}}</b></p>
+                        <p style="margin-top: -10px !important;" class="card-text"><b>Total de vagas disponíveis: {{ ev.idEvento.qtdPessoas}}</b> 
+                        <br><div style="margin-top: -5px !important;" class="rest-vagas"><b style="margin-left: 45px !important;">Você confirmou presença nesse evento</b></div>
                         <p class="card-text"><small class="text-muted">Inicio do evento em {{ ev.idEvento.dataEvento}} de {{ev.idEvento.horaInicial}} até {{ev.idEvento.horaFinal}}</small></p>
 
                         <hr>
