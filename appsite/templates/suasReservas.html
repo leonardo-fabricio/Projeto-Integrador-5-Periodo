@@ -9,9 +9,6 @@
         <link rel="stylesheet" href="{% static 'css/style.css'%}">
     </head>
 
-
-    
-
     <hr class="hr-esta" style="width: 1070px !important; height: 10px !important;"/>
 
     <br><h4 class="h4 mb-0 text-gray-800 even" style="margin: auto;">EVENTOS QUE FORAM CONFIRMADOS POR VOCÊ</h4> 
@@ -33,19 +30,13 @@
 
                         <hr>
 
-                        <div class="buttonEventCheck your-reserves">
-                            <a href="{% url 'deletePublicoEventos' ev.idEvento.id iduser %}" class="btn btn-danger btn-icon-split your-reserves">
-                                <span class="icon text-white-50 cancel">
-                                    <i class="fas fa-check"></i>
-                                </span>
-                                <span style="color: #fff !important;" class="text"><b>Cancelar Participação</b></span>
+                        <div style="" class="buttonEventCheck your-reserves">
+                            <a style="width: 170px !important;" href="{% url 'deletePublicoEventos' ev.idEvento.id iduser %}" class="btn btn-danger btn-icon-split your-reserves">
+                                <span style="color: #fff !important; font-size: 14px; margin-top: 3px !important;" class="text"><b>Cancelar Participação</b></span>
                             </a>
 
-                            <a href="#" class="btn btn-success btn-icon-split your-reserves">
-                                <span class="icon text-white-50 cancel">
-                                    <i class="fas fa-check"></i>
-                                </span>
-                                <span style="color: #fff !important;" class="text"><b>Realizar Check-In</b></span>
+                            <a style="width: 170px !important;" href="#" class="btn btn-success btn-icon-split your-reserves">
+                                <span style="color: #fff !important; font-size: 14px; margin-top: 3px !important;" class="text"><b>Realizar Check-In</b></span>
                             </a>
                         </div>
                     </div>

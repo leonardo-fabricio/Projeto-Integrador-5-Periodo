@@ -184,8 +184,9 @@
 }
 
 .btn.btn-danger.btn-icon-split:first-child{ /* cancelar evento */
-    margin-left: 31% !important;
+    margin-left: 42% !important;
     margin-bottom: -8% !important;
+    /* font-size: 15px !important */
 }
 
 .buttonEventCheck.your-events > a:nth-child(2){ /* editar evento */
