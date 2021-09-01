@@ -25,7 +25,6 @@ try{
         x.style.marginTop = '0px'
         
         message.appendChild(x)
-
     }
 }catch(err){
     console.log("ERRO 2: " + err)
