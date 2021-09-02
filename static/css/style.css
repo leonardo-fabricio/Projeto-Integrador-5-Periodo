@@ -6,12 +6,12 @@
     margin-left: 6% !important;
     border: 2px solid #fff;
 
-    transition: 600ms !important;
+    transition: 700ms !important;
     transition-property: border, width, height;
 }
 
 .avatar-url:hover{
-    border: 2px solid rgb(120, 231, 8);
+    border: 2px solid rgb(26, 230, 8);
     /* width: 58px !important;
     height: 58px !important; */
 }
