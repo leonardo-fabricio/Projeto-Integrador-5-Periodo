@@ -16,7 +16,7 @@ class Estabelecimentos(models.Model):
     
 class PublicoGeral(models.Model):
     nome = models.CharField('nome', max_length=100)
-    telefone = models.CharField('telefone', max_length=50)
+    telefone = models.CharField('telefone', max_length=20)
     cidade = models.CharField('cidade', max_length=100)
     email = models.CharField('email', max_length = 100, null=True, unique=True)
     tipoUsuario = models.CharField('tipoUsuario', max_length=100, null=True)
