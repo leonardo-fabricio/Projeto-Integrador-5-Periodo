@@ -23,7 +23,7 @@ class PublicoGeral(models.Model):
     foto      = models.FileField(upload_to="imgUser/%Y/%m/%d", null=True)
     
 class Eventos(models.Model):
-    titulo      = models.CharField('titulo', null= True, max_length=100)
+    titulo      = models.CharField('titulo', null= True, max_length=20)
     descricao   = models.CharField('descricao', null= True, max_length=100)
     qtdPessoas  = models.IntegerField('qtdPessoas')
     dataEvento  = models.CharField('dataEvento', null= True, max_length=100)
