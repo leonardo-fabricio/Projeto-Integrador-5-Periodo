@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Relatorio Geral</title>
+    <style type="text/css">
+        body {
+            font-weight: 200;
+            font-size: 14px;
+        }
+
+        .header {
+            font-size: 20px;
+            font-weight: 100;
+            text-align: center;
+            color: black;
+        }
+
+        .title {
+            font-size: 22px;
+            font-weight: 100;
+            /* text-align: right;*/
+            padding: 10px 20px 0px 20px;
+        }
+
+        .title span {
+            color: black;
+        }
+
+        .details {
+            padding: 10px 20px 0px 20px;
+            text-align: left !important;
+            /*margin-left: 40%;*/
+        }
+
+        .hrItem {
+            border: none;
+            height: 1px;
+            /* Set the hr color */
+            color: #333; /* old IE */
+            background-color: #fff; /* Modern Browsers */
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+    <div class='header'>
+        <p class='title'>Listagem de Reservas</p>
+    </div>
+    <!--<hr class='hrItem'/>-->
+    <h2 style="text-align: center">Dados do evento</h2>
+    <div class="details">
+        <p><b>Titulo: </b>{{ evento.titulo }} </p>
+        <p><b>Descricao: </b>{{ evento.descricao}}. Será realizado em: {{evento.local}}</p>
+        <p><b>Inicio do evento:</b> {{ evento.dataEvento}} de {{evento.horaInicial}} até {{evento.horaFinal}}</p>
+        <p><b>Vagas disponíveis: </b>{{ evento.qtdPessoas}}</p>
+        
+    </div>
+    <h2 style="text-align: center">Lista</h2>
+    <div>
+        <div class='details'>
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Email</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for p in pessoas %}
+                    <tr>
+                      <td>{{p.idPessoa.nome}}</td>
+                      <td>{{p.idPessoa.telefone}}</td>
+                      <td>{{p.idPessoa.email}}</td>
+                    </tr>
+                 {%endfor%}
+              </table>
+        </div>
+    </div>
+
+    
+</div>
+</body>
+</html>
