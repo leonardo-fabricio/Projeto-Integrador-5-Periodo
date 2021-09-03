@@ -40,8 +40,8 @@ def dashboard(request):
                 iduser = x.id
                 foto = x.foto
                 tipoUsuario = x.tipoUsuario
-                nome = ''
-                # print(tipoUsuario)
+                nome = x.nome
+                
         else:
             usuario = Estabelecimentos.objects.filter(email=request.user.email)
             print('\n\n\n\n\n')
@@ -53,7 +53,7 @@ def dashboard(request):
                 # print(tipoUsuario)
             id_user = get_object_or_404(Estabelecimentos,email = request.user.email)
             seus_eventos = Eventos.objects.filter(id_estabelecimento = id_user)
-            
+               
     eventos = Eventos.objects.all()
                  
     content = {
@@ -150,18 +150,16 @@ def cadastroPublico(request):
             cidade   = form.cleaned_data['cidade']
             telefone = form.cleaned_data['telefone'] # eu sei 
             foto     = form.cleaned_data['foto']
+            nome     = form.cleaned_data['nome'] 
             if PublicoGeral.objects.filter(email = request.user.email):
                 new_p = PublicoGeral.objects.get(email = request.user.email)
                 new_p.telefone = telefone
                 new_p.cidade = cidade
                 new_p.foto = foto
+                new_p.nome = nome
                 new_p.save()
             else:
-                if request.user.get_full_name != '':
-                    new = PublicoGeral(nome = request.user.first_name, cidade = cidade, telefone = telefone, email = request.user.email, foto = foto, tipoUsuario = 'normal')
-                    # new.save() isso so precisa inserir uma vez po 
-                else:
-                    new = PublicoGeral(nome = request.username, cidade = cidade, telefone = telefone, email = request.user.email, foto = foto, tipoUsuario = 'normal')
+                new = PublicoGeral(nome = nome, cidade = cidade, telefone = telefone, email = request.user.email, foto = foto, tipoUsuario = 'normal')
                 new.save()
             
             form = PublicoForm()
@@ -181,6 +179,7 @@ def suasReservas(request):
             tipoUsuario = x.tipoUsuario
             foto = x.foto
             iduser = x.id
+            nome = x.nome
        
     peventos = Publico_Eventos.objects.select_related('idEvento').filter(idPessoa = iduser)
     
@@ -198,6 +197,7 @@ def suasReservas(request):
         'foto' : foto,
         'event' : peventos,
         'iduser' : iduser,
+        'nomeEsta': nome,
     }
     return render(request, 'suasReservas.html', content)
 

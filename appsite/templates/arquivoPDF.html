@@ -1,3 +1,4 @@
+{% load bootstrap4 %}
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -28,7 +29,7 @@
 
         .details {
             padding: 10px 20px 0px 20px;
-            text-align: left !important;
+            text-align: justify !important;
             /*margin-left: 40%;*/
         }
 
@@ -40,52 +41,62 @@
             background-color: #fff; /* Modern Browsers */
         }
 
-        table, th, td {
+        table, th {
             border: 1px solid black;
             border-collapse: collapse;
             text-align: center;
-            padding: 5px;
+            padding: 3px;
+        }
+        #nomeP{
+            text-align: center !important;
+            width: 190px !important;
+        }
+        #telefoneP{
+            text-align: center;
+            width: 160px !important;
+        }
+        .table{
+            width: 100px !important;
         }
     </style>
 </head>
 <body>
-<div class='wrapper'>
-    <div class='header'>
-        <p class='title'>Listagem de Reservas</p>
-    </div>
-    <!--<hr class='hrItem'/>-->
-    <h2 style="text-align: center">Dados do evento</h2>
-    <div class="details">
-        <p><b>Titulo: </b>{{ evento.titulo }} </p>
-        <p><b>Descricao: </b>{{ evento.descricao}}. Será realizado em: {{evento.local}}</p>
-        <p><b>Inicio do evento:</b> {{ evento.dataEvento}} de {{evento.horaInicial}} até {{evento.horaFinal}}</p>
-        <p><b>Vagas disponíveis: </b>{{ evento.qtdPessoas}}</p>
-        
-    </div>
-    <h2 style="text-align: center">Lista</h2>
-    <div>
-        <div class='details'>
-            <table class="table">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Telefone</th>
-                    <th scope="col">Email</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for p in pessoas %}
-                    <tr>
-                      <td>{{p.idPessoa.nome}}</td>
-                      <td>{{p.idPessoa.telefone}}</td>
-                      <td>{{p.idPessoa.email}}</td>
-                    </tr>
-                 {%endfor%}
-              </table>
+    <div class="container">
+        <div class='wrapper'>
+            <div class='header'>
+                <p class='title'> {{evento.titulo}} </p>
+            </p>
+            </div>
+            <div class="details">
+                <h2>Dados do Evento</h2>
+
+                <p><b>Descricao: </b>{{ evento.descricao}}. Será realizado em: {{evento.local}}</p>
+                <p><b>Inicio do evento:</b> {{ evento.dataEvento}} de {{evento.horaInicial}} até {{evento.horaFinal}}</p>
+                <p><b>Vagas disponíveis: </b>{{ evento.qtdPessoas}}</p>
+            </div>
+            <h2 style="text-align: center">Lista</h2>
+            <div>
+                <div class='details'>
+                    <table class="table">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Telefone</th>
+                            <th scope="col">Email</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for p in pessoas %}
+                            <tr>
+                                <td id="nomeP">{{p.idPessoa.nome}}</td>
+                                <td id="telefoneP">{{p.idPessoa.telefone}}</td>
+                                <td id="emailP">{{p.idPessoa.email}}</td>
+                            </tr>
+                        {%endfor%}
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
-
-    
-</div>
 </body>
 </html>

@@ -23,14 +23,16 @@ class EstabelecimentoModel(forms.ModelForm):
         }
         
 class PublicoForm(forms.Form):
+    nome = forms.CharField(label='Nome')
     telefone = forms.CharField(label = 'Telefone')
     cidade = forms.CharField(label = 'Cidade')
     foto = forms.ImageField(label='Imagem', widget = ClearableFileInput)
+    
 
 class PublicoModel(forms.ModelForm):
     class Meta:
         model = PublicoGeral
-        fields = ['telefone', 'cidade', 'foto']
+        fields = ['nome','telefone', 'cidade', 'foto']
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

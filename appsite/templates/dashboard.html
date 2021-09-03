@@ -47,13 +47,12 @@
             <hr class="sidebar-divider my-0">
             {% if tipoUsuario == 'normal' %} 
             <div class="img-description">
-                <!-- <img src="https://lh3.google.com/u/0/ogw/ADea4I7nfLXTXUqCg_OBWr0A0Hf08HWLDsHLklgXTm9Y=s64-c-mo" alt=""> -->
                 <img src="/media/{{foto}}" class="avatar-url" alt="">
-                {% if user.get_full_name != '' %}
-                    <span id="helloUser-des" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>{{ user.first_name | title }}</b></span> 
-                {% else %}
-                    <span id="helloUser-des" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>{{ user.username | title}}</b></span>!</span>
-                {% endif%}
+                <!-- <img src="https://lh3.google.com/u/0/ogw/ADea4I7nfLXTXUqCg_OBWr0A0Hf08HWLDsHLklgXTm9Y=s64-c-mo" alt=""> -->
+                {% for name in nomeEsta.split|slice:":1" %}
+                    <span id="helloUser-des" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>{{ name }}</b></span>
+                {% endfor %}
+                
             </div>
             {% else%}
             <div class="img-description">
@@ -79,13 +78,7 @@
                 </a>
             </li>
             {% if tipoUsuario == 'normal' %}    
-            <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item" style="margin-left: 5px;">
-                    <a class="nav-link">
-                        <img style="width: 30px; height: 25px;" src="{% static 'img/check.png' %}" alt="Realizar Check-In">
-                        <span style="margin-left: 4px;"><b>Realizar Check-In</b></span>
-                    </a>
-                </li>
+            <!-- Nav Item - Pages Collapse Menu --> 
 
                 <!-- Nav Item - Charts -->
                 <li class="nav-item">
@@ -142,15 +135,7 @@
                     <div
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group nav-link">
-                            {% if tipoUsuario == 'normal' %}  
-                                {% if user.get_full_name != '' %}
-                                    <span id="helloUser" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>Olá, {{ user.get_full_name | title }}!</b></span>
-                                {% else %}
-                                <span id="helloUser" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>Olá, {{ user.username }}!</b></span>
-                                {% endif%}
-                            {% else %}
-                                <span id="helloUser" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>Olá, {{ nomeEsta }}!</b></span>
-                            {% endif%}
+                            <span id="helloUser" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>Olá, {{ nomeEsta }}!</b></span>
                         </div>
                     </div>
                 </nav>
@@ -161,15 +146,9 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        {% if tipoUsuario == 'normal' %}
-                            {% if user.get_full_name != '' %}  
-                                <h1 class="h3 mb-0 text-gray-800">Bem-vindo ao Sistema de Gerenciamento de Reservas, <b>{{ user.first_name | title }}!</b></h1>
-                            {% else %}
-                                <h1 class="h3 mb-0 text-gray-800">Bem-vindo ao Sistema de Gerenciamento de Reservas, <b>{{ user.username | title }}!</b></h1>
-                            {% endif%}
-                        {% else %}
-                            <h1 class="h3 mb-0 text-gray-800">Bem-vindo ao Sistema de Gerenciamento de Reservas, <b>{{ nomeEsta }}!</b></h1>
-                        {% endif%}
+                        
+                        <h1 class="h3 mb-0 text-gray-800">Bem-vindo ao Sistema de Gerenciamento de Reservas, <b>{{ nomeEsta }}!</b></h1>
+                        
 
                     </div>
 

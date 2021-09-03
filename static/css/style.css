@@ -296,15 +296,19 @@
         margin-left: 550px;
     }
     #card-seus-eventos{
-        margin-top: 90px !important;
-        margin-left: -605px !important;
+        margin-left: 100px !important;
     }
     #linha-dash{
         margin-top: 0px !important;
-        padding: 147px;
+        /* padding: 147px; */
     }
-    /* .h4.mb-0.text-gray-800.even{
-        /* margin-top: -200px; 
+    #card-suas-reservas{
+        margin-left: 520px !important;
         
-    } */
+    }
+    .buttonEventCheck.your-reserves{
+        margin-top: 60px !important;
+        margin-left: -20px !important;
+    }
+    
 }
