@@ -11,6 +11,9 @@ from django.contrib import messages
 from appsite.models import PublicoGeral
 from rest_framework import viewsets
 from appsite.serializer import *
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A4
+from .utils import *
 
 # Create your views here.
 def index(request):
@@ -232,7 +235,7 @@ def deletePublicoEventos(request, idevento, idpublico):
     pe.delete()
     return redirect('/dashboard/suasReservas')
 
-def informacoesEventos(request):
+def informacoesEventos(request,idevento):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/')
     
@@ -244,10 +247,13 @@ def informacoesEventos(request):
         tipoUsuario = x.tipoUsuario
         nome = x.nome
         
+    listaPessoas = Publico_Eventos.objects.select_related('idPessoa').filter(idEvento = idevento)
     context ={
         'tipoUsuario' : tipoUsuario,
         'foto' : foto,
         'nomeEsta': nome,
+        'listaPessoas':listaPessoas,
+        'idevento2': idevento,
     }
     return render(request,'informacoesEvento.html', context)
 
@@ -263,3 +269,24 @@ class EventoViewSet(viewsets.ModelViewSet):
 class EstabelecimentoViewSet(viewsets.ModelViewSet):
     queryset = Estabelecimentos.objects.all()
     serializer_class = EstabelecimentoSerializer
+    
+def baixarPdf(request, idevento):
+        evento          = Eventos.objects.get(id = idevento)
+        listaPessoas    = Publico_Eventos.objects.select_related('idPessoa').filter(idEvento = idevento)
+        data = {'evento': evento, 'pessoas':listaPessoas}
+
+        #html = template.render(data)
+        pdf = render_to_pdf('../templates/arquivoPDF.html', data)
+
+        if pdf:
+            response = HttpResponse(pdf, content_type='application/pdf')
+            filename = "ListaPessoas.pdf"
+            #content = "inline; filename='%s'" %(filename)
+            #download = request.GET.get("download")
+            #if download:
+            content = 'attachment; filename=%s' %(filename)
+            response['Content-Disposition'] = content
+            return response
+        else:
+            return HttpResponse("Not found")
+

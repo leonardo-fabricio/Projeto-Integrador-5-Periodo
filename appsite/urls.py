@@ -24,5 +24,6 @@ urlpatterns = [
     path('deleteEventos/<int:id>', deleteEventos, name='deleteEventos'),
     path('publicoEventos/<int:idevento>/<int:idpublico>', Publico_eventos, name='publicoEventos'),
     path('deletePublicoEventos/<int:idevento>/<int:idpublico>', deletePublicoEventos,name='deletePublicoEventos'),
-    path('informacoesEventos',informacoesEventos, name='informacoesEventos' )
+    path('informacoesEventos/<int:idevento>',informacoesEventos, name='informacoesEventos' ),
+    path('baixarPdf/<int:idevento>',baixarPdf, name='baixarPdf')
 ]
