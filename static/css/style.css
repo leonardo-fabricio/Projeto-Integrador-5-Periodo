@@ -312,3 +312,8 @@
     }
     
 }
+
+.container.messageBootstrap{
+    /* margin-left: 200px !important; */
+    width: -50px !important;
+}

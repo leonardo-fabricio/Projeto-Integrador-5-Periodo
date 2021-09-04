@@ -4,7 +4,10 @@
 
 {% block event %}
 
-    {% bootstrap_messages %}
+    <div class="container messageBootstrap">
+        {% bootstrap_messages %}
+    </div>
+    
     <head>
         <link rel="stylesheet" href="{% static 'css/style.css'%}">
     </head>
