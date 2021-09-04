@@ -50,7 +50,7 @@
                 <img src="/media/{{foto}}" class="avatar-url" alt="">
                 <!-- <img src="https://lh3.google.com/u/0/ogw/ADea4I7nfLXTXUqCg_OBWr0A0Hf08HWLDsHLklgXTm9Y=s64-c-mo" alt=""> -->
                 {% for name in nomeEsta.split|slice:":1" %}
-                    <span id="helloUser-des" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>{{ name }}</b></span>
+                    <span id="helloUser-des" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>{{ name | title }}</b></span>
                 {% endfor %}
                 
             </div>
@@ -61,7 +61,7 @@
                 
                 <!-- Se for um norme grande ele corta e pega apenas o primeiro nome -->
                 {% for name in nomeEsta.split|slice:":1" %}
-                    <span id="helloUser-des" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>{{ name }}</b></span>
+                    <span id="helloUser-des" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>{{ name | title }}</b></span>
                 {% endfor %}
 
                  
@@ -135,7 +135,7 @@
                     <div
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group nav-link">
-                            <span id="helloUser" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>Olá, {{ nomeEsta }}!</b></span>
+                            <span id="helloUser" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>Olá, {{ nomeEsta | title}}!</b></span>
                         </div>
                     </div>
                 </nav>
@@ -147,7 +147,7 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         
-                        <h1 class="h3 mb-0 text-gray-800">Bem-vindo ao Sistema de Gerenciamento de Reservas, <b>{{ nomeEsta }}!</b></h1>
+                        <h1 class="h3 mb-0 text-gray-800">Bem-vindo ao Sistema de Gerenciamento de Reservas, <b>{{ nomeEsta | title}}!</b></h1>
                         
 
                     </div>
