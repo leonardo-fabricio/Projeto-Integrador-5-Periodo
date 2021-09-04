@@ -273,16 +273,9 @@
     border-radius: 15px;
 }
 
-.buttonEventCheck.your-reserves > a:first-child{
-    margin-left: -10px !important;
-}
+.buttonEventCheck.your-reserves{
+    margin-left: -75px !important;
 
-.buttonEventCheck.your-reserves > a:last-child{ /* realixar check in */
-    margin-left: -90px !important;
-    margin-top: -53px !important;
-
-    width: 180px !important;
-    height: 43px !important;
 }
 
 @media only screen and (min-width: 1681px){ /*TELA LEO*/
