@@ -189,6 +189,11 @@
     /* font-size: 15px !important */
 }
 
+.btn.btn-success{
+    background-color: #0b8d5d !important;
+    border-color: #0b8d5d !important;
+}
+
 .buttonEventCheck.your-reserves > a:first-child{
     margin-left: 75px !important;
 }
