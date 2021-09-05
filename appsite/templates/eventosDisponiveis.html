@@ -11,40 +11,43 @@
     <hr style="width: 1070px !important; height: 10px !important;"/>
 
     {% if tipoUsuario == 'normal' %}
-    <br><h4 class="h4 mb-0 text-gray-800" style="margin: auto !important; margin-top: -20px !important;">EVENTOS DISPONÍVEIS</h4>
+        {% if eventos %}
+            <br><h4 class="h4 mb-0 text-gray-800" style="margin: auto !important; margin-top: -20px !important;">EVENTOS DISPONÍVEIS</h4>
+            {% for e in eventos %}
+                <div class="card mb-3 event-card" style="margin: auto !important; margin-top: 30px !important;">
+                    <div class="card border shadow h-100 py-2">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="/media/{{e.foto}}" class="img-fluid rounded-start" alt="{{e.titulo}}">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 style="margin-bottom: 20px;" class="card-title text-warning text-uppercase"><b>{{ e.titulo}}</b></h5>
+                                    <p style="max-height: 60px !important; overflow: auto !important; margin-top: -13px !important;" class="card-text description">{{ e.descricao}}. Será realizado em: <b> {{e.local}}</b></p>
+                                    <p style="margin-top: -11px !important; margin-bottom: -1px;" class="card-text"><b>Total de vagas disponíveis: {{ e.qtdPessoas}}</b> <br>
+                                    <div class="rest-vagas"><b style="margin-left: 110px !important;">Ainda restam {{ e.qtdPessoas}} vagas</b></div></p>
+                                    <p class="card-text"><small class="text-muted">Inicio do evento em {{ e.dataEvento}} de {{e.horaInicial}} até {{e.horaFinal}}</small></p>
 
-    {% for e in eventos %}
-    <div class="card mb-3 event-card" style="margin: auto !important; margin-top: 30px !important;">
-        <div class="card border shadow h-100 py-2">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="/media/{{e.foto}}" class="img-fluid rounded-start" alt="{{e.titulo}}">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 style="margin-bottom: 20px;" class="card-title text-warning text-uppercase"><b>{{ e.titulo}}</b></h5>
-                        <p style="max-height: 60px !important; overflow: auto !important; margin-top: -13px !important;" class="card-text description">{{ e.descricao}}. Será realizado em: <b> {{e.local}}</b></p>
-                        <p style="margin-top: -11px !important; margin-bottom: -1px;" class="card-text"><b>Total de vagas disponíveis: {{ e.qtdPessoas}}</b> <br>
-                        <div class="rest-vagas"><b style="margin-left: 110px !important;">Ainda restam {{ e.qtdPessoas}} vagas</b></div></p>
-                        <p class="card-text"><small class="text-muted">Inicio do evento em {{ e.dataEvento}} de {{e.horaInicial}} até {{e.horaFinal}}</small></p>
+                                    <hr>
 
-                        <hr>
-
-                        <div class="buttonEventCheck">
-                            <a href="{% url 'publicoEventos' e.id iduser %}" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-check"></i>
-                                </span>
-                                <span style="color: #fff !important;" class="text"><b>Participar do Evento</b></span>
-                            </a>
+                                    <div class="buttonEventCheck">
+                                        <a href="{% url 'publicoEventos' e.id iduser %}" class="btn btn-success btn-icon-split">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                            <span style="color: #fff !important;" class="text"><b>Participar do Evento</b></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
+            {% endfor %}
 
-{% endif %}
+        {% else %}
+            <br><h4 class="h4 mb-0 text-gray-800" style="margin: auto !important; margin-top: -20px !important;">Ainda não existem eventos disponíveis :(</h4>
+        {% endif %}
+    {% endif %}
 
 {% endblock %}
