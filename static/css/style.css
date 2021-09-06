@@ -189,7 +189,17 @@
     /* font-size: 15px !important */
 }
 
-.btn.btn-success{
+.btn.btn-success.btn-icon-split.your-reserves.fi{
+    background-color: #0fac72 !important;
+    border-color: #0fac72 !important;
+    height: 42px !important;
+    margin-top: 4px !important;
+
+    transition: 700ms;
+    transition-property: background-color, border-color;
+}
+
+.btn.btn-success.btn-icon-split.your-reserves.fi:hover{
     background-color: #0b8d5d !important;
     border-color: #0b8d5d !important;
 }
