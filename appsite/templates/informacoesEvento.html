@@ -4,6 +4,9 @@
 {% block content %}
 
 {% if listaPessoas %}
+
+  <br><h4 class="h4 mb-0 text-gray-800" style="margin: auto !important; margin-top: -5px !important; margin-bottom: 30px !important;">LISTAGEM DE PESSOAS NO SEU EVENTO</h4>
+
   <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -11,7 +14,7 @@
         <th scope="col">Nome</th>
         <th scope="col">Telefone</th>
         <th scope="col">Email</th>
-        <th scope="col"><a class="btn btn-primary" href="{% url 'baixarPdf' idevento2 %}">Baixar PDF</a></th>
+        <th scope="col"><a class="btn btn-success" href="{% url 'baixarPdf' idevento2 %}">Baixar PDF</a></th>
       </tr>
     </thead>
     <tbody>
