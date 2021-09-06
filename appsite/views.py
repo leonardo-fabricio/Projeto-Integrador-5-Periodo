@@ -55,6 +55,10 @@ def dashboard(request):
             seus_eventos = Eventos.objects.filter(id_estabelecimento = id_user)
                
     eventos = Eventos.objects.all()
+    countEventos = Eventos.objects.count()
+
+    peventos = Publico_Eventos.objects.select_related('idEvento').filter(idPessoa = iduser)
+    countEventosPessoa = peventos.count()
                  
     content = {
         'tipoUsuario' : tipoUsuario,
@@ -63,6 +67,8 @@ def dashboard(request):
         'foto' : foto,
         'iduser': iduser,
         'nomeEsta' : nome,
+        'countEventos': countEventos,
+        'countEventosPessoa': countEventosPessoa,
     }
     
     return render(request, 'eventosDisponiveis.html', content) 
@@ -182,7 +188,9 @@ def suasReservas(request):
             nome = x.nome
        
     peventos = Publico_Eventos.objects.select_related('idEvento').filter(idPessoa = iduser)
-    
+    countEventos = Eventos.objects.count()
+    countEventosPessoa = peventos.count()
+
     # for x in peventos:
     #     print (x.idEvento.titulo)
     #     print('\n\n')
@@ -198,6 +206,8 @@ def suasReservas(request):
         'event' : peventos,
         'iduser' : iduser,
         'nomeEsta': nome,
+        'countEventos': countEventos,
+        'countEventosPessoa': countEventosPessoa,
     }
     return render(request, 'suasReservas.html', content)
 
