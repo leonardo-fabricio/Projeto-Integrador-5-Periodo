@@ -280,7 +280,9 @@ def baixarPdf(request, idevento):
 
         if pdf:
             response = HttpResponse(pdf, content_type='application/pdf')
-            filename = "ListaPessoas.pdf"
+
+            filename = ' Listagem de pessoas em {}.pdf'.format(evento.titulo)
+
             #content = "inline; filename='%s'" %(filename)
             #download = request.GET.get("download")
             #if download:
