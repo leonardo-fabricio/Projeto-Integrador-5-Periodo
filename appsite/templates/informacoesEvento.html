@@ -2,7 +2,9 @@
 {%load static%}
 
 {% block content %}
-<table class="table">
+
+{% if listaPessoas %}
+  <table class="table">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
@@ -20,7 +22,12 @@
           <td>{{p.idPessoa.telefone}}</td>
           <td>{{p.idPessoa.email}}</td>
         </tr>
-     {%endfor%}
+      {%endfor%}
+    </tbody>
   </table>
+
+{% else %}
+  <br><h4 class="h4 mb-0 text-gray-800 even" style="margin: auto; padding: 180px; padding-top: 90px !important;">Ninguém confirmou presença no seu evento :(</h4> 
+{% endif %}
   
-{% endblock%}
+{% endblock %}
