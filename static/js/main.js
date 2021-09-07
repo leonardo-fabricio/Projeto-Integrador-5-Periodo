@@ -9,6 +9,13 @@ if(divWarning){
     });
 }
 
+let divSuccess = document.querySelector('div.alert.alert-success.alert-dismissible.fade.show')
+if(divSuccess){
+    divSuccess.addEventListener("click", function() {
+        divSuccess.style.display = 'none'
+    });
+}
+
 // card-suas-reservas
 // try{
 //     let eventsDisponible = document.querySelector('#card-suas-reservas.card.mb-3.event-card')

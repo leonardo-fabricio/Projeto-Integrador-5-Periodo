@@ -233,6 +233,7 @@ def Publico_eventos(request,idevento, idpublico):
         else:
             new = Publico_Eventos(idPessoa = idpublico1, idEvento = idevento1)
             new.save()
+            messages.success(request, 'Participação concluída, fique atento ao dia e horário do seu evento.')
             return redirect('/dashboard/suasReservas')
     except Exception as e:
         print(e)
