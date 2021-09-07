@@ -284,6 +284,7 @@ def baixarPdf(request, idevento):
         evento          = Eventos.objects.get(id = idevento)
         listaPessoas    = Publico_Eventos.objects.select_related('idPessoa').filter(idEvento = idevento)
         data = {'evento': evento, 'pessoas':listaPessoas}
+        counter = listaPessoas.count()
 
         #html = template.render(data)
         pdf = render_to_pdf('../templates/arquivoPDF.html', data)

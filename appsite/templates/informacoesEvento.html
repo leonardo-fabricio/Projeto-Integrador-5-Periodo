@@ -18,12 +18,13 @@
       </tr>
     </thead>
     <tbody>
+    <h3>{{ counter }}</h3>
       {% for p in listaPessoas %}
         <tr>
           <th scope="row">#</th>
           <td>{{p.idPessoa.nome}}</td>
           <td>{{p.idPessoa.telefone}}</td>
-          <td>{{p.idPessoa.email}}</td>
+          <td><a href="mailto:{{p.idPessoa.email}}">{{p.idPessoa.email}}</a></td>
         </tr>
       {%endfor%}
     </tbody>
