@@ -244,21 +244,21 @@
                                             <p class="card-text description">{{ evento.descricao}}. Será realizado em: <b> {{evento.local}}</b></p>
                                             <p style="margin-top: -9px !important; margin-bottom: 5px !important;" class="card-text"><b>Total de vagas disponíveis: {{ evento.qtdPessoas}}</b> <br>
                                             <div class="rest-vagas"><b style="margin-left: 110px !important;">Ainda restam {{ evento.qtdPessoas}} vagas</b></div></p>
-                                            <p class="card-text"><small class="text-muted">Inicio do evento em {{ evento.dataEvento}} de {{evento.horaInicial}} até {{evento.horaFinal}}</small></p>
+                                            <p style="margin-top: -10px; margin-bottom: -7px;" class="card-text"><small class="text-muted">Inicio do evento em {{ evento.dataEvento}} de {{evento.horaInicial}} até {{evento.horaFinal}}</small></p>
                     
                                             <hr>
 
                                             <div class="buttonEventCheck your-events">
-                                                <a style="margin-top: -45px !important; margin-left: 40% !important;" href="{% url 'deleteEventos' evento.id %}" class="btn btn-danger btn-icon-split">
+                                                <a style="margin-top: -22px !important; margin-left: 39% !important;" href="{% url 'deleteEventos' evento.id %}" class="btn btn-danger btn-icon-split">
                                                     <span style="color: #fff !important;" class="text"><b>Cancelar Evento</b></span>
                                                 </a>
 
-                                                <a style="margin-top: -108px !important; margin-left: 25% !important;" href="#" class="btn btn-primary btn-icon-split">
+                                                <a style="margin-top: -38px !important; margin-left: 25% !important;" href="#" class="btn btn-primary btn-icon-split">
                                                     <span style="color: #fff !important;" class="text"><b>Editar Evento</b></span>
                                                 </a>
 
-                                                <a style="margin-top: -60px !important; margin-left: -220px !important;" href="{%url 'informacoesEventos' evento.id %}" class="btn btn-secondary btn-icon-split">
-                                                    <span style="color: #fff !important;" class="text"><b>Info</b></span>
+                                                <a style="margin-top: -38px !important; margin-left: -225px !important;" href="{%url 'informacoesEventos' evento.id %}" class="btn btn-secondary btn-icon-split">
+                                                    <span style="color: #fff !important;" class="text"><b>Inform</b></span>
                                                 </a>
                                             </div>
                                         </div>
