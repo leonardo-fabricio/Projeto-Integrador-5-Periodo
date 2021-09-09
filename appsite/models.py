@@ -30,13 +30,13 @@ class Eventos(models.Model):
     horaInicial = models.CharField('horaInicial',max_length=100)
     horaFinal   = models.CharField('horaFinal',max_length=100)
     local       = models.CharField('local', max_length=100, null=True)
-    id_estabelecimento = models.ForeignKey('appsite.Estabelecimentos', on_delete = models.PROTECT)
+    id_estabelecimento = models.ForeignKey('appsite.Estabelecimentos', on_delete = models.CASCADE)
     foto      = models.FileField(upload_to="img/%Y/%m/%d", null=True)
     
 class Publico_Eventos(models.Model):
     qtdPessoasP = models.IntegerField('qtdPessoas', null=True)
-    idPessoa = models.ForeignKey('appsite.PublicoGeral', on_delete=models.PROTECT)
-    idEvento = models.ForeignKey('appsite.Eventos', on_delete=models.PROTECT)
+    idPessoa = models.ForeignKey('appsite.PublicoGeral', on_delete=models.CASCADE)
+    idEvento = models.ForeignKey('appsite.Eventos', on_delete=models.CASCADE)
     
 class Gatilhos_users(models.Model):
     changed_column = models.CharField('changed_column', max_length=100)
