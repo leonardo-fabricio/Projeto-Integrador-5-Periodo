@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LogoutView
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
+from django.views.generic.edit import UpdateView
+from django.views.generic.list import ListView
 from .forms import *
 from django.contrib import messages
 from .models import *
@@ -145,6 +147,30 @@ def criarEvento(request):
         'nomeEsta': nome,
     }
     return render(request, 'criarEvento.html', context)
+
+class EditarEventoView(UpdateView,ListView):
+    model = Eventos
+    fields = '__all__'
+    success_url = '/dashboard/eventosDisponiveis'
+    
+    # context_object_name = 'queryset'
+    # paginate_by = 1
+
+    def get_context_data(self, **kwargs):
+        usuario = Estabelecimentos.objects.filter(email=self.request.user.email)
+        
+        for x in usuario:
+            iduser = x.id
+            foto = x.foto
+            tipoUsuario = x.tipoUsuario
+            nome = x.nome
+            
+        context = super().get_context_data(**kwargs)
+        context['nome'] = nome
+        context['iduser'] = iduser
+        context['foto'] = foto
+        context['tipoUsuario'] = tipoUsuario
+        return context
    
 def cadastroPublico(request):
     if not request.user.is_authenticated:
