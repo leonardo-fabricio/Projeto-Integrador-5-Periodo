@@ -11,7 +11,7 @@
 <!-- {% bootstrap_messages %} -->
 
 
-    <h4 class="h4 mb-3 text-gray-800 create">PREENCHA OS DADOS E CRIE UM EVENTO</h4><br><br>
+    <h4 class="h4 mb-3 text-gray-800 create">EDITE SEU EVENTO</h4><br><br>
 
     <div class="form-criar-evento">
         <form class="form-register" action="." method="post" autocomplete="off" enctype="multipart/form-data">
@@ -30,4 +30,36 @@
         <script src="{% static 'jquery-3.6.0.min.js' %}"></script>
         <script src="{% static 'jquery.mask.min.js' %}"></script>
         <script src="{% static 'mask.js' %}"></script>
+
+        <script>
+            const i = document.querySelectorAll('input')
+            const t = document.querySelectorAll('label')
+
+            i[1].classList.add('form-control')
+            i[2].classList.add('form-control')
+            i[3].classList.add('form-control')
+            i[4].classList.add('form-control')
+            i[5].classList.add('form-control')
+            i[6].classList.add('form-control')
+            i[7].classList.add('form-control')
+
+            i[3].type='number'
+            i[4].type = 'date'
+            i[5].type = 'time'
+            i[6].type = 'time'
+
+            t[0].textContent = 'Título do evento'
+            t[1].textContent = 'Descrição do evento'
+            t[2].textContent = 'Quantidade de pessoas'
+            t[3].textContent = 'Data do evento'
+            t[4].textContent = 'Hora inicial do evento'
+            t[5].textContent = 'Hora final do evento'
+            t[6].textContent = 'Local do evento'
+            t[8].textContent = 'Imagem usada '
+
+            t[7].style.display = 'none';
+            document.querySelector('select').style.display = 'none'
+
+        </script>
+
     {% endblock %}
