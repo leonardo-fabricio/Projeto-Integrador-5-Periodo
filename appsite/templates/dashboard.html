@@ -200,73 +200,76 @@
                         
                         {% if tipoUsuario == 'estabelecimento' %}
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <a style="text-decoration: none;" href="{% url 'criarEvento' %}">
-                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Criar Agendamento
-                                                </div>
-                                            </a>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col">
-                                                    <!--<div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>-->
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card border-left-info shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <a style="text-decoration: none;" href="{% url 'criarEvento' %}">
+                                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Criar Agendamento
+                                                    </div>
+                                                </a>
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col">
+                                                        <!--<div class="progress progress-sm mr-2">
+                                                            <div class="progress-bar bg-info" role="progressbar"
+                                                                style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                                aria-valuemax="100"></div>
+                                                        </div>-->
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                            <div class="col-auto">
+                                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         
-                        <hr class="hr-esta" style="width: 1070px; height: 10px"/>
+                            <hr class="hr-esta" style="width: 1070px; height: 10px"/>
 
-                        <br><h4 id="h4Stile" class="h4 mb-0 text-gray-800 alg" style="margin-top: -5px;">ALGUNS EVENTOS CRIADOS POR VOCÊ</h4>
+                            {% if seus_eventos %}
+                                <br><h4 id="h4Stile" class="h4 mb-0 text-gray-800 alg" style="margin-top: -5px;">ALGUNS EVENTOS CRIADOS POR VOCÊ</h4>
+                                {% for evento in seus_eventos %}
+                                    <div id="card-seus-eventos" class="card mb-3 event-card bbbb" style="margin: auto; margin-top: 30px ;">
+                                        <div class="card border shadow h-100 py-2">
+                                            <div class="row g-0">
+                                                <div class="col-md-4">
+                                                    <img src="/media/{{evento.foto}}" class="img-fluid rounded-start" alt="{{e.titulo}}">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title text-warning text-uppercase"><b>{{ evento.titulo}}</b></h5>
+                                                        <p class="card-text description">{{ evento.descricao}}. Será realizado em: <b> {{evento.local}}</b></p>
+                                                        <p style="margin-top: -9px !important; margin-bottom: 5px !important;" class="card-text"><b>Total de vagas disponíveis: {{ evento.qtdPessoas}}</b> <br>
+                                                        <div class="rest-vagas"><b style="margin-left: 110px !important;">Ainda restam {{ evento.qtdPessoas}} vagas</b></div></p>
+                                                        <p style="margin-top: -10px; margin-bottom: -7px;" class="card-text"><small class="text-muted">Inicio do evento em <span class="dataEvento">{{ evento.dataEvento}}</span> de {{evento.horaInicial}} até {{evento.horaFinal}}</small></p>
+                                
+                                                        <hr>
 
-                        {% for evento in seus_eventos %}
-                        <div id="card-seus-eventos" class="card mb-3 event-card bbbb" style="margin: auto; margin-top: 30px ;">
-                            <div class="card border shadow h-100 py-2">
-                                <div class="row g-0">
-                                    <div class="col-md-4">
-                                        <img src="/media/{{evento.foto}}" class="img-fluid rounded-start" alt="{{e.titulo}}">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-warning text-uppercase"><b>{{ evento.titulo}}</b></h5>
-                                            <p class="card-text description">{{ evento.descricao}}. Será realizado em: <b> {{evento.local}}</b></p>
-                                            <p style="margin-top: -9px !important; margin-bottom: 5px !important;" class="card-text"><b>Total de vagas disponíveis: {{ evento.qtdPessoas}}</b> <br>
-                                            <div class="rest-vagas"><b style="margin-left: 110px !important;">Ainda restam {{ evento.qtdPessoas}} vagas</b></div></p>
-                                            <p style="margin-top: -10px; margin-bottom: -7px;" class="card-text"><small class="text-muted">Inicio do evento em {{ evento.dataEvento}} de {{evento.horaInicial}} até {{evento.horaFinal}}</small></p>
-                    
-                                            <hr>
+                                                        <div class="buttonEventCheck your-events">
+                                                            <a style="margin-top: -22px !important; margin-left: 39% !important;" href="{% url 'deleteEventos' evento.id %}" class="btn btn-danger btn-icon-split">
+                                                                <span style="color: #fff !important;" class="text"><b>Cancelar Evento</b></span>
+                                                            </a>
 
-                                            <div class="buttonEventCheck your-events">
-                                                <a style="margin-top: -22px !important; margin-left: 39% !important;" href="{% url 'deleteEventos' evento.id %}" class="btn btn-danger btn-icon-split">
-                                                    <span style="color: #fff !important;" class="text"><b>Cancelar Evento</b></span>
-                                                </a>
+                                                            <a style="margin-top: -38px !important; margin-left: 25% !important;" href="{% url 'editar_evento' evento.id %}" class="btn btn-primary btn-icon-split">
+                                                                <span style="color: #fff !important;" class="text"><b>Editar Evento</b></span>
+                                                            </a>
 
-                                                <a style="margin-top: -38px !important; margin-left: 25% !important;" href="{% url 'editar_evento' evento.id %}" class="btn btn-primary btn-icon-split">
-                                                    <span style="color: #fff !important;" class="text"><b>Editar Evento</b></span>
-                                                </a>
-
-                                                <a style="margin-top: -38px !important; margin-left: -225px !important;" href="{%url 'informacoesEventos' evento.id %}" class="btn btn-secondary btn-icon-split">
-                                                    <span style="color: #fff !important;" class="text"><b>Inform</b></span>
-                                                </a>
+                                                            <a style="margin-top: -38px !important; margin-left: -225px !important;" href="{%url 'informacoesEventos' evento.id %}" class="btn btn-secondary btn-icon-split">
+                                                                <span style="color: #fff !important;" class="text"><b>Inform</b></span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
+                                {% endfor %}
+                            {% else %}
+                                <h3 id="h4Stile" class="h4 mb-0 text-gray-800 alg" style="margin: auto; margin-top: 95px;">Olá, comece criando seus eventos clicando em Criar Agendamento.</h3>
+                            {% endif %}
                         {% endif %}
 
                         {% block content %}
@@ -324,7 +327,33 @@
     <script src="js/demo/chart-pie-demo.js"></script>
     <script src="../../static/js/main.js"></script>
 
-    
+    <script>
+        try{
+            let a = document.querySelectorAll('.dataEvento')
+            let tam = a.length
+            
+            for(var i = 0; i < tam; i++){
+                let selector = trataData(a[i])
+                a[i].textContent = selector
+            }
+
+            function trataData(a){
+                var names = a.textContent;
+
+                var re = '-';
+                var nameList = names.split(re);
+
+                novaData = nameList[2] + "-" + nameList[1] + "-" + nameList[0]
+                return novaData
+            }
+        }catch(err){
+            console.log('OPA: ' + err)
+        }
+
+        // console.log(novaData)
+
+    </script>
+
 </body>
 
 </html>
