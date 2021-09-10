@@ -150,7 +150,7 @@ def criarEvento(request):
 
 class EditarEventoView(UpdateView,ListView):
     model = Eventos
-    fields = '__all__'
+    fields = ['titulo','descricao','qtdPessoas', 'horaInicial', 'horaFinal', 'dataEvento', 'local','foto']
     success_url = '/dashboard/eventosDisponiveis'
     
     # context_object_name = 'queryset'
