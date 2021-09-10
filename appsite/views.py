@@ -256,7 +256,7 @@ def Publico_eventos(request,idevento, idpublico):
             # para usar o messages: from django.contrib import messages
             messages.error(request, 'Você já fez uma reserva para esse evento')
             return redirect('/dashboard/suasReservas')
-        else:
+        else: 
             new = Publico_Eventos(idPessoa = idpublico1, idEvento = idevento1)
             new.save()
             messages.success(request, 'Participação concluída, fique atento ao dia e horário do seu evento.')
