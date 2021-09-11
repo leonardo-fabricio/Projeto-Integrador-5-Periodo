@@ -26,7 +26,6 @@ from appsite.views import *
 
 router = routers.DefaultRouter()
 router.register(r'api-publico', PublicoViewSet)
-router.register(r'api-evento', EventoViewSet)
 router.register(r'api-estabelecimento', EstabelecimentoViewSet)
 
 
