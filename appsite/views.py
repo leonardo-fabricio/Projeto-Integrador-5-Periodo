@@ -50,7 +50,6 @@ def dashboard(request):
                 tipoUsuario = x.tipoUsuario
                 nome = x.nome
                 # print(tipoUsuario)
-            id_user = get_object_or_404(Estabelecimentos,email = request.user.email)
             
             # seus_eventos = Eventos.objects.filter(id_estabelecimento = id_user)
     
@@ -61,10 +60,10 @@ def dashboard(request):
     response = json.loads(response.content)
     
     eventos = response
-    # for x in eventos:
-    #     print(x['titulo'])
-    
-    print(f'\n\n\neventos:{eventos}\n\n\n')
+    seus_eventos = []
+    for x in eventos:
+        if x['id_estabelecimento'] == iduser:
+            seus_eventos.append(x)
     # countEventos = Eventos.objects.count()
 
     # peventos = Publico_Eventos.objects.select_related('idEvento').filter(idPessoa = iduser)
@@ -73,7 +72,7 @@ def dashboard(request):
     content = {
         'tipoUsuario' : tipoUsuario,
         'eventos' : eventos,
-        # 'seus_eventos' : seus_eventos,
+        'seus_eventos' : seus_eventos,
         'foto' : foto,
         'iduser': iduser,
         'nomeEsta' : nome,
@@ -111,7 +110,6 @@ def cadastroEstabelecimento(request):
         'form' : form,
     }
     return render(request,'cadastroEstabelecimento.html',context)
-
 
 def cadastroPublico(request):
     if not request.user.is_authenticated:
@@ -205,6 +203,113 @@ def informacoesEventos(request,idevento):
         'idevento2': idevento,
     }
     return render(request,'informacoesEvento.html', context)
+
+def criarEvento(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/')    
+    else:
+        usuario = Estabelecimentos.objects.filter(email = request.user.email)
+        for x in usuario:
+            tipoUsuario = x.tipoUsuario
+            foto = x.foto
+            nome = x.nome
+        
+        form = CriarEventoModel(request.POST or None, request.FILES or None)
+        
+        if str(request.method) == 'POST':
+            if form.is_valid():
+                qtdPessoas  = form.cleaned_data['qtdPessoas']
+                horaInicial = form.cleaned_data['horaInicial']
+                horaFinal   = form.cleaned_data['horaFinal']
+                local       = form.cleaned_data['local']
+                dataEvento  = form.cleaned_data['dataEvento']
+                foto     = form.cleaned_data['foto']
+                descricao = form.cleaned_data['descricao']
+                titulo = form.cleaned_data['titulo']
+                
+                id_user = Estabelecimentos.objects.get(email = request.user.email)
+                url = 'http://localhost:1010/api-evento/' 
+                event_data = {
+                    'titulo': f'{titulo}', 
+                    'descricao': f'{descricao}', 
+                    'qtdPessoas': qtdPessoas, 
+                    'dataEvento': f'{dataEvento}', 
+                    'horaInicial': f'{horaInicial}', 
+                    'horaFinal': f'{horaFinal}', 
+                    'local': f'{local}', 
+                    'id_estabelecimento': f'{id_user.id}'
+                }
+
+                response = requests.post(url = url, json = event_data)
+                if response.status_code >=200 and response.status_code <= 299:
+                    messages.success(request, 'Evento cadastrado com sucesso!')
+            
+                form = CriarEventoForm()
+                return redirect('/dashboard/eventosDisponiveis')
+
+                # print(f'QTD PESSOA: {qtdpessoas}')
+                # print(f'Image: {imagem}')
+
+            else:
+                messages.error(request, 'Erro ao cadastrar evento!')
+    context ={
+        'form': form,
+        'tipoUsuario' : tipoUsuario,
+        'foto' : foto,
+        'nomeEsta': nome,
+    }
+    return render(request, 'criarEvento.html', context)
+
+# class EditarEventoView(UpdateView,ListView):
+#     model = Eventos
+#     fields = ['titulo','descricao','qtdPessoas', 'horaInicial', 'horaFinal', 'dataEvento', 'local','foto']
+#     success_url = '/dashboard/eventosDisponiveis'
+
+#     def get_context_data(self, **kwargs):
+#         usuario = Estabelecimentos.objects.filter(email=self.request.user.email)
+        
+#         for x in usuario:
+#             iduser = x.id
+#             foto = x.foto
+#             tipoUsuario = x.tipoUsuario
+#             nome = x.nome
+            
+#         context = super().get_context_data(**kwargs)
+#         context['nome'] = nome
+#         context['iduser'] = iduser
+#         context['foto'] = foto
+#         context['tipoUsuario'] = tipoUsuario
+#         return context
+
+def deleteEventos(request, url):  
+    response = requests.delete(url)
+    return redirect('/dashboard/eventosDisponiveis')
+
+
+# def Publico_eventos(request,idevento, idpublico):
+#     try:
+#         idpublico1 = get_object_or_404(PublicoGeral, pk = idpublico)
+#         idevento1 = get_object_or_404(Eventos, pk = idevento)
+#         if Publico_Eventos.objects.filter(idPessoa = idpublico1, idEvento = idevento1):
+#             # para usar o messages: from django.contrib import messages
+#             messages.error(request, 'Você já fez uma reserva para esse evento')
+#             return redirect('/dashboard/suasReservas')
+#         else: 
+#             new = Publico_Eventos(idPessoa = idpublico1, idEvento = idevento1)
+#             new.save()
+#             messages.success(request, 'Participação concluída, fique atento ao dia e horário do seu evento.')
+#             return redirect('/dashboard/suasReservas')
+#     except Exception as e:
+#         print(e)
+        
+# def deletePublicoEventos(request, idevento, idpublico):
+#     idpublico1 = get_object_or_404(PublicoGeral, pk = idpublico)
+#     idevento1 = get_object_or_404(Eventos, pk = idevento)
+    
+#     pe = get_object_or_404(Publico_Eventos,idPessoa = idpublico1, idEvento = idevento1)
+#     pe.delete()
+#     return redirect('/dashboard/suasReservas')
+
 
 # SERIALIZAR DADOOS PARA API    
 class PublicoViewSet(viewsets.ModelViewSet):

@@ -10,3 +10,9 @@ class Events(models.Model):
     horaFinal   = models.CharField('horaFinal',max_length=100)
     local       = models.CharField('local', max_length=100, null=True)
     foto      = models.FileField(upload_to="img/%Y/%m/%d", null=True)
+    id_estabelecimento = models.IntegerField(null=True)
+    
+class Publico_Eventos(models.Model):
+    id_publico = models.IntegerField()
+    id_evento = models.IntegerField()
+    qtdPessoas = models.IntegerField()

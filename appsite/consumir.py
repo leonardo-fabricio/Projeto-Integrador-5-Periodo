@@ -12,15 +12,16 @@ event_data = {
     'local': 'sdfsdf', 
 }
 
-request = requests.post(url = url, json = event_data)
-# request = requests.get(url)
+request = requests.delete('http://localhost:1010/api-evento/10/')
+# request = requests.post(url = url, json = event_data)
+# # request = requests.get(url)
 
-print(request.status_code)
-print(request.reason)
-dados = json.loads(request.content)
-print(dados)
-# for x in dados:
-#     print(x['titulo'])
+# print(request.status_code)
+# print(request.reason)
+# dados = json.loads(request.content)
+# print(dados)
+# # for x in dados:
+# #     print(x['titulo'])
 
 
 
