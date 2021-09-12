@@ -23,15 +23,18 @@ from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework import routers
 from appsite.views import *
+from appsite2.views import *
 
 router = routers.DefaultRouter()
 router.register(r'api-publico', PublicoViewSet)
 router.register(r'api-estabelecimento', EstabelecimentoViewSet)
+router.register(r'api-evento', EventoViewSet)
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('appsite.urls')),# 
+    path('',include('appsite.urls')),
+    path('',include('appsite2.urls')),
     path(r'accounts/', include('django.contrib.auth.urls')),
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
