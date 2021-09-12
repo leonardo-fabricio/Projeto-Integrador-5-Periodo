@@ -1,4 +1,4 @@
-"""Integrador5periodo URL Configuration
+"""crudEventos URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -13,29 +13,21 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from pathlib import Path
+from django.conf.urls import include
 from django.contrib import admin
-from django.contrib.auth.views import LogoutView
 from django.urls import path
-from django.urls.conf import include
-from django.conf.urls import url
+from appsiteCrudEventos.views import *
+from rest_framework import routers
 from django.conf import settings
 from django.conf.urls.static import static
-from rest_framework import routers
-from appsite.views import *
 
 router = routers.DefaultRouter()
-router.register(r'api-publico', PublicoViewSet)
-router.register(r'api-estabelecimento', EstabelecimentoViewSet)
-
+router.register(r'api-evento', EventoViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('appsite.urls')),
-    # path('',include('appsite2.urls')),
-    path(r'accounts/', include('django.contrib.auth.urls')),
     path('', include(router.urls)),
+    path('', include('appsiteCrudEventos.urls')),
     path('api-auth/', include('rest_framework.urls')),
-
-    path('', include('social_django.urls'), name='social'),
-] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+    
+]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

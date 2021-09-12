@@ -7,11 +7,12 @@ from django.shortcuts import get_object_or_404, redirect, render
 from .forms import *
 from .models import *
 from django.contrib import messages
-from appsite2.models import *
 from rest_framework import viewsets
 from appsite.serializer import *
 from reportlab.lib.pagesizes import A4
 from .utils import *
+import requests
+import json
 
 # Create your views here.
 def index(request):
@@ -50,23 +51,34 @@ def dashboard(request):
                 nome = x.nome
                 # print(tipoUsuario)
             id_user = get_object_or_404(Estabelecimentos,email = request.user.email)
-            seus_eventos = Eventos.objects.filter(id_estabelecimento = id_user)
-               
-    eventos = Eventos.objects.all()
-    countEventos = Eventos.objects.count()
+            
+            # seus_eventos = Eventos.objects.filter(id_estabelecimento = id_user)
+    
+    url = 'http://localhost:1010/api-evento/'     
+    headers={'Content-Type': 'application/json'} 
+    response = requests.get(url, headers= headers)
+    
+    response = json.loads(response.content)
+    
+    eventos = response
+    # for x in eventos:
+    #     print(x['titulo'])
+    
+    print(f'\n\n\neventos:{eventos}\n\n\n')
+    # countEventos = Eventos.objects.count()
 
-    peventos = Publico_Eventos.objects.select_related('idEvento').filter(idPessoa = iduser)
-    countEventosPessoa = peventos.count()
+    # peventos = Publico_Eventos.objects.select_related('idEvento').filter(idPessoa = iduser)
+    # countEventosPessoa = peventos.count()
                  
     content = {
         'tipoUsuario' : tipoUsuario,
         'eventos' : eventos,
-        'seus_eventos' : seus_eventos,
+        # 'seus_eventos' : seus_eventos,
         'foto' : foto,
         'iduser': iduser,
         'nomeEsta' : nome,
-        'countEventos': countEventos,
-        'countEventosPessoa': countEventosPessoa,
+        # 'countEventos': countEventos,
+        # 'countEventosPessoa': countEventosPessoa,
     }
     
     return render(request, 'eventosDisponiveis.html', content) 
