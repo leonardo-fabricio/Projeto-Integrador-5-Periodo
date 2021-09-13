@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LogoutView
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
+from django.views.generic.edit import UpdateView
+from django.views.generic.list import ListView
 from .forms import *
 from .models import *
 from django.contrib import messages
@@ -14,6 +16,10 @@ from .utils import *
 import requests
 import json
 import re
+
+url1 = 'http://localhost:3000/api-evento/'
+url2 = 'http://127.0.0.1:3000/api-publico_eventos/'
+
 
 # Create your views here.
 def index(request):
@@ -54,22 +60,31 @@ def dashboard(request):
             
             # seus_eventos = Eventos.objects.filter(id_estabelecimento = id_user)
     
-    url = 'http://localhost:1010/api-evento/'     
+    
     headers={'Content-Type': 'application/json'} 
-    response = requests.get(url, headers= headers)
+    response = requests.get(url1, headers= headers)
     
     response = json.loads(response.content)
     
     eventos = response
+    
     seus_eventos = []
+    
+    countEventos = 0
+    countEventosPessoa = 0
+    
     for x in eventos:
+        countEventos += 1
         if x['id_estabelecimento'] == iduser:
             seus_eventos.append(x)
-    # countEventos = Eventos.objects.count()
 
-    # peventos = Publico_Eventos.objects.select_related('idEvento').filter(idPessoa = iduser)
-    # countEventosPessoa = peventos.count()
-                 
+    url2 = 'http://127.0.0.1:3000/api-publico_eventos/'
+    resposta = requests.get(url2)
+    resposta = json.loads(resposta.content)
+    for x in resposta:
+        if x['id_publico'] == iduser:
+            countEventosPessoa += 1
+          
     content = {
         'tipoUsuario' : tipoUsuario,
         'eventos' : eventos,
@@ -77,8 +92,8 @@ def dashboard(request):
         'foto' : foto,
         'iduser': iduser,
         'nomeEsta' : nome,
-        # 'countEventos': countEventos,
-        # 'countEventosPessoa': countEventosPessoa,
+        'countEventos': countEventos,
+        'countEventosPessoa': countEventosPessoa,
     }
     
     return render(request, 'eventosDisponiveis.html', content) 
@@ -153,22 +168,28 @@ def suasReservas(request):
             iduser = x.id
             nome = x.nome
 
-    url1 = 'http://127.0.0.1:1010/api-evento/'
-    url2 = 'http://127.0.0.1:1010/api-publico_eventos/'
-    
+    url1 = 'http://localhost:3000/api-evento/'
+    url2 = 'http://127.0.0.1:3000/api-publico_eventos/'
+   
     resposta = requests.get(url2)
     resposta = json.loads(resposta.content)
+    
+    countEventosPessoa = 0
+    countEventos = 0
     
     ids = []
     for x in resposta:
         if x['id_publico'] == iduser:
             ids.append(x['id_evento'])
+            countEventosPessoa += 1
             
     resposta = requests.get(url1)
     resposta = json.loads(resposta.content)
-    
+    eventos = resposta
     peventos = []
-    for x in resposta:
+    
+    for x in eventos:
+        countEventos += 1
         for y in ids:
             if x['id'] == y:
                 peventos.append(x)
@@ -179,8 +200,8 @@ def suasReservas(request):
         'event' : peventos,
         'iduser' : iduser,
         'nomeEsta': nome,
-        # 'countEventos': countEventos,
-        # 'countEventosPessoa': countEventosPessoa,
+        'countEventos': countEventos,
+        'countEventosPessoa': countEventosPessoa,
     }
     return render(request, 'suasReservas.html', content)
 
@@ -202,7 +223,27 @@ def informacoesEventos(request,idevento):
         tipoUsuario = x.tipoUsuario
         nome = x.nome
         
-    listaPessoas = Publico_Eventos.objects.select_related('idPessoa').filter(idEvento = idevento)
+    # url = f'http://127.0.0.1:3000/api-evento/{idevento}/'
+    
+    url1 = 'http://localhost:3000/api-evento/'
+    url2 = 'http://127.0.0.1:3000/api-publico_eventos/'
+    
+    response = requests.get(url2) 
+    response = json.loads(response.content)
+    
+    list_aux=[]
+    
+    for x in response:
+        if x['id_evento'] == idevento:
+            list_aux.append(x['id_publico'])
+    
+    listaPessoas = []
+    
+    for x in list_aux:
+        if PublicoGeral.objects.filter(pk = x):
+            listaPessoas.append(PublicoGeral.objects.get(pk = x))
+        
+    # listaPessoas = Publico_Eventos.objects.select_related('idPessoa').filter(idEvento = idevento)
     context ={
         'tipoUsuario' : tipoUsuario,
         'foto' : foto,
@@ -231,12 +272,12 @@ def criarEvento(request):
                 horaFinal   = form.cleaned_data['horaFinal']
                 local       = form.cleaned_data['local']
                 dataEvento  = form.cleaned_data['dataEvento']
-                foto     = form.cleaned_data['foto']
+                fotoevento     = form.cleaned_data['foto']
                 descricao = form.cleaned_data['descricao']
                 titulo = form.cleaned_data['titulo']
                 
                 id_user = Estabelecimentos.objects.get(email = request.user.email)
-                url = 'http://localhost:1010/api-evento/' 
+                url = 'http://localhost:3000/api-evento/' 
                 event_data = {
                     'titulo': f'{titulo}', 
                     'descricao': f'{descricao}', 
@@ -245,7 +286,8 @@ def criarEvento(request):
                     'horaInicial': f'{horaInicial}', 
                     'horaFinal': f'{horaFinal}', 
                     'local': f'{local}', 
-                    'id_estabelecimento': f'{id_user.id}'
+                    'id_estabelecimento': f'{id_user.id}',
+                    # 'foto': f'{fotoevento}', 
                 }
 
                 response = requests.post(url = url, json = event_data)
@@ -267,72 +309,95 @@ def criarEvento(request):
         'nomeEsta': nome,
     }
     return render(request, 'criarEvento.html', context)
-
-# class EditarEventoView(UpdateView,ListView):
-#     model = Eventos
-#     fields = ['titulo','descricao','qtdPessoas', 'horaInicial', 'horaFinal', 'dataEvento', 'local','foto']
-#     success_url = '/dashboard/eventosDisponiveis'
-
-#     def get_context_data(self, **kwargs):
-#         usuario = Estabelecimentos.objects.filter(email=self.request.user.email)
+ 
+def EditarEvento(request, idevento):
+    form = CriarEventoModel(request.POST or None, request.FILES or None)
+    usuario = Estabelecimentos.objects.filter(email= request.user.email)
+    
+    for x in usuario:
+        iduser = x.id
+        foto = x.foto
+        tipoUsuario = x.tipoUsuario
+        nome = x.nome
         
-#         for x in usuario:
-#             iduser = x.id
-#             foto = x.foto
-#             tipoUsuario = x.tipoUsuario
-#             nome = x.nome
-            
-#         context = super().get_context_data(**kwargs)
-#         context['nome'] = nome
-#         context['iduser'] = iduser
-#         context['foto'] = foto
-#         context['tipoUsuario'] = tipoUsuario
-#         return context
+    
+    if form.is_valid():
+        qtdPessoas  = form.cleaned_data['qtdPessoas']
+        horaInicial = form.cleaned_data['horaInicial']
+        horaFinal   = form.cleaned_data['horaFinal']
+        local       = form.cleaned_data['local']
+        dataEvento  = form.cleaned_data['dataEvento']
+        fotoevento     = form.cleaned_data['foto']
+        descricao = form.cleaned_data['descricao']
+        titulo = form.cleaned_data['titulo']
+
+        event_data = {
+            'titulo': f'{titulo}', 
+            'descricao': f'{descricao}', 
+            'qtdPessoas': qtdPessoas, 
+            'dataEvento': f'{dataEvento}', 
+            'horaInicial': f'{horaInicial}', 
+            'horaFinal': f'{horaFinal}', 
+            'local': f'{local}',
+            'id_estabelecimento': f'{iduser}'
+        }
+        
+        url = f'http://127.0.0.1:3000/api-evento/{idevento}/'
+        carregar_form = requests.get(url)             
+        response = requests.put(url = url, json = event_data)
+        
+        form = CriarEventoForm()
+        
+        return redirect('/dashboard/eventosDisponiveis')
+    
+    context = {}
+    context['nomeEsta'] = nome
+    context['iduser'] = iduser
+    context['foto'] = foto
+    context['tipoUsuario'] = tipoUsuario
+    context['form'] = form
+    context['idevento'] = idevento
+    # context['resposta'] = resposta 
+    
+    return render(request, 'eventos_form.html', context)
 
 def deleteEventos(request,idevento):
-    url = f'http://127.0.0.1:1010/api-evento/{idevento}'  
+    url = f'http://127.0.0.1:3000/api-evento/{idevento}'
     response = requests.delete(url)
     
     return redirect('/dashboard/eventosDisponiveis')
 
 
 def Publico_eventos(request, idevento, idpublico):
-    # if Publico_Eventos.objects.filter(idPessoa = idpublico1, idEvento = idevento1):
-        #     # para usar o messages: from django.contrib import messages
-        #     messages.error(request, 'Você já fez uma reserva para esse evento')
-        #     return redirect('/dashboard/suasReservas')
-        # else: 
+    url2 = 'http://127.0.0.1:3000/api-publico_eventos/'
+    response = requests.get(url2)
+    response = json.loads(response.content)
     
-        # idpublico1 = PublicoGeral.objects.get(pk = idpublico)
-        
-        urlpe = 'http://127.0.0.1:1010/api-publico_eventos/'
-        
-        pe_data = {
-            'id_publico' : idpublico,
-            'id_evento': idevento,
-            'qtdPessoas' : 0,
-        }
-        response = requests.post(url = urlpe, json = pe_data)
-        
-        #test = re.finall(f'[0-9]', urlpe)
-
-
-        # Se você quiser remover qualquer texto, basta utilizar a expressão a seguir
-
-        # "[^0-9]" ou "[^\\d]" 
-        # Se for /produto/976935/ ele vai retornar 976935, mas se for /produto/976935/1 ele vai retornar tbm o número 1 e ficaria 9769351
-        
-        messages.success(request, 'Participação concluída, fique atento ao dia e horário do seu evento.')
-        return redirect('/dashboard/suasReservas')
+    for x in response:
+        if x['id_publico'] == idpublico and x['id_evento'] == idevento:
+            messages.error(request, 'Você já fez uma reserva para este evento!')
+            return redirect('/dashboard/eventosDisponiveis')
     
+    pe_data = {
+        'id_publico' : idpublico,
+        'id_evento': idevento,
+        'qtdPessoas' : 0,
+    }
+    response = requests.post(url = url2, json = pe_data)
+    messages.success(request, 'Participação concluída, fique atento ao dia e horário do seu evento.')
         
-# def deletePublicoEventos(request, idevento, idpublico):
-#     idpublico1 = get_object_or_404(PublicoGeral, pk = idpublico)
-#     idevento1 = get_object_or_404(Eventos, pk = idevento)
+    return redirect('/dashboard/suasReservas')
+           
+def deletePublicoEventos(request, idevento, idpublico):
+    url2 = 'http://127.0.0.1:3000/api-publico_eventos/'
+    response = requests.get(url2)
+    response = json.loads(response.content)
     
-#     pe = get_object_or_404(Publico_Eventos,idPessoa = idpublico1, idEvento = idevento1)
-#     pe.delete()
-#     return redirect('/dashboard/suasReservas')
+    for x in response:
+        if x['id_publico'] == idpublico and x['id_evento'] == idevento:
+            idpe = x['id']
+            apagar = requests.delete(f'http://127.0.0.1:3000/api-publico_eventos/{idpe}/')
+    return redirect('/dashboard/suasReservas')
 
 
 # SERIALIZAR DADOOS PARA API    
@@ -345,24 +410,43 @@ class EstabelecimentoViewSet(viewsets.ModelViewSet):
     serializer_class = EstabelecimentoSerializer
     
 def baixarPdf(request, idevento):
-        evento          = Eventos.objects.get(id = idevento)
-        listaPessoas    = Publico_Eventos.objects.select_related('idPessoa').filter(idEvento = idevento)
-        data = {'evento': evento, 'pessoas':listaPessoas}
+    headers={'Content-Type': 'application/json'} 
+    url1 = f'http://localhost:3000/api-evento/{idevento}/'
+    url2 = 'http://127.0.0.1:3000/api-publico_eventos/'
+    
+    response = requests.get(url1,headers = headers)
+    response   = json.loads(response.content)
+    evento = response
+    
+    response = requests.get(url2)
+    response = json.loads(response.content)
+    list_aux=[]
+    
+    for x in response:
+        if x['id_evento'] == idevento:
+            list_aux.append(x['id_publico'])
+    
+    listaPessoas = []
+    
+    for x in list_aux:
+        if PublicoGeral.objects.filter(pk = x):
+            listaPessoas.append(PublicoGeral.objects.get(pk = x))
 
-        #html = template.render(data)
-        pdf = render_to_pdf('../templates/arquivoPDF.html', data)
+    data = {'evento': evento, 'pessoas':listaPessoas}
 
-        if pdf:
-            response = HttpResponse(pdf, content_type='application/pdf')
+    pdf = render_to_pdf('../templates/arquivoPDF.html', data)
 
-            filename = ' Listagem de pessoas em {}.pdf'.format(evento.titulo)
+    if pdf:
+        response = HttpResponse(pdf, content_type='application/pdf')
 
-            #content = "inline; filename='%s'" %(filename)
-            #download = request.GET.get("download")
-            #if download:
-            content = 'attachment; filename=%s' %(filename)
-            response['Content-Disposition'] = content
-            return response
-        else:
-            return HttpResponse("Not found")
+        filename = ' Listagem de pessoas em {}.pdf'.format(evento['titulo'])
+
+        #content = "inline; filename='%s'" %(filename)
+        #download = request.GET.get("download")
+        #if download:
+        content = 'attachment; filename=%s' %(filename)
+        response['Content-Disposition'] = content
+        return response
+    else:
+        return HttpResponse("Not found")
 

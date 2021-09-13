@@ -1,0 +1,36 @@
+{% extends 'dashboard.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+<!-- form de cadastro de evento aqui -->
+
+    <head>
+        <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    </head>
+
+<!-- {% bootstrap_messages %} -->
+
+
+    <h4 class="h4 mb-3 text-gray-800 create">EDITE SEU EVENTO</h4><br><br>
+
+    <div class="form-criar-evento">
+        <form class="form-register" action="{% url 'editar_evento' idevento %} " method="post" autocomplete="off" enctype="multipart/form-data">
+            <br>
+                {% csrf_token %}
+                {% bootstrap_form form %}
+            <br>
+            {% buttons %}
+                <button id="btn-cadastro-publico" type="submit" class="botoes-login btn register create">EDITAR</button>
+            {% endbuttons %}
+        
+        </form>
+    </div>
+
+        {% bootstrap_javascript jquery='full' %}
+        <script src="{% static 'jquery-3.6.0.min.js' %}"></script>
+        <script src="{% static 'jquery.mask.min.js' %}"></script>
+        <script src="{% static 'mask.js' %}"></script>
+        <script>
+            document.querySelector('h3').style.display = 'none'
+        </script>
+    {% endblock %}

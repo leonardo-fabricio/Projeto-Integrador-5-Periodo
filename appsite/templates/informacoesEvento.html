@@ -21,9 +21,9 @@
       {% for p in listaPessoas %}
         <tr>
           <th scope="row">#</th>
-          <td>{{p.idPessoa.nome}}</td>
-          <td>{{p.idPessoa.telefone}}</td>
-          <td><a style="color: #858796;" href="mailto:{{p.idPessoa.email}}">{{p.idPessoa.email}}</a></td>
+          <td>{{p.nome}}</td>
+          <td>{{p.telefone}}</td>
+          <td><a style="color: #858796;" href="mailto:{{p.idPessoa.email}}">{{p.email}}</a></td>
         </tr>
       {%endfor%}
     </tbody>

@@ -3,9 +3,13 @@
 {% load static %}
 
 {% block event %}
+
+    <div class="container messageBootstrap">
+        {% bootstrap_messages %}
+    </div>
+
     <head>
         <link rel="stylesheet" href="{% static 'css/style.css'%}">
-        
     </head>
 
     <hr style="width: 1070px !important; height: 10px !important;"/>

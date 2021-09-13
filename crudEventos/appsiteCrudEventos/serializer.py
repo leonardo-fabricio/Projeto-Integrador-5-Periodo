@@ -9,4 +9,4 @@ class EventoSerializer(serializers.HyperlinkedModelSerializer):
 class PublicoEventoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Publico_Eventos
-        fields = '__all__'
+        fields = ['id','id_evento','id_publico','qtdPessoas']
