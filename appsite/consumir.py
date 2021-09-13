@@ -5,7 +5,7 @@ import re
 def aaa(url):
     print(url)
 
-url = 'http://localhost:1010/api-evento/'
+url = 'http://localhost:8080/api-evento/' # trocar para 8080, pois 1010 não funcionava
 event_data = {
     'titulo': 'Outra coisa', 
     'descricao': 'outra coisa', 
