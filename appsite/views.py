@@ -13,6 +13,7 @@ from reportlab.lib.pagesizes import A4
 from .utils import *
 import requests
 import json
+import re
 
 # Create your views here.
 def index(request):
@@ -151,28 +152,35 @@ def suasReservas(request):
             foto = x.foto
             iduser = x.id
             nome = x.nome
-       
-    peventos = Publico_Eventos.objects.select_related('idEvento').filter(idPessoa = iduser)
-    countEventos = Eventos.objects.count()
-    countEventosPessoa = peventos.count()
 
-    # for x in peventos:
-    #     print (x.idEvento.titulo)
-    #     print('\n\n')
+    url1 = 'http://127.0.0.1:1010/api-evento/'
+    url2 = 'http://127.0.0.1:1010/api-publico_eventos/'
     
+    resposta = requests.get(url2)
+    resposta = json.loads(resposta.content)
     
-    # print(eventosReservados.query)
-    # print('\n\n\n')
-    # print (eventos)
-    # print('\n\n')
+    ids = []
+    for x in resposta:
+        if x['id_publico'] == iduser:
+            ids.append(x['id_evento'])
+            
+    resposta = requests.get(url1)
+    resposta = json.loads(resposta.content)
+    
+    peventos = []
+    for x in resposta:
+        for y in ids:
+            if x['id'] == y:
+                peventos.append(x)
+                
     content = {
         'tipoUsuario' : tipoUsuario,
         'foto' : foto,
         'event' : peventos,
         'iduser' : iduser,
         'nomeEsta': nome,
-        'countEventos': countEventos,
-        'countEventosPessoa': countEventosPessoa,
+        # 'countEventos': countEventos,
+        # 'countEventosPessoa': countEventosPessoa,
     }
     return render(request, 'suasReservas.html', content)
 
@@ -281,26 +289,42 @@ def criarEvento(request):
 #         context['tipoUsuario'] = tipoUsuario
 #         return context
 
-def deleteEventos(request, url):  
+def deleteEventos(request,idevento):
+    url = f'http://127.0.0.1:1010/api-evento/{idevento}'  
     response = requests.delete(url)
+    
     return redirect('/dashboard/eventosDisponiveis')
 
 
-# def Publico_eventos(request,idevento, idpublico):
-#     try:
-#         idpublico1 = get_object_or_404(PublicoGeral, pk = idpublico)
-#         idevento1 = get_object_or_404(Eventos, pk = idevento)
-#         if Publico_Eventos.objects.filter(idPessoa = idpublico1, idEvento = idevento1):
-#             # para usar o messages: from django.contrib import messages
-#             messages.error(request, 'Você já fez uma reserva para esse evento')
-#             return redirect('/dashboard/suasReservas')
-#         else: 
-#             new = Publico_Eventos(idPessoa = idpublico1, idEvento = idevento1)
-#             new.save()
-#             messages.success(request, 'Participação concluída, fique atento ao dia e horário do seu evento.')
-#             return redirect('/dashboard/suasReservas')
-#     except Exception as e:
-#         print(e)
+def Publico_eventos(request, idevento, idpublico):
+    # if Publico_Eventos.objects.filter(idPessoa = idpublico1, idEvento = idevento1):
+        #     # para usar o messages: from django.contrib import messages
+        #     messages.error(request, 'Você já fez uma reserva para esse evento')
+        #     return redirect('/dashboard/suasReservas')
+        # else: 
+    
+        # idpublico1 = PublicoGeral.objects.get(pk = idpublico)
+        
+        urlpe = 'http://127.0.0.1:1010/api-publico_eventos/'
+        
+        pe_data = {
+            'id_publico' : idpublico,
+            'id_evento': idevento,
+            'qtdPessoas' : 0,
+        }
+        response = requests.post(url = urlpe, json = pe_data)
+        
+        #test = re.finall(f'[0-9]', urlpe)
+
+
+        # Se você quiser remover qualquer texto, basta utilizar a expressão a seguir
+
+        # "[^0-9]" ou "[^\\d]" 
+        # Se for /produto/976935/ ele vai retornar 976935, mas se for /produto/976935/1 ele vai retornar tbm o número 1 e ficaria 9769351
+        
+        messages.success(request, 'Participação concluída, fique atento ao dia e horário do seu evento.')
+        return redirect('/dashboard/suasReservas')
+    
         
 # def deletePublicoEventos(request, idevento, idpublico):
 #     idpublico1 = get_object_or_404(PublicoGeral, pk = idpublico)

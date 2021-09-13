@@ -23,6 +23,7 @@ from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
 router.register(r'api-evento', EventoViewSet)
+router.register(r'api-publico_eventos', PublicoEventoViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

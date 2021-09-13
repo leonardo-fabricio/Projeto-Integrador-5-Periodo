@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Events(models.Model):
+    id          = models.AutoField(primary_key=True)
     titulo      = models.CharField('titulo', null= True, max_length=30)
     descricao   = models.CharField('descricao', null= True, max_length=100)
     qtdPessoas  = models.IntegerField('qtdPessoas')

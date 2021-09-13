@@ -1,5 +1,9 @@
 import requests
 import json
+import re
+
+def aaa(url):
+    print(url)
 
 url = 'http://localhost:1010/api-evento/'
 event_data = {
@@ -12,16 +16,25 @@ event_data = {
     'local': 'sdfsdf', 
 }
 
-request = requests.delete('http://localhost:1010/api-evento/10/')
+# request = requests.delete('http://localhost:1010/api-evento/10/')
+request = requests.get(url)
+# test = re.findall(f'[0-9]*[0-9]', url)
+# print(test[-1])
+#print(vet[-1])
+
 # request = requests.post(url = url, json = event_data)
 # # request = requests.get(url)
 
 # print(request.status_code)
 # print(request.reason)
-# dados = json.loads(request.content)
+dados = json.loads(request.content)
 # print(dados)
-# # for x in dados:
-# #     print(x['titulo'])
+# for x in dados:
+#     print(type(x['url']))
+#     aaa(x['url'])
+    
+    
+
 
 
 

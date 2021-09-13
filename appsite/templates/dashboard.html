@@ -183,7 +183,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <a style="text-decoration: none;" href="">
+                                            <a style="text-decoration: none;" href="{% url 'suasReservas'%}">
                                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Suas Reservas</div>
                                             </a>
                                             <div style="margin-top: -25px !important; margin-left: 90% !important;" class="h5 mb-0 font-weight-bold text-gray-800">{{countEventosPessoa}}</div>
@@ -249,7 +249,7 @@
                                                         <hr>
 
                                                         <div class="buttonEventCheck your-events">
-                                                            <a style="margin-top: -22px !important; margin-left: 39% !important;" href="#" class="btn btn-danger btn-icon-split">
+                                                            <a style="margin-top: -22px !important; margin-left: 39% !important;" href="{% url 'deleteEventos' evento.id %}" class="btn btn-danger btn-icon-split">
                                                                 <span style="color: #fff !important;" class="text"><b>Cancelar Evento</b></span>
                                                             </a>
 
