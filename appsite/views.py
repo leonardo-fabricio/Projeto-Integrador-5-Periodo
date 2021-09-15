@@ -1,4 +1,5 @@
 
+import random
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LogoutView
@@ -15,6 +16,7 @@ from reportlab.lib.pagesizes import A4
 from .utils import *
 import requests
 import json
+from random import sample
 import re
 
 url1 = 'http://localhost:3000/api-evento/'
@@ -60,7 +62,7 @@ def dashboard(request):
             
             # seus_eventos = Eventos.objects.filter(id_estabelecimento = id_user)
     
-    
+    url1 = 'http://localhost:3000/listAll'
     headers={'Content-Type': 'application/json'} 
     response = requests.get(url1, headers= headers)
     
@@ -77,13 +79,16 @@ def dashboard(request):
         countEventos += 1
         if x['id_estabelecimento'] == iduser:
             seus_eventos.append(x)
+            # print(type(x['_id']))
+            # print('\n\n\n\n')
+           
 
-    url2 = 'http://127.0.0.1:3000/api-publico_eventos/'
-    resposta = requests.get(url2)
-    resposta = json.loads(resposta.content)
-    for x in resposta:
-        if x['id_publico'] == iduser:
-            countEventosPessoa += 1
+    # url2 = 'http://127.0.0.1:3000/api-publico_eventos/'
+    # resposta = requests.get(url2)
+    # resposta = json.loads(resposta.content)
+    # for x in resposta:
+    #     if x['id_publico'] == iduser:
+    #         countEventosPessoa += 1
           
     content = {
         'tipoUsuario' : tipoUsuario,
@@ -275,9 +280,25 @@ def criarEvento(request):
                 fotoevento     = form.cleaned_data['foto']
                 descricao = form.cleaned_data['descricao']
                 titulo = form.cleaned_data['titulo']
+                id_evento = random.randint(1,10000)
+                
+                
+                
+                url2 = 'http://127.0.0.1:3000/listAll'
+                headers={'Content-Type': 'application/json'} 
+                response = requests.get(url2, headers= headers)
+                response = json.loads(response.content)
+                eventos = response
+                print(id_evento)
+                print('\n\n\n\n')
+                
+                for x in eventos:
+                    while x['id_auxiliar'] == id_evento:
+                        id_evento = random.randint(1,10000)
+                    
                 
                 id_user = Estabelecimentos.objects.get(email = request.user.email)
-                url = 'http://localhost:3000/api-evento/' 
+                url = 'http://localhost:3000/api-evento' 
                 event_data = {
                     'titulo': f'{titulo}', 
                     'descricao': f'{descricao}', 
@@ -287,6 +308,7 @@ def criarEvento(request):
                     'horaFinal': f'{horaFinal}', 
                     'local': f'{local}', 
                     'id_estabelecimento': f'{id_user.id}',
+                    'id_auxiliar' : f'{id_evento}'
                     # 'foto': f'{fotoevento}', 
                 }
 
@@ -361,10 +383,19 @@ def EditarEvento(request, idevento):
     
     return render(request, 'eventos_form.html', context)
 
-def deleteEventos(request,idevento):
-    url = f'http://127.0.0.1:3000/api-evento/{idevento}'
-    response = requests.delete(url)
+def deleteEventos(request,idauxiliar):
+    url1 = 'http://localhost:3000/listAll'
+    url = ''
+    headers={'Content-Type': 'application/json'} 
+    response = requests.get(url1, headers= headers)
+    response = json.loads(response.content)
+    eventos = response
     
+    for x in eventos:
+        if x['id_auxiliar'] == idauxiliar:
+            url = f"http://127.0.0.1:3000/deletar/{x['_id']}"
+    
+    response = requests.delete(url)
     return redirect('/dashboard/eventosDisponiveis')
 
 
