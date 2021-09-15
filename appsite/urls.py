@@ -22,15 +22,15 @@ urlpatterns = [
     path('dashboard/suasReservas', suasReservas, name='suasReservas'),
     path('escolha', escolha, name='escolha'),
    
-    path('informacoesEventos/<int:idevento>',informacoesEventos, name='informacoesEventos' ),
-    path('baixarPdf/<int:idevento>',baixarPdf, name='baixarPdf'),
+    path('informacoesEventos/<int:idauxiliar>',informacoesEventos, name='informacoesEventos' ),
+    path('baixarPdf/<int:idauxiliar>',baixarPdf, name='baixarPdf'),
     
     path('criarEvento', criarEvento, name='criarEvento'),
     path('deleteEventos/<int:idauxiliar>/', deleteEventos, name='deleteEventos'),
     
-    path('publicoEventos/<int:idevento>/<int:idpublico>/', Publico_eventos, name='publicoEventos'),
+    path('publicoEventos/<int:idauxiliar>/<int:idpublico>/', Publico_eventos, name='publicoEventos'),
     
-    path('deletePublicoEventos/<int:idevento>/<int:idpublico>', deletePublicoEventos, name='deletePublicoEventos'),
-    path('editar_evento/<int:idevento>/', EditarEvento, name='editar_evento'),
+    path('deletePublicoEventos/<int:idauxiliar>/<int:idpublico>', deletePublicoEventos, name='deletePublicoEventos'),
+    path('editar_evento/<int:idauxiliar>/', EditarEvento, name='editar_evento'),
   
 ]

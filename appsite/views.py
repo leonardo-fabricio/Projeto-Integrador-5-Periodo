@@ -83,12 +83,12 @@ def dashboard(request):
             # print('\n\n\n\n')
            
 
-    # url2 = 'http://127.0.0.1:3000/api-publico_eventos/'
-    # resposta = requests.get(url2)
-    # resposta = json.loads(resposta.content)
-    # for x in resposta:
-    #     if x['id_publico'] == iduser:
-    #         countEventosPessoa += 1
+    url2 = 'http://127.0.0.1:3000/listallpe/'
+    resposta = requests.get(url2)
+    resposta = json.loads(resposta.content)
+    for x in resposta:
+        if x['id_publico'] == iduser:
+            countEventosPessoa += 1
           
     content = {
         'tipoUsuario' : tipoUsuario,
@@ -173,8 +173,8 @@ def suasReservas(request):
             iduser = x.id
             nome = x.nome
 
-    url1 = 'http://localhost:3000/api-evento/'
-    url2 = 'http://127.0.0.1:3000/api-publico_eventos/'
+    url1 = 'http://localhost:3000/listAll/'
+    url2 = 'http://127.0.0.1:3000/listallpe/'
    
     resposta = requests.get(url2)
     resposta = json.loads(resposta.content)
@@ -196,7 +196,7 @@ def suasReservas(request):
     for x in eventos:
         countEventos += 1
         for y in ids:
-            if x['id'] == y:
+            if x['id_auxiliar'] == y:
                 peventos.append(x)
                 
     content = {
@@ -216,7 +216,7 @@ def escolha(request):
 
     return render(request, 'escolha.html')
 
-def informacoesEventos(request,idevento):
+def informacoesEventos(request,idauxiliar):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/')
     
@@ -230,8 +230,8 @@ def informacoesEventos(request,idevento):
         
     # url = f'http://127.0.0.1:3000/api-evento/{idevento}/'
     
-    url1 = 'http://localhost:3000/api-evento/'
-    url2 = 'http://127.0.0.1:3000/api-publico_eventos/'
+    url1 = 'http://localhost:3000/listAll/'
+    url2 = 'http://127.0.0.1:3000/listallpe/'
     
     response = requests.get(url2) 
     response = json.loads(response.content)
@@ -239,7 +239,7 @@ def informacoesEventos(request,idevento):
     list_aux=[]
     
     for x in response:
-        if x['id_evento'] == idevento:
+        if x['id_evento'] == idauxiliar:
             list_aux.append(x['id_publico'])
     
     listaPessoas = []
@@ -254,7 +254,7 @@ def informacoesEventos(request,idevento):
         'foto' : foto,
         'nomeEsta': nome,
         'listaPessoas':listaPessoas,
-        'idevento2': idevento,
+        'idevento2': idauxiliar,
     }
     return render(request,'informacoesEvento.html', context)
 
@@ -332,7 +332,7 @@ def criarEvento(request):
     }
     return render(request, 'criarEvento.html', context)
  
-def EditarEvento(request, idevento):
+def EditarEvento(request, idauxiliar):
     form = CriarEventoModel(request.POST or None, request.FILES or None)
     usuario = Estabelecimentos.objects.filter(email= request.user.email)
     
@@ -361,15 +361,22 @@ def EditarEvento(request, idevento):
             'horaInicial': f'{horaInicial}', 
             'horaFinal': f'{horaFinal}', 
             'local': f'{local}',
-            'id_estabelecimento': f'{iduser}'
+            'id_estabelecimento': f'{iduser}',
+            'id_auxiliar': f'{idauxiliar}',
         }
+        url1 = 'http://localhost:3000/listAll'
+        url = ''
+        headers={'Content-Type': 'application/json'} 
+        response = requests.get(url1, headers= headers)
+        response = json.loads(response.content)
+        eventos = response
         
-        url = f'http://127.0.0.1:3000/api-evento/{idevento}/'
-        carregar_form = requests.get(url)             
+        for x in eventos:
+            if x['id_auxiliar'] == idauxiliar:
+                url = f"http://127.0.0.1:3000/editar/{x['_id']}"
+                
         response = requests.put(url = url, json = event_data)
-        
         form = CriarEventoForm()
-        
         return redirect('/dashboard/eventosDisponiveis')
     
     context = {}
@@ -378,7 +385,7 @@ def EditarEvento(request, idevento):
     context['foto'] = foto
     context['tipoUsuario'] = tipoUsuario
     context['form'] = form
-    context['idevento'] = idevento
+    context['idevento'] = idauxiliar
     # context['resposta'] = resposta 
     
     return render(request, 'eventos_form.html', context)
@@ -398,36 +405,35 @@ def deleteEventos(request,idauxiliar):
     response = requests.delete(url)
     return redirect('/dashboard/eventosDisponiveis')
 
-
-def Publico_eventos(request, idevento, idpublico):
-    url2 = 'http://127.0.0.1:3000/api-publico_eventos/'
-    response = requests.get(url2)
-    response = json.loads(response.content)
-    
+def Publico_eventos(request, idauxiliar, idpublico):
+    url3 = 'http://127.0.0.1:3000/listallpe'
+    url = 'http://127.0.0.1:3000/api-publico_eventos'
+            
+    response = requests.get(url3)
+    response = json.loads(response.content)      
     for x in response:
-        if x['id_publico'] == idpublico and x['id_evento'] == idevento:
+        if x['id_publico'] == idpublico and x['id_evento'] == idauxiliar:
             messages.error(request, 'Você já fez uma reserva para este evento!')
             return redirect('/dashboard/eventosDisponiveis')
     
     pe_data = {
         'id_publico' : idpublico,
-        'id_evento': idevento,
-        'qtdPessoas' : 0,
+        'id_evento': idauxiliar,
     }
-    response = requests.post(url = url2, json = pe_data)
+    response = requests.post(url = url, json = pe_data)
     messages.success(request, 'Participação concluída, fique atento ao dia e horário do seu evento.')
         
     return redirect('/dashboard/suasReservas')
            
-def deletePublicoEventos(request, idevento, idpublico):
-    url2 = 'http://127.0.0.1:3000/api-publico_eventos/'
+def deletePublicoEventos(request, idauxiliar, idpublico):
+    url2 = 'http://127.0.0.1:3000/listallpe/'
     response = requests.get(url2)
     response = json.loads(response.content)
     
     for x in response:
-        if x['id_publico'] == idpublico and x['id_evento'] == idevento:
-            idpe = x['id']
-            apagar = requests.delete(f'http://127.0.0.1:3000/api-publico_eventos/{idpe}/')
+        if x['id_publico'] == idpublico and x['id_evento'] == idauxiliar:
+            idpe = x['_id']
+            apagar = requests.delete(f'http://127.0.0.1:3000/deletarpe/{idpe}/')
     return redirect('/dashboard/suasReservas')
 
 
@@ -440,21 +446,26 @@ class EstabelecimentoViewSet(viewsets.ModelViewSet):
     queryset = Estabelecimentos.objects.all()
     serializer_class = EstabelecimentoSerializer
     
-def baixarPdf(request, idevento):
+def baixarPdf(request, idauxiliar):
     headers={'Content-Type': 'application/json'} 
-    url1 = f'http://localhost:3000/api-evento/{idevento}/'
-    url2 = 'http://127.0.0.1:3000/api-publico_eventos/'
+    url3 = 'http://localhost:3000/listAll'
+    evento = ''
     
-    response = requests.get(url1,headers = headers)
+    response = requests.get(url3,headers = headers)
     response   = json.loads(response.content)
-    evento = response
+    eventos = response
+    for x in eventos:
+        if x['id_auxiliar'] == idauxiliar:
+            evento = x
+    
+    url2 = 'http://127.0.0.1:3000/listallpe/'
     
     response = requests.get(url2)
     response = json.loads(response.content)
     list_aux=[]
     
     for x in response:
-        if x['id_evento'] == idevento:
+        if x['id_evento'] == idauxiliar:
             list_aux.append(x['id_publico'])
     
     listaPessoas = []
