@@ -17,11 +17,6 @@ from .utils import *
 import requests
 import json
 from random import sample
-import re
-
-url1 = 'http://localhost:3000/api-evento/'
-url2 = 'http://127.0.0.1:3000/api-publico_eventos/'
-
 
 # Create your views here.
 def index(request):
@@ -277,14 +272,12 @@ def criarEvento(request):
                 horaFinal   = form.cleaned_data['horaFinal']
                 local       = form.cleaned_data['local']
                 dataEvento  = form.cleaned_data['dataEvento']
-                fotoevento     = form.cleaned_data['foto']
                 descricao = form.cleaned_data['descricao']
                 titulo = form.cleaned_data['titulo']
                 id_evento = random.randint(1,10000)
                 
-                
-                
                 url2 = 'http://127.0.0.1:3000/listAll'
+                
                 headers={'Content-Type': 'application/json'} 
                 response = requests.get(url2, headers= headers)
                 response = json.loads(response.content)
@@ -299,6 +292,8 @@ def criarEvento(request):
                 
                 id_user = Estabelecimentos.objects.get(email = request.user.email)
                 url = 'http://localhost:3000/api-evento' 
+                
+                
                 event_data = {
                     'titulo': f'{titulo}', 
                     'descricao': f'{descricao}', 
@@ -308,7 +303,8 @@ def criarEvento(request):
                     'horaFinal': f'{horaFinal}', 
                     'local': f'{local}', 
                     'id_estabelecimento': f'{id_user.id}',
-                    'id_auxiliar' : f'{id_evento}'
+                    'id_auxiliar' : f'{id_evento}',
+                    'qtd_auxiliar' : 0,
                     # 'foto': f'{fotoevento}', 
                 }
 
@@ -407,20 +403,47 @@ def deleteEventos(request,idauxiliar):
 
 def Publico_eventos(request, idauxiliar, idpublico):
     url3 = 'http://127.0.0.1:3000/listallpe'
-    url = 'http://127.0.0.1:3000/api-publico_eventos'
-            
+    totalpessoas = []
+    totalpessoas.append(1)
+    qtd = 0
+    ideven = ''
     response = requests.get(url3)
-    response = json.loads(response.content)      
+    response = json.loads(response.content) 
+    
     for x in response:
         if x['id_publico'] == idpublico and x['id_evento'] == idauxiliar:
             messages.error(request, 'Você já fez uma reserva para este evento!')
             return redirect('/dashboard/eventosDisponiveis')
+
+        # print(x['id_evento'])
+        # print(idauxiliar)
+        # print('aaaaaaaaaaaaaaa\n\n\n\n\n\n\n')
+
+        elif x['id_evento'] == idauxiliar:
+            qtd = qtd + 1
+            totalpessoas.append(qtd)
+            
+    url2 = f'http://127.0.0.1:3000/listAll'
+    
+    response = requests.get(url2)
+    response = json.loads(response.content)
+    for x in response:
+           if x['id_auxiliar'] == idauxiliar:
+               ideven = x['_id']
+    
+    qtd_aux = {
+        'qtd_auxiliar' : len(totalpessoas)
+    }  
+    url = f'http://127.0.0.1:3000/editar/{ideven}'
+    resultado = requests.put(url = url, json = qtd_aux)
+    
+    url4 = 'http://127.0.0.1:3000/api-publico_eventos'
     
     pe_data = {
         'id_publico' : idpublico,
         'id_evento': idauxiliar,
     }
-    response = requests.post(url = url, json = pe_data)
+    response = requests.post(url = url4, json = pe_data)
     messages.success(request, 'Participação concluída, fique atento ao dia e horário do seu evento.')
         
     return redirect('/dashboard/suasReservas')
@@ -430,10 +453,34 @@ def deletePublicoEventos(request, idauxiliar, idpublico):
     response = requests.get(url2)
     response = json.loads(response.content)
     
+    totalpessoas = []
+    # totalpessoas.append(1)
+    qtd = 0
+    ideven = ''
     for x in response:
         if x['id_publico'] == idpublico and x['id_evento'] == idauxiliar:
             idpe = x['_id']
             apagar = requests.delete(f'http://127.0.0.1:3000/deletarpe/{idpe}/')
+            
+    for x in response:      
+        if x['id_evento'] == idauxiliar:
+            qtd = qtd + 1
+            totalpessoas.append(qtd)
+            
+    url2 = f'http://127.0.0.1:3000/listAll'
+    
+    response = requests.get(url2)
+    response = json.loads(response.content)
+    for x in response:
+           if x['id_auxiliar'] == idauxiliar:
+               ideven = x['_id']
+    
+    qtd_aux = {
+        'qtd_auxiliar' : len(totalpessoas)-1
+    }  
+    url = f'http://127.0.0.1:3000/editar/{ideven}'
+    resultado = requests.put(url = url, json = qtd_aux)      
+        
     return redirect('/dashboard/suasReservas')
 
 

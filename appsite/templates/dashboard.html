@@ -236,14 +236,14 @@
                                         <div class="card border shadow h-100 py-2">
                                             <div class="row g-0">
                                                 <div class="col-md-4">
-                                                    <img src="{{evento.foto}}" class="img-fluid rounded-start" alt="{{e.titulo}}">
+                                                    <img src="{% static 'img/casa.jfif' %}" style="max-height:200px;" class="img-fluid rounded-start" alt="{{e.titulo}}">
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="card-body">
                                                         <h5 class="card-title text-warning text-uppercase"><b>{{ evento.titulo}}</b></h5>
                                                         <p class="card-text description">{{ evento.descricao}}. Será realizado em: <b> {{evento.local}}</b></p>
                                                         <p style="margin-top: -9px !important; margin-bottom: 5px !important;" class="card-text"><b>Total de vagas disponíveis: {{ evento.qtdPessoas}}</b> <br>
-                                                        <div class="rest-vagas"><b style="margin-left: 110px !important;">Ainda restam {{ evento.qtdPessoas}} vagas</b></div></p>
+                                                        <div class="rest-vagas"><b style="margin-left: 110px !important;">Total de Reservas: {{ evento.qtd_auxiliar }} reserva(s)</b></div></p>
                                                         <p style="margin-top: -10px; margin-bottom: -7px;" class="card-text"><small class="text-muted">Inicio do evento em <span class="dataEvento">{{ evento.dataEvento}}</span> de {{evento.horaInicial}} até {{evento.horaFinal}}</small></p>
                                 
                                                         <hr>
