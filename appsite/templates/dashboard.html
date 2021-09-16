@@ -340,11 +340,17 @@
             function trataData(a){
                 var names = a.textContent;
 
-                var re = '-';
+                var re = '-'
                 var nameList = names.split(re);
 
-                novaData = nameList[2] + "-" + nameList[1] + "-" + nameList[0]
-                return novaData
+                console.log(nameList[2].length)
+
+                if(nameList[2].length != 4){
+                    novaData = nameList[2] + "-" + nameList[1] + "-" + nameList[0]
+                    return novaData
+                }
+                return names
+
             }
         }catch(err){
             console.log('OPA: ' + err)
