@@ -30,12 +30,12 @@
                             <p style="max-height: 55px !important;" class="card-text description">{{ ev.descricao}}. Será realizado em: <b> {{ev.local}}</b></p>
                             <p style="margin-top: -10px !important;" class="card-text"><b>Total de vagas disponíveis: {{ ev.qtdPessoas}}</b> 
                             <br><div style="margin-top: -5px !important;" class="rest-vagas"><b style="margin-left: 45px !important;">Você confirmou presença nesse evento</b></div>
-                            <p class="card-text"><small class="text-muted">Inicio do evento em {{ ev.dataEvento}} de {{ev.horaInicial}} até {{ev.horaFinal}}</small></p>
+                            <p class="card-text"><small class="text-muted">Inicio do evento em <span class="dataEvento">{{ ev.dataEvento}}</span> de {{ev.horaInicial}} até {{ev.horaFinal}}</small></p>
 
                             <hr>
 
                             <div class="buttonEventCheck your-reserves">
-                                <a style="width: 170px !important;" href="https://calendar.google.com/calendar/u/0/r/eventedit?text={{ ev.titulo }}&details={{ ev.idEvento.descricao }}&location={{ ev.idEvento.local }}" class="btn btn-success btn-icon-split your-reserves fi" target="_blank">
+                                <a style="width: 170px !important;" href="https://calendar.google.com/calendar/u/0/r/eventedit?text={{ ev.titulo }}&details={{ ev.descricao }}&location={{ ev.local }}" class="btn btn-success btn-icon-split your-reserves fi" target="_blank">
                                     <span style="color: #fff !important; font-size: 16px; margin-top: 1px !important;" class="text"><b>Salvar na Agenda</b></span>
                                 </a>
                             </div>
@@ -54,6 +54,36 @@
     {% else %}
         <br><h4 class="h4 mb-0 text-gray-800 even" style="margin: auto; padding: 180px; padding-top: 90px !important;">Olá, você ainda não está participando de nenhum evento :( <br><br>Você precisa participar de algum evento, <a href="{% url 'eventosDisponiveis' %}">clique aqui </a> e veja alguns do seu interesse.</h4> 
     {% endif %}
+
+    <script>
+        try{
+            let a = document.querySelectorAll('.dataEvento')
+            let tam = a.length
+            
+            for(var i = 0; i < tam; i++){
+                let selector = trataData(a[i])
+                a[i].textContent = selector
+            }
+
+            function trataData(a){
+                var names = a.textContent;
+
+                var re = '-'
+                var nameList = names.split(re);
+
+                console.log(nameList[2].length)
+
+                if(nameList[2].length != 4){
+                    novaData = nameList[2] + "-" + nameList[1] + "-" + nameList[0]
+                    return novaData
+                }
+                return names
+
+            }
+        }catch(err){
+            console.log('OPA: ' + err)
+        }
+    </script>
 
 {% endblock %}
 <script src="../../static/js/main.js"></script> 

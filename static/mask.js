@@ -8,7 +8,6 @@ window.onload = function(){
         labels[3].innerText = 'Hora inicial do evento'
         labels[4].innerText = 'Hora final do evento'
         labels[5].innerText = 'Data do evento'
-        labels[7].innerText = 'Imagem do Evento'
         inputs[3].type = 'number'
         inputs[4].type = 'time'
         inputs[5].type = 'time'

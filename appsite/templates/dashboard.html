@@ -230,6 +230,11 @@
                             <hr class="hr-esta" style="width: 1070px; height: 10px"/>
 
                             {% if seus_eventos %}
+
+                                <div class="container messageBootstrap">
+                                    {% bootstrap_messages %}
+                                </div>
+
                                 <br><h4 id="h4Stile" class="h4 mb-0 text-gray-800 alg" style="margin-top: -5px;">ALGUNS EVENTOS CRIADOS POR VOCÊ</h4>
                                 {% for evento in seus_eventos %}
                                     <div id="card-seus-eventos" class="card mb-3 event-card bbbb" style="margin: auto; margin-top: 30px ;">
@@ -354,6 +359,11 @@
             }
         }catch(err){
             console.log('OPA: ' + err)
+        }
+
+        let t = document.querySelectorAll('.alert.alert-success.alert-dismissible.fade.show')
+        if(t){
+            t[1].style.display = 'none'
         }
 
         // console.log(novaData)
