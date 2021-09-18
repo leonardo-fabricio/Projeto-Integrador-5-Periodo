@@ -83,6 +83,20 @@
         }catch(err){
             console.log('OPA: ' + err)
         }
+
+        setTimeout(function(){ 
+            var tes = novaData.split('-')
+            var data = new Date();
+            var dateAtual = data.getDate()
+
+            if(dateAtual == parseInt(tes[0])){
+                alert('EBAAA!! Hoje você tem uma reserva agendada, fique ligado e compareça seguindo todas as precauções. Bom Evento!!')
+            }    
+        }, 5000);
+
+
+        
+
     </script>
 
 {% endblock %}
