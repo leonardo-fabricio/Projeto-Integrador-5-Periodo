@@ -4939,11 +4939,6 @@ body {
   box-shadow: 0px 4px 8px 0px #757575;
   border-radius: 0px
 }
-
-.card2 {
-  margin: 0px 40px
-}
-
 .logo {
   width: 200px;
   height: 100px;
@@ -5088,6 +5083,38 @@ a {
   margin-top: -5px !important;
 }
 
+#createEvent.btn-criar-evento{ /* botao criarEvento */
+  margin-left: 100px;
+  background-color: #ffff !important;
+  border: 2px solid #7C83FD !important;
+  color: black !important;
+  border-radius: 60px !important;
+  width: 150px !important;
+  height: 40px !important;
+
+  transition: 450ms !important;
+  transition-property: box-shadow;
+
+}
+
+#createEvent.btn-criar-evento:hover{
+  box-shadow: 0 0 2em #7C83FD;
+  width: 152px !important;
+  height: 42px !important;
+  margin-top: -5px !important;
+}
+
+.btn.botoes-login{
+  transition: 750ms !important;
+  transition-property: box-shadow !important;
+  border: 2px solid #7C83FD !important;
+}
+
+.btn.botoes-login:hover{
+  box-shadow: 0 0 1.5em #7C83FD !important;
+}
+
+
 @media screen and (max-width: 991px) {
   .logo {
       margin-left: 0px
@@ -5115,8 +5142,12 @@ a {
 }
 
 form.login100-form.validate-form{
-  margin-left: 20% !important;
-  margin-top: 20% !important;
+  margin-left: 20%;
+  margin-top: 20% ;
+}
+
+.login100-form.validate-form.form-index{
+  margin-top: 20px;
 }
 
 /* Inicio Ajustando tela de login */
@@ -5133,7 +5164,7 @@ form.login100-form.validate-form{
   }
 
   .card2.card.border-0.px-4.py-5{
-    margin-top: 5% !important;
+    margin-top: 5%;
   }
 
   span.login100-form-title.mb-4.ml-1{ /* Altera tamanho do ENTRAR*/
@@ -5172,7 +5203,15 @@ form.login100-form.validate-form{
   .btn.botoes-login{ /* Altera tamanho dos botoes do google e suap*/
     width: 330px !important;
     height: 50px !important;
+
+    transition: 750ms !important;
+    transition-property: box-shadow !important;
   }
+
+  .btn.botoes-login:hover{
+    box-shadow: 0 0 1.5em #7C83FD !important;
+  }
+
   img.img-login{  /* img google*/
     margin-top: 1px !important;
     width: 25px !important;
@@ -5202,7 +5241,7 @@ form.login100-form.validate-form{
   }
   .card2{ /* DIV QUE CONTEM O ENTRAR E OS BOTOES DO GOOGLE E SUAP*/
     border-top: none !important;
-    margin-left: 10% !important;
+    margin-left: 10% ;
   }
 
   img.logo{
@@ -5224,7 +5263,7 @@ form.login100-form.validate-form{
 
   .card2.card.border-0.px-4.py-5{ /* DIV QUE CONTEM O ENTRAR E OS BOTOES DO GOOGLE E SUAP*/
     margin-top: -30px !important;
-    margin-left: 120px !important;
+    margin-left: 120px ;
   }
 
 } 
@@ -5407,5 +5446,68 @@ form.login100-form.validate-form{
   .btn.botoes-login{ /* Altera tamanho dos botoes do google e suap*/
     width: 250px !important;
     margin-left: 12% !important;
+  }
+}
+
+/* Tela escolha */
+
+@media only screen and (max-width:  1680px){ /* TELAS DO TAMANHO DE LUIS*/
+  .card2.card.border-0.px-4.py-5 h4{
+    margin-top: -20px !important;
+    margin-bottom: 20px !important;
+    font-size: 38px !important;
+  }
+
+  img.image{
+    width: 430px !important;
+    height: 390px !important;
+    margin-top: -20px !important;
+  }
+  .login100-form.validate-form.form-index{
+    margin-top: 20px !important;
+    margin-left: 115px !important;
+  }
+  .card2.card.border-0.px-4.py-5 h5{
+    font-size: 20px !important;
+  }
+  .card2.card.border-0.px-4.py-5 p{
+    font-size: 15px !important;
+    text-align: justify !important;
+  } 
+  .login100-form-title{
+    font-size: 24px !important;
+  }
+
+}
+@media only screen and (max-width: 1980px){ /*Tela de leo - TELA SUAS escolha*/
+  .card2.card.border-0.px-4.py-5 h4{
+    margin-top: -20px ;
+    margin-bottom: 20px;
+    font-size: 50px;
+  }
+  .card2.card.border-0.px-4.py-5 h5{
+    font-size: 28.5px;
+  }
+  .card2.card.border-0.px-4.py-5 p{
+    font-size: 20.5px;
+    text-align: justify !important;
+  }
+  img.image{
+    width: 700px ;
+    height: 390px;
+    margin-top: -20pxss;
+  }
+  .login100-form.validate-form.form-index{
+    margin-top: 100px ;
+    margin-left: 180px;
+  }
+  .login100-form-title{
+    font-size: 30px;
+  }
+}
+
+@media only screen and (max-width:  1680px){ /* TELAS DO TAMANHO DE LUIS, atualizar cadastro*/
+  #register{
+    margin-top: 9% !important;
   }
 }

@@ -345,7 +345,7 @@ def EditarEvento(request, idauxiliar):
         horaFinal   = form.cleaned_data['horaFinal']
         local       = form.cleaned_data['local']
         dataEvento  = form.cleaned_data['dataEvento']
-        fotoevento     = form.cleaned_data['foto']
+        
         descricao = form.cleaned_data['descricao']
         titulo = form.cleaned_data['titulo']
 

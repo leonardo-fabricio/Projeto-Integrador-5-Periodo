@@ -1,13 +1,340 @@
 .avatar-url{
     margin-top: 5% !important;
-    width: 50px !important;
-    height: 50px !important;
+    width: 55px !important;
+    height: 55px !important;
     border-radius: 50% !important;
-    margin-left: 8% !important;
+    margin-left: 6% !important;
+    border: 2px solid #fff;
+
+    transition: 700ms !important;
+    transition-property: border, width, height;
+}
+
+.avatar-url:hover{
+    border: 2px solid rgb(26, 230, 8);
+    /* width: 58px !important;
+    height: 58px !important; */
 }
 
 #helloUser-des{
     margin-left: 6% !important;
     font-size: 90% !important;
     color: #fff !important;
+}
+
+/* modificando tela de criar evento */
+
+.form-control{
+    background-color: #e8efff !important;
+    border: 1.7px solid #7C83FD !important;
+    border-radius: 20px; 
+    width: 500px !important;
+}
+
+#id_descricao:nth-child(2) {
+    height: 80px !important;
+}
+
+.form-criar-evento{
+    margin-left: 10% !important;
+}
+
+.botoes-login{
+    background-color: #ffff !important;
+    border: 2px solid #7C83FD !important;
+    color: black !important;
+    border-radius: 60px !important;
+    width: 150px !important;
+    height: 40px !important;
+
+    transition: 450ms !important;
+    transition-property: box-shadow;
+}
+
+.botoes-login:hover{
+  box-shadow: 0 0 2em #7C83FD;
+  width: 152px !important;
+  height: 42px !important;
+  margin-top: -5px !important;
+  margin-bottom: 5px !important;
+}
+
+@media only screen and (max-width: 1680px){ /* TELAS DO TAMANHO DE LUIS*/
+    h4{
+        text-align: center !important;
+        margin-left: 30% ;
+        margin-top: 3%;
+    }
+    
+    .form-criar-evento{
+        margin-left: 30% !important;
+    }
+
+    #btn-cadastro-publico{
+        margin-left: 30% !important;
+    }
+
+    #register2{
+        margin-top: 23px !important;
+        margin-left: 25px !important;
+    }
+
+    .login100-form-title.mb-4.ml-1.aaa{
+        margin-left: 80px !important;
+    }
+
+    #createEvent{
+        margin-left: 60% !important;
+    }
+}
+
+.text-xs:hover{
+    text-decoration: underline;
+    cursor: pointer !important;
+}
+
+.rest-vagas{
+    background-color: #0c9c67 !important;
+    border-radius: 15px !important;
+    color: #fff !important;
+
+    transition-property: background-color;
+    transition: 900ms;
+}
+
+.rest-vagas:hover{
+    margin-right: 20px !important;
+}
+
+.rest-vagas:hover{
+    background-color: #0bbe7d !important;
+
+}   
+
+.col-md-4 > img{
+    margin-top: -7px !important;
+    border-radius: 4px !important;
+    width: 290px !important;
+    height: 234px !important;
+}
+
+.img-fluid.rounded-start{
+    margin-bottom: -9px !important; /* melhor 9 */
+    margin-left: 1px !important;
+}
+
+.event-card{
+    max-height: 300px !important; 
+    max-width: 650px !important;
+    /* overflow: auto !important; */
+
+    transition: 800ms !important;
+    transition-property: box-shadow;
+}
+
+.event-card:hover{
+    /* box-shadow: 0 0 3em rgb(199, 196, 196); */
+    box-shadow: 0 0 2em gray;
+}
+
+.card-text.description{
+    /* text-align: justify; */
+    margin-top: -10px !important;
+    max-width: 396px !important;
+    max-height: 80px !important;
+    overflow: auto !important;
+}
+
+.buttonEventCheck{
+    margin-left: 90px !important;
+}
+
+/* caso queira mudar a cor da dashboard */
+.bg-gradient-primary{
+    /* background-color: #2A3F54 !important; */
+    background-color: #3d72a7 !important;
+    background-size: cover !important;
+}
+
+.nav-item:hover{
+    background-color: #235e96 !important;
+    transition: 500ms;
+}
+
+.img-update:hover{
+    transition-duration: 850ms;
+    transform: rotate(900deg) !important;
+}
+/* @media only screen and (max-width: 1980px){ /*Tela de leo - TELA SUAS RESERVAS
+    .card.mb-3.event-card{
+        margin-top: 50px !important;
+    }
+    .h4.mb-0.text-gray-800{
+        font-size: 30px;
+    }
+    /*Tela de cadastro de estabelecimentos abaixo
+    .card2.card.border-0.px-4.py-5{
+        margin-left: 200px !important;
+        height: 500px;
+    }
+} */
+
+.buttonEventCheck.your-events{
+    display: inline !important;
+}
+
+.btn.btn-danger.btn-icon-split:first-child{ /* cancelar evento */
+    margin-left: 42% !important;
+    margin-bottom: -8% !important;
+    /* font-size: 15px !important */
+}
+
+.btn.btn-success.btn-icon-split.your-reserves.fi{
+    background-color: #0fac72 !important;
+    border-color: #0fac72 !important;
+    height: 42px !important;
+    margin-top: 4px !important;
+
+    transition: 700ms;
+    transition-property: background-color, border-color;
+}
+
+.btn.btn-success.btn-icon-split.your-reserves.fi:hover{
+    background-color: #0b8d5d !important;
+    border-color: #0b8d5d !important;
+}
+
+.buttonEventCheck.your-reserves > a:first-child{
+    margin-left: 75px !important;
+}
+
+.buttonEventCheck.your-reserves:last-child{
+    margin-left: 95px !important;
+    margin-top: -40px !important;
+}
+
+/* .buttonEventCheck.your-events > a:nth-child(2){ /* editar evento
+    margin-top: -17% !important;
+    margin-bottom: -12% !important;
+} */
+
+.img-fluid.rounded-start{ /* imgs evento */
+    border-radius: 50% !important;
+    margin-top: 30px !important;
+    margin-left: 19px !important;
+    height: 70% !important;
+    width: 100% !important;
+}
+
+@media only screen and (min-width: 1681px){ /*TELA LEO*/
+    /*Tela de suas reservas*/
+
+    .card.mb-3.event-card{
+        margin-left: 400px !important;
+        /* margin-top: -100px !important; */
+    }
+    
+    /*tela criar evento*/
+    h4.h4.mb-0.text-gray-800{
+        margin-top: 0% !important;
+        margin-left: 460px !important;
+        font-size: 33px !important;
+    }
+
+    .form-register{
+        margin-left: 390px !important;
+        margin-top: 30px ;
+    }
+
+    .botoes-login.btn.register.create{
+        margin-left: 180px;
+        margin-bottom: 30px;
+    }
+
+    /*dashboard*/
+    .hr-esta{
+        margin-left: 200px;
+    }
+    .h4.mb-0.text-gray-800.alg{
+        margin-left: 500px;
+    }
+    .card.mb-3.event-card.aaaa{
+        margin-top: 70px !important;
+        margin-left: -550px !important;
+    }
+    /*tela cadastro de estabelecimento*/
+    .login100-form-title.mb-4.ml-1.aaa{
+       margin-left: 72% !important;
+    }
+    .form-register.aaa{
+        margin-left: 155px !important;
+    }
+    .form-control{
+        height: 40px;
+    }
+    #id_foto{
+        width: 300px !important;
+    }
+    #createEvent{
+        margin-left: 190px !important;
+    }
+    #register2{
+        margin-top: 150px !important;
+    }
+}
+
+.btn.btn-danger.btn-icon-split.your-reserves{
+    width: 205px !important;
+    height: 43px !important;
+    margin-left: -12px;
+    margin-bottom: -7px !important;
+}
+
+.icon.text-white-50.cancel{
+    margin-left: -10px !important;
+}
+
+.card.mb-3.event-card,
+.card.mb-3.event-card.bbbb,
+.card.border.shadow.h-100.py-2{
+    border-radius: 15px;
+}
+
+.buttonEventCheck.your-reserves{
+    margin-left: -75px !important;
+
+}
+
+@media only screen and (min-width: 1681px){ /*TELA LEO*/
+    .hr-esta{
+        width: 100% !important; 
+        height: 10px;
+        margin-left: 0px !important;
+        /* padding: -50px !important; */
+    }
+    #linha-dash{
+        margin-top: 0px !important; 
+        padding: 25px !important;
+    }
+    #h4Stile{
+        font-size: 30px;
+        margin-left: 550px;
+    }
+    #card-seus-eventos{
+        margin-left: 100px !important;
+    }
+    #card-suas-reservas{
+        margin-left: 520px !important;
+        
+    }
+    .buttonEventCheck.your-reserves{
+        margin-top: 10px !important;
+        margin-left: -50px !important;
+    }
+    
+}
+
+.container.messageBootstrap{
+    /* margin-left: 200px !important; */
+    width: -50px !important;
 }

@@ -23,6 +23,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework import routers
 from appsite.views import *
+from django.views.static import serve 
 
 router = routers.DefaultRouter()
 router.register(r'api-publico', PublicoViewSet)
@@ -38,4 +39,6 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
 
     path('', include('social_django.urls'), name='social'),
+    url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 
+    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

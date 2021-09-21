@@ -2,6 +2,41 @@
   Renderiza o botão de login na tela
 */
 
+let divWarning = document.querySelector('div.alert.alert-danger')
+if(divWarning){
+    divWarning.addEventListener("click", function() {
+        divWarning.style.display = 'none'
+    });
+}
+
+let divSuccess = document.querySelector('div.alert.alert-success.alert-dismissible.fade.show')
+if(divSuccess){
+    divSuccess.addEventListener("click", function() {
+        divSuccess.style.display = 'none'
+    });
+}
+
+// card-suas-reservas
+// try{
+//     let eventsDisponible = document.querySelector('#card-suas-reservas.card.mb-3.event-card')
+
+//     if(!eventsDisponible){
+//         let message = document.querySelector('.h4.mb-0.text-gray-800.even')
+//         message.textContent = 'Olá, você ainda não está participando de nenhum evento. ' /* <b>Criar Agendamento</b> <br>ou <a href="http://127.0.0.1:8000/criarEvento"><b>Clicando Aqui</b></a></h3>' */
+//         message.style.padding = '120px'
+//         message.style.marginTop = '0px'
+
+//         let x = document.createElement('img')
+//         x.setAttribute("src", "https://i.pinimg.com/originals/26/1d/79/261d79eba10658c0dfb9da61c5b28755.png")
+//         x.setAttribute("width", "40px")
+//         x.style.marginTop = '0px'
+        
+//         message.appendChild(x)
+//     }
+// }catch(err){
+//     console.log("ERRO 2: " + err)
+// }
+
 function renderButton() {
     gapi.signin2.render('meu-botao', {
         'scope': 'email profile https://www.googleapis.com/auth/plus.login', // solicitando acesso ao profile e ao e-mail do usuário
@@ -103,3 +138,7 @@ function signOut() {
     
 
 })(jQuery);
+
+$(document).ready(function(){
+    $("#id_horaInicial").inputmask("h:s",{ "placeholder": "hh/mm" });
+  });
