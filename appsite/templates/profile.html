@@ -67,6 +67,13 @@
                 <a class="button is-danger is-large" href="{% url 'logout' %}">Encerrar Sessão</a>
 		  	
 	  </section>
+
+    <div class="wrap-input100 validate-input" data-validate = "Password is required" data-toggle="tooltip" data-placement="top" title="Entre com seu login SUAP" data-onsuccess="onSuccess">
+      <a style="color: #4a69bd; outline: 0 none;" class="btn botoes-login" href="{% url 'social:begin' 'suap' %}">
+        <img class="img-login2" src="{% static 'assets/img/Suap.png'%}" alt=""> 
+      </a>
+    </div>
+
 	</body>
 </html>
 

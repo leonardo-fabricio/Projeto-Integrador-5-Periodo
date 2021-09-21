@@ -5505,9 +5505,3 @@ form.login100-form.validate-form{
     font-size: 30px;
   }
 }
-
-@media only screen and (max-width:  1680px){ /* TELAS DO TAMANHO DE LUIS, atualizar cadastro*/
-  #register{
-    margin-top: 9% !important;
-  }
-}
