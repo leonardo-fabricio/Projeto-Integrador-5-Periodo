@@ -32,5 +32,7 @@ urlpatterns = [
     
     path('deletePublicoEventos/<int:idauxiliar>/<int:idpublico>', deletePublicoEventos, name='deletePublicoEventos'),
     path('editar_evento/<int:idauxiliar>/', EditarEvento, name='editar_evento'),
+    
+    path('dashboard_admin', GatilhosListView.as_view(), name='dashboard_admin'),    
   
 ]

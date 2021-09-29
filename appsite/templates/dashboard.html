@@ -44,28 +44,40 @@
             </a>
 
             <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-            {% if tipoUsuario == 'normal' %} 
-            <div class="img-description">
-                <img src="/media/{{foto}}" class="avatar-url" alt="">
-                <!-- <img src="https://lh3.google.com/u/0/ogw/ADea4I7nfLXTXUqCg_OBWr0A0Hf08HWLDsHLklgXTm9Y=s64-c-mo" alt=""> -->
-                {% for name in nomeEsta.split|slice:":1" %}
-                    <span id="helloUser-des" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>{{ name | title }}</b></span>
-                {% endfor %}
-                
-            </div>
-            {% else%}
-            <div class="img-description">
-                <!-- <img src="https://lh3.google.com/u/0/ogw/ADea4I7nfLXTXUqCg_OBWr0A0Hf08HWLDsHLklgXTm9Y=s64-c-mo" alt=""> -->
-                <img src="/media/{{foto}}" class="avatar-url" alt="">
-                
-                <!-- Se for um norme grande ele corta e pega apenas o primeiro nome -->
-                {% for name in nomeEsta.split|slice:":1" %}
-                    <span id="helloUser-des" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>{{ name | title }}</b></span>
-                {% endfor %}
+            {% if foto %}
+                <hr class="sidebar-divider my-0">
+                {% if tipoUsuario == 'normal' %} 
+                <div class="img-description">
+                    <img src="/media/{{foto}}" class="avatar-url" alt="">
+                    <!-- <img src="https://lh3.google.com/u/0/ogw/ADea4I7nfLXTXUqCg_OBWr0A0Hf08HWLDsHLklgXTm9Y=s64-c-mo" alt=""> -->
+                    {% for name in nomeEsta.split|slice:":1" %}
+                        <span id="helloUser-des" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>{{ name | title }}</b></span>
+                    {% endfor %}
+                    
+                </div>
+                {% else%}
+                <div class="img-description">
+                    <!-- <img src="https://lh3.google.com/u/0/ogw/ADea4I7nfLXTXUqCg_OBWr0A0Hf08HWLDsHLklgXTm9Y=s64-c-mo" alt=""> -->
+                    <img src="/media/{{foto}}" class="avatar-url" alt="">
+                    
+                    <!-- Se for um norme grande ele corta e pega apenas o primeiro nome -->
+                    {% for name in nomeEsta.split|slice:":1" %}
+                        <span id="helloUser-des" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>{{ name | title }}</b></span>
+                    {% endfor %}
 
-                 
-            </div>
+                    
+                </div>
+                {% endif %}
+
+            {% else %}
+                <div class="img-description">
+                    <img src="https://i1.wp.com/terracoeconomico.com.br/wp-content/uploads/2019/01/default-user-image.png?ssl=1" class="avatar-url" alt="">
+                    <!-- <img src="https://lh3.google.com/u/0/ogw/ADea4I7nfLXTXUqCg_OBWr0A0Hf08HWLDsHLklgXTm9Y=s64-c-mo" alt=""> -->
+                    {% for name in nomeEsta.split|slice:":1" %}
+                        <span id="helloUser-des" class="mr-2 d-none d-lg-inline text-gray-600 small"><b>{{ name | title }}</b></span>
+                    {% endfor %}
+                    
+                </div>
             {% endif %}
 
             <hr style="margin-top: 5% !important;" class="sidebar-divider my-0">
@@ -107,6 +119,7 @@
                 </a>
             </li>
             {% endif %}
+
             <hr class="sidebar-divider my-0">
 
             <br>
@@ -197,7 +210,36 @@
                         </div>
 
                         {% endif%}
-                        
+
+                        {% if tipoUsuario == 'admin'%}
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card border-left-info shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <a style="text-decoration: none;" href="{% url 'dashboard_admin' %}">
+                                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1"> Auditoria Usuários
+                                                    </div>
+                                                </a>
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col">
+                                                        <!--<div class="progress progress-sm mr-2">
+                                                            <div class="progress-bar bg-info" role="progressbar"
+                                                                style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                                aria-valuemax="100"></div>
+                                                        </div>-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                            
                         {% if tipoUsuario == 'estabelecimento' %}
                         <!-- Earnings (Monthly) Card Example -->
                             <div class="col-xl-3 col-md-6 mb-4">
@@ -226,7 +268,9 @@
                                     </div>
                                 </div>
                             </div>
-                        
+                
+
+                           
                             <hr class="hr-esta" style="width: 1070px; height: 10px"/>
 
                             {% if seus_eventos %}

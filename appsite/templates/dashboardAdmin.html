@@ -1,0 +1,47 @@
+{% extends 'dashboard.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block content %}  
+
+  <br><h4 class="h4 mb-0 text-gray-800" style="margin: auto !important; margin-top: -5px !important; margin-bottom: 30px !important;">Dados Gatilhos dos Usuários</h4>
+
+
+    <form style="margin-top: 60px;" method="GET" id="search-form">
+        <div class="input-group">
+        <input type="text" class="form-control" placeholder="Pesquise por operações" name="search">
+        <div class="input-group-append">
+            <button class="btn btn-primary"><i id="search-btn" class="fas fa-search"></i></button>
+        </div>
+        </div>
+    </form>
+
+    <br>
+    <br>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Coluna da Mudança</th>
+            <th scope="col">Data da Modificação</th>
+            <th scope="col">Valor Antigo</th>
+            <th scope="col">Novo Valor</th>
+            <th scope="col">Operação</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for dados in gatilhos %}
+            <tr>
+            <th scope="row">{{dados.id}}</th>
+            <td>{{dados.changed_column}}</td>
+            <td>{{dados.data_changed}}</td>
+            <td>{{dados.old_value}}</td>
+            <td>{{dados.new_value}}</td>
+            <td>{{dados.operation}}</td>
+            <td><a style="color: #858796;" href="mailto:{{p.email}}">{{p.email}}</a></td>
+            </tr>
+        {%endfor%}
+        </tbody>
+    </table>
+{% endblock %}
+

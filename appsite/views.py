@@ -29,6 +29,18 @@ def profile(request):
         return HttpResponseRedirect('/')
     return render(request, 'profile.html', {})
 
+class GatilhosListView(ListView):
+    model = Gatilhos_users
+    template_name = 'dashboardAdmin.html'
+    context_object_name = 'gatilhos'
+    
+    def get_queryset(self):
+        operation = self.request.GET.get('search')
+        object_list = Gatilhos_users.objects.all()
+        if operation:
+            object_list = object_list.filter(operation__icontains=operation)
+        return object_list
+
 def dashboard(request): 
     seus_eventos = ''
     if not request.user.is_authenticated:
